@@ -14,7 +14,7 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Parca',
+      title: 'Home',
       logo: {
         alt: 'Parca Logo',
         src: 'img/logo.svg',
@@ -80,7 +80,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Parca Project, Built with Docusaurus.`,
     },
     prism: {
-      theme: lightCodeTheme,
+      //theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
   },
