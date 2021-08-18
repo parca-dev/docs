@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CodeBlock from '@theme/CodeBlock';
+import styles from './HomepageQuickstart.module.css';
 import gettingStartedSimple from '!!raw-loader!./gettingStartedSimple.bash';
 import gettingStartedMinikube from '!!raw-loader!./gettingStartedMinikube.bash';
 
@@ -14,12 +15,12 @@ export default function HomepageQuickstart() {
                 <div class="col col--12">
                     <div>
                         <button
-                            className={`button button--lg button--outline button--warning ${ mode == 'simple' ? 'button--active' : '' }`}
+                            className={`button button--lg button--outline ${styles.buttonGroupButton} ${ mode == 'simple' ? 'button--warning button--active' : 'button--secondary' }`}
                             onClick={() => setMode('simple')}
                         >Simple</button>
                         <button
                             style={{ marginLeft: 10 }}
-                            className={`button button--lg button--outline button--warning ${ mode != 'simple' ? 'button--active' : '' }`}
+                            className={`button button--lg button--outline ${styles.buttonGroupButton} ${ mode != 'simple' ? 'button--warning button--active' : 'button--secondary' }`}
                             onClick={() => setMode('minikube')}
                         >Minikube</button>
                     </div>
