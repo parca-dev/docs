@@ -7,6 +7,7 @@ import StorageSearch from '../../static/img/storage_search.svg';
 import OpenBook from '../../static/img/open_book.svg';
 import UpwardGraph from '../../static/img/graph.svg';
 import Alert from '../../static/img/alert.svg';
+import MoneyStack from '../../static/img/money_stack.svg';
 
 const FeatureList = [
   {
@@ -59,6 +60,52 @@ function Feature({image, link, title, description}) {
     );
 }
 
+const UseCaseList = [
+    {
+        title: 'Save Money',
+        image: <MoneyStack className={styles.featureImage} title="Save Money" />,
+        description: (
+            <>
+                Many organizations have 20-30% of resources wasted with easily optimized code paths. The Parca Agent aims to lower the entry bar by requiring 0 instrumentation for the whole infrastructure. Deploy in your infrastructure and get started!
+            </>
+        ),
+    },
+    {
+        title: 'Improve Performance',
+        image: <UpwardGraph className={styles.featureImage} title="Improve Performance" />,
+        description: (
+            <>
+                Using profiling data collected over time, Parca can with confidence and statistical significance determine hot paths to optimize. Additionally it can show differences between any label dimension, such as deploys, versions, and regions.
+            </>
+        ),
+    },
+    {
+        title: 'Understand Incidents',
+        image: <Alert className={styles.featureImage} title="Understand Incidents" />,
+        description: (
+            <>
+                Profiling data provides unique insight and depth into what a process executed over time. Memory leaks, but also momentary spikes in CPU or I/O causing unexpected behavior, is traditionally difficult to troubleshoot are a breeze with continuous profiling.
+            </>
+        ),
+    },
+];
+
+function UseCase({image, title, description}) {
+    return (
+        <div className={clsx('col col--4')}>
+            <div className={styles.featureTile}>
+                <div className="text--center">
+                    {image}
+                </div>
+                <div className="text--center padding-horiz--md">
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function HomepageFeatures() {
   return (
       <>
@@ -66,6 +113,13 @@ export default function HomepageFeatures() {
           <div className="container">
             <div className="row">
               <div class="col col--12" style={{textAlign: 'center'}}><h1>What is Parca?</h1></div>
+            </div>
+            <div className="row">
+                <div class="col col--6 col--offset-3" style={{ textAlign: 'justify'}}>
+                  <p>
+                      Parca is a continuous profiling project. Continuous profiling is the act of taking profiles (such as CPU, Memory, I/O and more) of programs in a systematic way. Parca collects, stores and makes profiles available to be queried over time. It features a powerful multi-dimensional data model, storage and query engine specifically designed for profiling data.
+                  </p>
+              </div>
             </div>
           </div>
         </section>
@@ -78,27 +132,19 @@ export default function HomepageFeatures() {
             </div>
           </div>
         </section>
-        <section>
+        <section className={styles.features}>
           <div className="container">
             <div className="row">
-              <div class="col col--6" style={{textAlign: 'right'}}><span style={{ fontSize: 144 }}>$</span></div>
-              <div class="col col--6">Save money on your cloud bill by reducing unnecessary resource usage.</div>
+              <div class="col col--12" style={{textAlign: 'center'}}><h1>Why?</h1></div>
             </div>
           </div>
         </section>
-        <section>
+        <section className={styles.features}>
           <div className="container">
             <div className="row">
-              <div class="col col--6" style={{textAlign: 'right'}}>Improve performance systematically.</div>
-              <div class="col col--6" style={{textAlign: 'left'}}><UpwardGraph /></div>
-            </div>
-          </div>
-        </section>
-        <section>
-          <div className="container">
-            <div className="row">
-                <div class="col col--6" style={{textAlign: 'right'}}><Alert style={{width: 200, height: 200}} /></div>
-              <div class="col col--6">Understand behavior of processes during and after incidents.</div>
+              {UseCaseList.map((props, idx) => (
+                <UseCase key={idx} {...props} />
+              ))}
             </div>
           </div>
         </section>
