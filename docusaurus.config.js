@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Parca',
-  tagline: 'Infrastructure-wide continuous profiling',
+  tagline: 'Open Source Infrastructure-wide continuous profiling',
   url: 'https://parca.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -13,6 +13,16 @@ module.exports = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
+    announcementBar: {
+      id: 'github_star',
+      content: '★ <a href="https://github.com/parca-dev/parca">If you like Parca, give it a star on GitHub!</a> ★',
+      backgroundColor: '#64b5f6', // Defaults to `#fff`.
+      textColor: '#091E42', // Defaults to `#000`.
+      isCloseable: true, // Defaults to `true`.
+    },
+    colorMode: {
+      disableSwitch: true,
+    },
     navbar: {
       title: 'Home',
       logo: {
@@ -53,13 +63,13 @@ module.exports = {
             //  label: 'Stack Overflow',
             //  href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             //},
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
+            //{
+            //  label: 'Discord',
+            //  href: 'https://discordapp.com/invite/docusaurus',
+            //},
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/ParcaDev',
             },
           ],
         },

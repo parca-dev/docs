@@ -7,7 +7,16 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureImage {
+  height: 100px;
+  width: 100px;
+}
+
+.featureTile {
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.featureTile:hover {
+  background-color: var(--ifm-color-secondary);
 }

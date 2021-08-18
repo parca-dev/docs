@@ -1,0 +1,2 @@
+curl | tar
+./parca

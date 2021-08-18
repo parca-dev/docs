@@ -5,8 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
-import CodeBlock from '@theme/CodeBlock';
-import gettingStartedSource from '!!raw-loader!./gettingStarted.bash';
+import HomepageQuickstart from '../components/HomepageQuickstart';
 
 const SvgLogo = require('../../static/img/logo.svg').default;
 
@@ -19,15 +18,7 @@ function HomepageHeader() {
             <SvgLogo style={{ width: 200 }} alt={siteConfig.title} />
         </h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className="container">
-          <div style={{ textAlign: 'left' }}>
-            <div className="row">
-              <div class="col col--8 col--offset-2">
-                <CodeBlock className="language-bash">{gettingStartedSource}</CodeBlock>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HomepageQuickstart />
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
