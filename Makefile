@@ -1,7 +1,8 @@
-.PHONY: docs/parca-agent
-docs/parca-agent:
-	rm -rf tmp docs/parca-agent
+.PHONY: sync-parca-agent
+sync-parca-agent:
+	rm -rf tmp/
 	mkdir -p tmp
+	rm docs/parca-agent-*
 	git clone \
 		--depth 1  \
 		--filter=blob:none  \
@@ -10,4 +11,4 @@ docs/parca-agent:
 		tmp/parca-agent
 	cd tmp/parca-agent && git sparse-checkout set docs
 	cp -r tmp/parca-agent/docs docs/parca-agent
-	for f in tmp/parca-agent/docs/*.md; do cp -- "$$f" "docs/parca-agent-$$f"; done
+	for f in tmp/parca-agent/docs/*.md; do cp -- "$$f" "docs/parca-agent-$$(basename $$f)"; done
