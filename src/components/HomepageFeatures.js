@@ -16,7 +16,7 @@ const FeatureList = [
     image: <img className={styles.featureImage} src={require('@site/static/img/ebpf.png').default} />,
     description: (
       <>
-          A single profiler, using <Link to="https://ebpf.io/">eBPF</Link>, automatically discovering targets from <Link to="https://kubernetes.io/">Kubernetes</Link> or <Link to="https://systemd.io/">SystemD</Link> across the entire infrastructure. Supports C, C++, Rust, Go, and more!
+          A single profiler, using eBPF, automatically discovering targets from Kubernetes or SystemD across the entire infrastructure. Supports C, C++, Rust, Go, and more!
       </>
     ),
   },
@@ -36,7 +36,7 @@ const FeatureList = [
     image: <OpenBook className={styles.featureImage} title="Open Standards" />,
     description: (
       <>
-        Both producing <Link to="https://github.com/google/pprof">pprof</Link> formatted profiles with the eBPF based profiler, and ingesting any pprof formatted profiles allowing for wide language adoption and interoperability with existing tooling.
+        Both producing pprof formatted profiles with the eBPF based profiler, and ingesting any pprof formatted profiles allowing for wide language adoption and interoperability with existing tooling.
       </>
     ),
   },
@@ -112,10 +112,10 @@ export default function HomepageFeatures() {
         <section className={styles.features}>
           <div className="container">
             <div className="row">
-              <div class="col col--12" style={{textAlign: 'center'}}><h1>What is Parca?</h1></div>
+              <div className="col col--12" style={{textAlign: 'center'}}><h1>What is Parca?</h1></div>
             </div>
             <div className="row">
-                <div class="col col--6 col--offset-3" style={{ textAlign: 'justify'}}>
+                <div className="col col--6 col--offset-3" style={{ textAlign: 'justify'}}>
                   <p>
                       Parca is a continuous profiling project. Continuous profiling is the act of taking profiles (such as CPU, Memory, I/O and more) of programs in a systematic way. Parca collects, stores and makes profiles available to be queried over time. It features a powerful multi-dimensional data model, storage and query engine specifically designed for profiling data.
                   </p>
@@ -135,7 +135,7 @@ export default function HomepageFeatures() {
         <section className={styles.features}>
           <div className="container">
             <div className="row">
-              <div class="col col--12" style={{textAlign: 'center'}}><h1>Why?</h1></div>
+              <div className="col col--12" style={{textAlign: 'center'}}><h1>Why?</h1></div>
             </div>
           </div>
         </section>
