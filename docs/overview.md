@@ -10,3 +10,7 @@ The Parca project houses two main components:
 ## Getting Started
 
 todo
+
+## What does the name mean?
+
+It plays on the Program for Arctic Regional Climate Assessment (PARCA) and the practice of ice core _**profiling**_ that has been done as part of it to study climate change. Hopefully with this open source project we can reduce some carbon emissions produced by unnecessary resource usage of data centers.
