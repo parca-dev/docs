@@ -1,6 +1,4 @@
-# Tutorial Intro
-
-Let's discover **Parca in less than 5 minutes**.
+# Overview
 
 Parca is a continuous profiling project. Continuous profiling is the act of taking profiles (such as CPU, Memory, I/O and more) of programs in a systematic way. Parca collects, stores and makes profiles available to be queried over time. It features a powerful multi-dimensional data model, storage and query engine specifically designed for profiling data.
 

@@ -117,7 +117,7 @@ export default function HomepageFeatures() {
             <div className="row">
                 <div className="col col--6 col--offset-3" style={{ textAlign: 'justify'}}>
                   <p>
-                      Parca is a continuous profiling project. Continuous profiling is the act of taking profiles (such as CPU, Memory, I/O and more) of programs in a systematic way. Parca collects, stores and makes profiles available to be queried over time. It features a powerful multi-dimensional data model, storage and query engine specifically designed for profiling data.
+                      Parca is a continuous profiling project. Continuous profiling is the act of taking profiles (such as CPU, Memory, I/O and more) of programs in a systematic way. Parca collects, stores and makes profiles available to be queried over time. It features a powerful multi-dimensional data model, storage and query engine specifically designed for profiling data. Find out more in the <Link to="/docs/overview">Overview</Link>.
                   </p>
               </div>
             </div>

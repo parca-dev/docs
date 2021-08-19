@@ -17,8 +17,8 @@ module.exports = {
   tutorialSidebar: [
     {
       type: 'doc',
-      label: 'Tutorial Intro',
-      id: 'intro',
+      label: 'Overview',
+      id: 'overview',
     },
     {
       type: 'doc',
@@ -59,6 +59,7 @@ module.exports = {
       type: 'category',
       label: 'Tutorial',
       items: [
+        'binary',
         'kubernetes',
         'openshift',
         'systemd',

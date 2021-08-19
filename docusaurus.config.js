@@ -51,8 +51,16 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Intro',
-              to: '/docs/intro',
+              label: 'Overview',
+              to: '/docs/overview',
+            },
+            {
+              label: 'Parca from Binary',
+              to: '/docs/binary',
+            },
+            {
+              label: 'Parca in Kubernetes',
+              to: '/docs/kubernetes',
             },
           ],
         },
