@@ -12,7 +12,7 @@ import MoneyStack from '../../static/img/money_stack.svg';
 const FeatureList = [
   {
     title: 'eBPF Profiler',
-    link: '/docs/agent',
+    link: '/docs/parca-agent',
     image: <img className={styles.featureImage} src={require('@site/static/img/ebpf.png').default} />,
     description: (
       <>
@@ -32,7 +32,7 @@ const FeatureList = [
   },
   {
     title: 'Open Standards',
-    link: '/docs/pprof',
+    link: '/docs/concepts#pprof',
     image: <OpenBook className={styles.featureImage} title="Open Standards" />,
     description: (
       <>
