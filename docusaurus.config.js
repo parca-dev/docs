@@ -12,7 +12,6 @@ module.exports = {
   favicon: 'img/favicon.svg',
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
-  plugins: ['@docusaurus/plugin-ideal-image'],
   scripts: [{src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'parca.dev'}],
   themeConfig: {
     announcementBar: {
