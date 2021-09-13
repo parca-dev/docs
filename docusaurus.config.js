@@ -13,6 +13,9 @@ module.exports = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
   scripts: [{src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'parca.dev'}],
+  plugins: [
+    require.resolve("./docusaurus-github-releases-plugin/src/index.js"),
+  ],
   themeConfig: {
     announcementBar: {
       id: 'github_star',
