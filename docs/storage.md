@@ -1,10 +1,10 @@
 # Storage
 
-Parca's Time Series Database (TSDB) was heavily influenced by Prometheus' TSDB. In fact, in a lot of places we simply use Prometheus packages to not re-invent the wheel and be consistent with the way Prometheus works.
+Parca's Time Series Database (TSDB) was heavily influenced by Prometheus' TSDB. While it has a lot of similarities with a time-series database, Parca makes use of many characteristics of profiling data to optimize the storage for the profiling data so it's not a general-purpose TSDB.
 
-To give you an example, labels and label matchers are entirely used via Prometheus packages and we didn't write this functionally ourselves, so it'll be exactly how you know it from Prometheus.
+Still, in a lot of places, Parca simply uses Prometheus packages to not re-invent the wheel and to be consistent with the way Prometheus works.
 
-As for the storage itself, we've followed Prometheus' storage in a lot of ways too. We have an in-memory head that all new samples are appended too, we have have almost the same chunks to which samples are written and concepts of querying are super close to Prometheus too.
+As for the storage itself, Parca follows Prometheus' storage in a lot of ways too. It has an in-memory head that all new samples are appended to and the concept of querying is super close to Prometheus too. All of that combined with profiling specific data structures makes Parca's storage well optimized for its workloads.
 
 ## Local storage
 
@@ -14,11 +14,11 @@ All of Parca's storage is currently entirely in-memory.
 
 ### On-disk layout
 
-Parca does not yet store any data persistently. Within the next releases we're going to work on a local on-disk storage layout that allows to save profiling data for days, weeks, and months.
+Parca does not yet store any data persistently. Within the next releases, Parca is going to get an experimental local on-disk storage layout that will allow it to save profiling data for days, weeks, and months.
 
 ## Retention
 
-As of right now Parca supports retention by garbage collecting chunks that have a _max timestamp_ that is older than the specified retention. The stored meta data and profile trees aren't garbage collected and might be ever growing during the life time of a Parca process. We want to address this limitation in the future.
+As of right now, Parca supports retention by garbage collecting chunks that have a _max timestamp_ that is older than the specified retention. The stored metadata and profile trees aren't garbage collected and might be ever-growing during the lifetime of a Parca process. In the future, this limitation will be addressed and improved.
 
 * `--storage-tsdb-retention-time=6h` allows to change the retention to a specific duration.
 
@@ -35,13 +35,13 @@ As of right now Parca supports retention by garbage collecting chunks that have 
 
 Requests to store profiles are either coming from Parca's scraper that collected profiles by scraping a targets' HTTP endpoint or the requests come from a process writing into Parca directly, like for example the [Parca agent](parca-agent).
 
-Upon receiving such a request the profile exists as `[]byte` and we use [pprof's upstream parser](https://pkg.go.dev/github.com/google/pprof/profile#Parse) to parse and validate these profiles. This will always make sure that the profiles are valid pprof profiles but also Parca is compatible with pprof. 
+Upon receiving such a request the profile exists as `[]byte` and Parca uses [pprof's upstream parser](https://pkg.go.dev/github.com/google/pprof/profile#Parse) to parse and validate these profiles. This ensures that the profiles are valid pprof profiles but also that Parca is compatible with pprof. 
 
 ### Transforming Profiles
 
-Profiles are mostly made of meta data, when it comes to their size. Parca's storage was designed to store the profile's meta data as efficient as possible. Once the meta data has been taken care of the profiles are left with values that can be stored in a time-series data base (TSDB).
+When it comes to the size of profiles they are mostly made up of metadata. Parca's storage was designed to store the profile's metadata as efficient as possible. Once the metadata has been taken care of the profiles are left with values that can be stored in a time-series database (TSDB).
 
-Once the Profile is parsed we're left with the [pprof Profile](https://pkg.go.dev/github.com/google/pprof/profile#Profile) where for now we're mostly interested in Sample, Mapping, Location, and Function.
+Once the profile is parsed Parca is left with the [pprof Profile](https://pkg.go.dev/github.com/google/pprof/profile#Profile). For now, Sample, Mapping, Location, and Function are the most interesting fields.
 
 ```go
 type Profile struct {
@@ -54,11 +54,11 @@ type Profile struct {
 }
 ```
 
-### Storing Profile Meta Data
+### Storing Profile Metadata
 
-We iterate over all Samples, within those we iterate over all Locations, their referenced Mappings and Lines with Functions. By doing so we build the in-memory tree representation of each folded stack trace that was flattened in the pprof profile.
+A so-called _profile tree_ is build by iterating over all Samples, within those iterating over all Locations, their referenced Mappings and Lines that include the Functions. Parca turns the folded stack traces into a profile tree that's better suited for flame graphs going forward. 
 
-While having to look at each Mapping, Location, Line, and Function we store their values in a SQL data store and cache the results for faster lookup in the next iteration. Mappings, Locations, Functions are then only stored once and going forward they are only referenced. 
+While working on each Mapping, Location, Line, and Function Parca stores these in a SQL data store and caches the results for faster lookup in the next iteration. Mappings, Locations, Lines, Functions are then only stored once and going forward they can be referenced. 
 
 For now we're using a [SQLite in-memory](https://pkg.go.dev/modernc.org/sqlite) SQL store with a schema roughly like this:
 <center>
