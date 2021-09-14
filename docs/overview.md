@@ -7,9 +7,9 @@ The Parca project houses two main components:
 * Parca: The server that stores profiling data and allows it to be queried ana analyzed over time.
 * Parca Agent: An eBPF based profiler, that can automatically discover targets to profile such as Kubernetes containers or SystemD units.
 
-## Getting Started
+## Architecture
 
-todo
+![Parca Architecture Overview](https://docs.google.com/drawings/d/10VH49EgWlNF1wONKroQb5x3Q1Rkrnsc1BikTUvJNFIE/export/svg)
 
 ## What does the name mean?
 
