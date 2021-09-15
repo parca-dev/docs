@@ -8,6 +8,7 @@ import OpenBook from '../../static/img/open_book.svg';
 import UpwardGraph from '../../static/img/graph.svg';
 import Alert from '../../static/img/alert.svg';
 import MoneyStack from '../../static/img/money_stack.svg';
+import Prometheus from '../../static/img/prometheus.svg';
 
 const FeatureList = [
   {
@@ -132,6 +133,23 @@ export default function HomepageFeatures() {
               {FeatureList.map((props, idx) => (
                 <Feature key={idx} {...props} />
               ))}
+            </div>
+          </div>
+        </section>
+        <section className={styles.features}>
+          <div className="container">
+            <div className="row">
+                <div className={clsx('col col--4 col--offset-4')}>
+                    <div className={styles.featureTile}>
+                        <div className="text--center">
+                            <Prometheus className={styles.featureImage} title="Prometheus" />
+                        </div>
+                        <div className="text--center padding-horiz--md">
+                            <h3>Prometheus Native</h3>
+                            <p>The configuration and querying experience has been specifically designed to combine naturally with existing <Link to="https://prometheus.io/">Prometheus</Link> setups. From configuration paradigms, over target discovery, to querying via arbitrary label-selectors.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </section>
