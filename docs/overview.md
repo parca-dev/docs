@@ -5,7 +5,7 @@ Parca is a continuous profiling project. Continuous profiling is the act of taki
 The Parca project houses two main components:
 
 * Parca: The server that stores profiling data and allows it to be queried and analyzed over time.
-* Parca Agent: An eBPF based profiler, that can automatically discover targets to profile such as Kubernetes containers or SystemD units.
+* Parca Agent: An eBPF based profiler, that can automatically discover targets to profile such as Kubernetes containers or systemd units.
 
 ## Architecture
 
