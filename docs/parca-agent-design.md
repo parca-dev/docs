@@ -85,4 +85,5 @@ Future integrations of interpreted (eg. Ruby, nodejs, python) or JIT languages (
 
 ## Send data to server
 
-First, if available, extracted symbols are uploaded to a Conprof compatible server (this can be Conprof itself or a compatible service like [Polar Signals](https://www.polarsignals.com/)). Then, combined with the labels provided by the target discovery, the serialized pprof formatted profile is sent to a Conprof compatible server (this can be Conprof itself or a compatible service like [Polar Signals](https://www.polarsignals.com/)).
+First, if available, extracted symbols are uploaded to a Parca compatible server (this can be Parca itself or a compatible service like [Polar Signals](https://www.polarsignals.com/)). Then, combined with the labels provided by the target discovery, the serialized pprof formatted profile is sent to a Parca compatible server (this can be Parca itself or a compatible service like [Polar Signals](https://www.polarsignals.com/)).
+
