@@ -34,13 +34,19 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        //{
-        //  type: 'doc',
-        //  docId: 'intro',
-        //  position: 'left',
-        //  label: 'Tutorial',
-        //},
-        //{to: '/blog', label: 'Blog', position: 'left'},
+        {
+         type: 'doc',
+         docId: 'overview',
+         position: 'left',
+         label: 'Documentation',
+        },
+        {
+          type: 'doc',
+          docId: 'binary',
+          position: 'left',
+          label: 'Tutorial',
+         },
+        // {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/parca-dev/parca',
           label: 'GitHub',

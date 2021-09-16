@@ -1,29 +1,29 @@
 # Parca Agent
 
-Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/) to capture raw profiling data with very low overhead. It observes user-space and kernel-space stacktraces 100 times per second and builds [pprof](https://github.com/google/pprof) formatted profiles from the extracted data. For in-depth detail and explanation refer to the the [Parca Agent Design](/docs/parca-agent-design) documentation.
+Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/) to capture raw profiling data with very low overhead. It observes user-space, and kernel-space stack traces 100 times per second and builds [pprof](https://github.com/google/pprof) formatted profiles from the extracted data. For in-depth detail and explanation refer to the the [Parca Agent Design](/docs/parca-agent-design) documentation.
 
-The collected data can be viewed locally via HTTP endpoints and optionally be configured to be sent to a Parca server where it can be queried and analyzed over time.
+The collected data can be viewed locally via HTTP endpoints and optionally be configured to be sent to a Parca server, where it can be queried and analyzed over time.
 
 It discovers targets to profile through:
 
-* Kubernetes: Discovering containers on the Kubernetes node the Parca agent is running on.
-* systemd: Discovering systemd units on the node the Parca agent is running on.
+* **Kubernetes**: Discovering containers on the Kubernetes node the Parca agent is running on.
+* **systemd**: Discovering systemd units on the node the Parca agent is running on.
 
-Target discovery mechanisms can be combined, so that both systemd units as well as Kubernetes containers are discovered and automatically profiled.
+Target discovery mechanisms can be combined so that both systemd units as well as Kubernetes containers are discovered and automatically profiled.
 
 ## Requirements
 
 * Linux Kernel version 4.18+
-* A source of targets to discover from: Kubernetes or systemd.
+* A source of targets to discover from Kubernetes or systemd.
 
 ## Supported Profiles
 
-Profiles available for compiled languages (eg. C, C++, Go, Rust):
+Profiles available for compiled languages (e.g. C, C++, Go, Rust):
 
 * CPU
 * Soon: network usage, memory allocations
 
-Runtime specific information such as Goroutines, require explicit instrumentation.
+Runtime-specific information, such as Goroutines, requires manual instrumentation.
 
 ## Tutorials
 
