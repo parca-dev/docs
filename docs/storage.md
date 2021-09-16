@@ -56,9 +56,9 @@ type Profile struct {
 
 ### Storing Profile Metadata
 
-A so-called _profile tree_ is build by iterating over all Samples, within those iterating over all Locations, their referenced Mappings and Lines that include the Functions. Parca turns the folded stack traces into a profile tree that's better suited for flame graphs going forward. 
+A _profile tree_ is built by iterating over all Samples, within those samples iterating over all Locations, their referenced Mappings and Lines that include the Functions. Parca turns the folded stack traces into a profile tree that's better suited for producing flame graphs. 
 
-While working on each Mapping, Location, Line, and Function Parca stores these in a SQL data store and caches the results for faster lookup in the next iteration. Mappings, Locations, Lines, Functions are then only stored once and going forward they can be referenced. 
+While working on each Mapping, Location, Line, and Function, Parca stores these in a SQL data store and caches the results for faster lookup in the next iteration. Mappings, Locations, Lines, Functions, are then only stored once and going forward they can be referenced. 
 
 For now we're using a [SQLite in-memory](https://pkg.go.dev/modernc.org/sqlite) SQL store with a schema roughly like this:
 <center>
