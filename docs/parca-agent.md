@@ -7,14 +7,14 @@ The collected data can be viewed locally via HTTP endpoints and optionally be co
 It discovers targets to profile through:
 
 * Kubernetes: Discovering containers on the Kubernetes node the Parca agent is running on.
-* SystemD: Discovering SystemD units on the node the Parca agent is running on.
+* systemd: Discovering systemd units on the node the Parca agent is running on.
 
-Target discovery mechanisms can be combined, so that both SystemD units as well as Kubernetes containers are discovered and automatically profiled.
+Target discovery mechanisms can be combined, so that both systemd units as well as Kubernetes containers are discovered and automatically profiled.
 
 ## Requirements
 
 * Linux Kernel version 4.18+
-* A source of targets to discover from: Kubernetes or SystemD.
+* A source of targets to discover from: Kubernetes or systemd.
 
 ## Supported Profiles
 
@@ -30,7 +30,7 @@ Runtime specific information such as Goroutines, require explicit instrumentatio
 You can find a tutorial for each of the target discovery mechanisms below (each of these also contain a Parca server setup):
 
 * [Parca On Kubernetes](/docs/kubernetes) (if you are using [OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) refer to the separate [Parca On OpenShift](/docs/openshift) documentation)
-* [SystemD Unit Profiling](/docs/systemd)
+* [systemd Unit Profiling](/docs/systemd)
 
 ## Troubleshooting
 

@@ -17,7 +17,7 @@ const FeatureList = [
     image: <img className={styles.featureImage} src={require('@site/static/img/ebpf.png').default} />,
     description: (
       <>
-          A single profiler, using eBPF, automatically discovering targets from Kubernetes or SystemD across the entire infrastructure with very low overhead. Supports C, C++, Rust, Go, and more!
+          A single profiler, using eBPF, automatically discovering targets from Kubernetes or systemd across the entire infrastructure with very low overhead. Supports C, C++, Rust, Go, and more!
       </>
     ),
   },
