@@ -7,7 +7,7 @@ We also produce Docker images that can be pulled:
 docker pull ghcr.io/parca-dev/parca:latest
 ```
 
-We provide a example configuration file that you can use to get Parca running, the scrape configuration section should look familiar to anyone familiar with Prometheus.
+We provide an example configuration file that you can use to get Parca running, and the scrape configuration section should look familiar to anyone familiar with Prometheus.
 ```
 debug_info:
   bucket:
@@ -26,12 +26,12 @@ scrape_configs:
       - targets: [ '127.0.0.1:7070' ]
 ```
 
-To start parca pass this config file with the `config-path` flag:
+To start Parca, pass this config file with the `config-path` flag:
 ```
 parca --config-path="parca.yaml"
 ```
 
-You should be greeted with the splash and some log lines: 
+You should be greeted with the splash and some log lines:
 ```
 ooooooooo.
 `888   `Y88.
@@ -49,9 +49,9 @@ o888o        `Y888""8o d888b    `Y8bod8P' `Y888""8o
 {"caller":"log.go:124","level":"debug","msg":"Discoverer channel closed","name":"parca","provider":"static/0","ts":"2021-09-16T01:13:18.876192954Z"}
 ```
 
-This will start the Parca server on port `7070`, and configure it to automatically retrieve profiles from itself every 1 second.
+This will start the Parca server on port `7070` and configure it to retrieve profiles from itself every 1 second automatically.
 
-Other flags can be found usigh the `help` flag
+Other flags can be found using the `help` flag.
 ```
 parca --help
 
@@ -68,7 +68,7 @@ Flags:
       --storage-tsdb-retention-time=6h    How long to retain samples in storage.
 ```
 
-Once Parca is running you can navigate to the web interface on the browser 
+Once Parca is running, you can navigate to the web interface on the browser.
 
 ![image](https://user-images.githubusercontent.com/8681572/133534178-dbb33941-a727-43d1-b4da-3cbb29d4c61b.png)
 
@@ -77,13 +77,8 @@ Selecting one of these profile types and clicking the `Search` button will retri
 
 ![image](https://user-images.githubusercontent.com/8681572/133534367-060be44c-bcc6-46ba-a729-b597a50f15db.png)
 
-This should result in a time series based on the profile, that is interactable. Clicking anywhere on the line graph should then bring up a icicle graph for the profile that you've selected.
+This should result in a time series based on the profile that is interactable. Clicking anywhere on the line graph should then bring up an icicle graph for the profile that you've selected.
 
 ![image](https://user-images.githubusercontent.com/8681572/133534596-8d1141f4-aeed-4021-bc55-3be9256fba91.png)
 
-You can then interact with the icicle graph to better understand how Parca is behaving. 
-
-
-
-
-
+You can then interact with the icicle graph to better understand how Parca is behaving.

@@ -1,6 +1,6 @@
 # Kubernetes
 
-To quickly try out the Parca Agent with Kubernetes, create a [minikube](https://minikube.sigs.k8s.io/docs/) cluster with an actual virtual machine, eg. virtualbox:
+To quickly try out the Parca Agent with Kubernetes, create a [minikube](https://minikube.sigs.k8s.io/docs/) cluster with an actual virtual machine, e.g. virtualbox:
 
 ```
 minikube start --driver=virtualbox
@@ -139,4 +139,4 @@ To continuously send every profile collected to a Parca server the configure the
 
 ## Kubernetes label selector
 
-To further sample targets on Kubernetes use the `--pod-label-selector=` flag. For example to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, use `--pod-label-selector=app.kubernetes.io/name=my-web-app`.
+To further sample targets on Kubernetes use the `--pod-label-selector=` flag. For example, to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, use `--pod-label-selector=app.kubernetes.io/name=my-web-app`.
