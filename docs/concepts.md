@@ -4,6 +4,12 @@
 
 ## Pprof
 
+Parca ingests profiles using the open source pprof profile.proto format. More can be read about pprof and the format here https://github.com/google/pprof/blob/master/doc/README.md
+
+#### How is this different than the pprof utility?
+
+The pprof utility offers a robust set of tools for exploring profiles. Parca specifically tries to solve the storage and retrieval of these profiles, and allows you to explore these profiles across time.
+
 ## Icicle Graphs
 
 Often to better understand how your application is behaving you need to compare two profiles. Parca allows you to make selections of two points in time that you want to compare and will generate an icicle graph of the difference between the two selected profiles.
