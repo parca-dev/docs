@@ -70,15 +70,16 @@ Flags:
 
 Once Parca is running, you can navigate to the web interface on the browser.
 
-![image](https://user-images.githubusercontent.com/8681572/133534178-dbb33941-a727-43d1-b4da-3cbb29d4c61b.png)
+![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
+
 
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself.
 Selecting one of these profile types and clicking the `Search` button will retrieve the profiles of that type for the time selection (default Last Hour)
 
-![image](https://user-images.githubusercontent.com/8681572/133534367-060be44c-bcc6-46ba-a729-b597a50f15db.png)
+![image](https://user-images.githubusercontent.com/8681572/133893237-f069a552-e928-4065-80db-603fb5f85e6a.png)
 
 This should result in a time series based on the profile that is interactable. Clicking anywhere on the line graph should then bring up an icicle graph for the profile that you've selected.
 
-![image](https://user-images.githubusercontent.com/8681572/133534596-8d1141f4-aeed-4021-bc55-3be9256fba91.png)
+![image](https://user-images.githubusercontent.com/8681572/133893258-96fdbc0a-8036-4d89-bb4c-578fb131c8e0.png)
 
 You can then interact with the icicle graph to better understand how Parca is behaving.
