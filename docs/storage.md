@@ -61,7 +61,7 @@ A _profile tree_ is built by iterating over all samples. While iterating over th
 
 The metadata can be described as all the `Locations`, their referenced `Mappings`, and `Lines` that include the `Functions`. Parca stores the metadata in a SQL database and caches the results for a faster lookup in the next iteration. Mappings, Locations, Lines, Functions are then only stored once, and as we advance, can be referenced.
 
-> To learn more about these concepts, you can check out the [Parca Agent Desing](http://localhost:3000/docs/parca-agent-design#transform-to-pprof) section.
+> To learn more about these concepts, you can check out the [Parca Agent Design](/docs/parca-agent-design#transform-to-pprof) section.
 
 
 For now, we're using a [SQLite in-memory](https://pkg.go.dev/modernc.org/sqlite) by default. We have the option to use an on-disk SQLite database. The underlying architecture allows us to extend the implementation to support an external SQL store as a metadata store.
@@ -125,4 +125,6 @@ Every key gets its values appended over time. The node with the location ID `7` 
 The node with the key `2` does not have any values for `t2` and `t3`, we don't store anything for these timestamps. Allocating no memory/disk for any sparse values at all. When reading values for `t2` and `t3` for this node we can return `0` as a value that is ignored by pprof.
 ### Storing Debug Information
 
-TODO
+Additionally, Parca exposes endpoints to ingest the debug information for executables and binaries; the sent data is associated with the unique build ID of the object files. And the profiles that have been received have the necessary information about the build IDs in the mappings section. This enables Parca to find corresponding debug information during the symbolization phase.
+
+The debug information store is a thin wrapper around object storage. For this, we used the battle-tested Thanos Object Storage engine. [There are several object storages that have been supported](https://thanos.io/tip/thanos/storage.md/#supported-clients).
