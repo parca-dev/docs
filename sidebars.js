@@ -47,6 +47,11 @@ module.exports = {
     },
     {
       type: 'doc',
+      label: 'Profiling 101',
+      id: 'profiling-101',
+    },
+    {
+      type: 'doc',
       label: 'Storage',
       id: 'storage',
     },
