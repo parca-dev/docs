@@ -57,11 +57,16 @@ type Profile struct {
 
 ### Storing Profile Metadata
 
-A _profile tree_ is built by iterating over all Samples, within those samples iterating over all Locations, their referenced Mappings and Lines that include the Functions. Parca turns the folded stack traces into a profile tree that's better suited for producing flame graphs.
+A _profile tree_ is built by iterating over all samples. While iterating over the samples, all the metadata gets extracted and inserted into the metadata storage. Then Parca turns the folded stack traces into a profile tree that's better suited for producing flame graphs.
 
-While working on each Mapping, Location, Line, and Function, Parca stores these in a SQL data store and caches the results for faster lookup in the next iteration. Mappings, Locations, Lines, Functions are then only stored once and going forward, and they can be referenced.
+The metadata can be described as all the `Locations`, their referenced `Mappings`, and `Lines` that include the `Functions`. Parca stores the metadata in a SQL database and caches the results for a faster lookup in the next iteration. Mappings, Locations, Lines, Functions are then only stored once, and as we advance, can be referenced.
 
-For now, we're using a [SQLite in-memory](https://pkg.go.dev/modernc.org/sqlite) SQL store with a schema roughly like this:
+> To learn more about these concepts, you can check out the [Parca Agent Desing](http://localhost:3000/docs/parca-agent-design#transform-to-pprof) section.
+
+
+For now, we're using a [SQLite in-memory](https://pkg.go.dev/modernc.org/sqlite) by default. We have the option to use an on-disk SQLite database. The underlying architecture allows us to extend the implementation to support an external SQL store as a metadata store.
+
+The metadata store has a schema roughly like this:
 <center>
 
 ![Parca's SQL Storage](/img/storage/sql-schema.png)
@@ -93,7 +98,7 @@ Parca iterates over each sample and then each time walks a tree data structure b
 
 ### Inserting a Profile Tree
 
-At last, the Profile Tree and its values need to be inserted into the TSDB for the given timestamp. Parca merges the Profile Tree into the existing tree for that time series. 
+At last, the Profile Tree and its values need to be inserted into the TSDB for the given timestamp. Parca merges the Profile Tree into the existing tree for that time series.
 Then for every node in the appended Profile Tree Parca accesses a map that holds the values as XOR chunks for every given node in the tree. To uniquely identify nodes, each node has a key that is build of strings from *locations*, *labels*, and *numlabels*.
 
 ### Chunks
@@ -118,3 +123,6 @@ Every key gets its values appended over time. The node with the location ID `7` 
 #### Sparseness
 
 The node with the key `2` does not have any values for `t2` and `t3`, we don't store anything for these timestamps. Allocating no memory/disk for any sparse values at all. When reading values for `t2` and `t3` for this node we can return `0` as a value that is ignored by pprof.
+### Storing Debug Information
+
+TODO

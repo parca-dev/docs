@@ -26,19 +26,13 @@ module.exports = {
       id: 'parca',
     },
     {
-      type: 'doc',
+      type: 'category',
       label: 'Parca Agent',
-      id: 'parca-agent',
-    },
-    {
-      type: 'doc',
-      label: 'Parca Agent Design',
-      id: 'parca-agent-design',
-    },
-    {
-      type: 'doc',
-      label: 'Parca Agent Security',
-      id: 'parca-agent-security-considerations',
+      items: [
+        'parca-agent',
+        'parca-agent-design',
+        'parca-agent-security'
+      ]
     },
     {
       type: 'doc',
@@ -54,6 +48,11 @@ module.exports = {
       type: 'doc',
       label: 'Storage',
       id: 'storage',
+    },
+    {
+      type: 'doc',
+      label: 'Symbolization',
+      id: 'symbolization',
     },
     {
       type: 'doc',

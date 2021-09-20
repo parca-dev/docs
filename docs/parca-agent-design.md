@@ -1,4 +1,4 @@
-# Parca Agent Design
+# Design
 
 Parca Agent implements a sampling profiler, to sample stack traces 100 times per second via eBPF. It tracks user-space as well as kernel-space stack traces. From the raw data it builds a [pprof](https://github.com/google/pprof) formatted profile, and optionally sends it to a Parca server where it is stored and can be queried and analyzed over time.
 
@@ -86,4 +86,3 @@ Future integrations of interpreted (eg. Ruby, nodejs, python) or JIT languages (
 ## Send data to server
 
 First, if available, extracted symbols are uploaded to a Parca compatible server (this can be Parca itself or a compatible service like [Polar Signals](https://www.polarsignals.com/)). Then, combined with the labels provided by the target discovery, the serialized pprof formatted profile is sent to a Parca compatible server (this can be Parca itself or a compatible service like [Polar Signals](https://www.polarsignals.com/)).
-
