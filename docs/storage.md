@@ -30,6 +30,7 @@ As of right now, Parca supports retention by garbage collecting chunks with a _m
 
 </center>
 
+## Write Path
 
 ### Write Requests
 
@@ -45,12 +46,12 @@ Once the profile is parsed, Parca is left with the [pprof Profile](https://pkg.g
 
 ```go
 type Profile struct {
-    // ...
-    Sample            []*Sample
-    Mapping           []*Mapping
-    Location          []*Location
-    Function          []*Function
-    // ...
+	// ...
+	Sample            []*Sample
+	Mapping           []*Mapping
+	Location          []*Location
+	Function          []*Function
+	// ...
 }
 ```
 
@@ -66,3 +67,54 @@ For now, we're using a [SQLite in-memory](https://pkg.go.dev/modernc.org/sqlite)
 ![Parca's SQL Storage](/img/storage/sql-schema.png)
 
 </center>
+
+### Creating a Profile Tree
+
+Going forward Parca has only values and their locations left.
+
+```go
+profile.Profile{
+	Sample: []*profile.Sample{
+		{Value: []int64{46}, Location: []*profile.Location{{ID: 0}}},
+		{Value: []int64{25}, Location: []*profile.Location{{ID: 1}, {ID: 0}}},
+		{Value: []int64{8},  Location: []*profile.Location{{ID: 2}, {ID: 1}, {ID: 0}}},
+		{Value: []int64{17}, Location: []*profile.Location{{ID: 3}, {ID: 2}, {ID: 0}}},
+		{Value: []int64{21}, Location: []*profile.Location{{ID: 4}, {ID: 0}}},
+	},
+}
+```
+
+<div style={{float: 'right'}}>
+<img src="https://docs.google.com/drawings/d/1q-by0bBnzrGegxnzKxb5kGiLEpbp0y14I7nYDNJ0L7o/export/png"/>
+</div>
+
+
+Parca iterates over each sample and then each time walks a tree data structure based on the sample's location IDs. First Parca creates the root node with a location ID `0`. This node gets the value `46` assigned. Parca then looks at the next sample and inserts a new node with location ID `1` into the tree that becomes a child of the root node, setting its value to `25`. Doing this for every sample Parca ends up with a Profile Tree that can be visualized as follows.
+
+### Inserting a Profile Tree
+
+At last, the Profile Tree and its values need to be inserted into the TSDB for the given timestamp. Parca merges the Profile Tree into the existing tree for that time series. 
+Then for every node in the appended Profile Tree Parca accesses a map that holds the values as XOR chunks for every given node in the tree. To uniquely identify nodes, each node has a key that is build of strings from *locations*, *labels*, and *numlabels*.
+
+### Chunks
+
+The chunks for the values of the Profile Tree are XOR chunks. Originally XOR compression was introduced by [Facebook's Gorilla paper](http://www.vldb.org/pvldb/vol8/p1816-teller.pdf) in 2016 and has since been adopted by many systems across the industry. One of which is Prometheus since Prometheus v2.0. Parca uses an XOR chunk encoding for its values based on Prometheus' XOR chunk.
+
+Over time inserting the given profile trees with their values the chunks will look something like this:
+
+![](https://docs.google.com/drawings/d/17vG5XzFpWgrsVBBM2RxS4QokRz2PB9Zh0atAxwxrLto/export/svg)
+
+| Key | t0   | t1   | t2   | t3   |
+| --- | ---- | ---- | :--- | ---- |
+| 0   | 46   | 47   | 35   | 46   |
+| 1   | 25   | 26   | 19   | 30   |
+| 2   | 8    | 9    |      |      |
+| 3   | 17   | 17   | 19   | 19   |
+| 4   | 21   | 21   | 16   | 16   |
+| 7   | 0    | 0    | 0    | 11   |
+
+Every key gets its values appended over time. The node with the location ID `7` only shows up in `t3` and therefore we have to pre-fill the chunk with 0 up until the point where we actually want to write the node's first value.
+
+#### Sparseness
+
+The node with the key `2` does not have any values for `t2` and `t3`, we don't store anything for these timestamps. Allocating no memory/disk for any sparse values at all. When reading values for `t2` and `t3` for this node we can return `0` as a value that is ignored by pprof.
