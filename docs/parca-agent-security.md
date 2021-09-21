@@ -1,4 +1,4 @@
-# Parca Agent Security Considerations
+# Security
 
 Parca Agent requires to be run as `root` user (or `CAP_SYS_ADMIN`). Various security precautions have been taken to protect users running Parca Agent.
 
