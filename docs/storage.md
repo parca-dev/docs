@@ -123,8 +123,11 @@ Every key gets its values appended over time. The node with the location ID `7` 
 #### Sparseness
 
 The node with the key `2` does not have any values for `t2` and `t3`, we don't store anything for these timestamps. Allocating no memory/disk for any sparse values at all. When reading values for `t2` and `t3` for this node we can return `0` as a value that is ignored by pprof.
+
 ### Storing Debug Information
 
-Additionally, Parca exposes endpoints to ingest the debug information for executables and binaries; the sent data is associated with the unique build ID of the object files. And the profiles that have been received have the necessary information about the build IDs in the mappings section. This enables Parca to find corresponding debug information during the symbolization phase.
+Additionally, Parca exposes endpoints to ingest the debug information for executables and binaries; the sent data is associated with the unique build ID of the object files. And the profiles that have been received have the necessary information about the build IDs in [the mappings section](http://localhost:3000/docs/parca-agent-design#mappings). This enables Parca to find corresponding debug information during [the symbolization phase](/docs/symbolization).
 
-The debug information store is a thin wrapper around object storage. For this, we used the battle-tested Thanos Object Storage engine. [There are several object storages that have been supported](https://thanos.io/tip/thanos/storage.md/#supported-clients).
+The debug information store is nothing complicated; it's just a thin wrapper around [an object storage](https://en.wikipedia.org/wiki/Object_storage). For this, we used the battle-tested Thanos Object Storage engine. [There are several object storages that have been supported](https://thanos.io/tip/thanos/storage.md/#supported-clients). Parca uses [build ID](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/developer_guide/compiling-build-id)s as keys for stored debug information. And the values are [ELF object files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/developer_guide/compiling-build-id). Before the Parca Agent uploads any object files, it makes sure that the files don't contain any executable byte code.
+
+The Parca Agent utilizes this API and the storage to upload discovered debug information on the systems it encounters. It only uploads the information for the stack traces it collects. However, it is not reserved for the agent. For example, your CI could utilize the API and the storage if you don't want to deploy binaries with debug information in your production environments.

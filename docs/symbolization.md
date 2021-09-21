@@ -1,6 +1,6 @@
 # Symbolization
 
-Symbolization can be defined as converting the machine addresses, which have been encountered in stack traces in the ingested profiles, to the corresponding human-readable source code lines.
+Symbolization can be defined as converting the machine addresses, which have been encountered in stack traces, in the ingested profiles, to the corresponding human-readable source code lines.
 
 Parca does asynchronous symbolization. At the ingestion time, we traverse the profiles and store them in a particular store called the metadata store (check [Storing Profile Metadata](/docs/storage#storing-profile-metadata) for further information). In a predefined recurring interval (10 seconds by default), Parca goes through all the locations ingested and determines the symbolizable and haven't been symbolized yet, and then attempts to symbolize these locations using the designated [debug information store](/docs/storage#storing-debug-information). And then, these symbolized locations from the metadata store are used to render the graphs.
 
@@ -8,13 +8,13 @@ Let's check out what we mean by symbolizable profiles; first, we need to define 
 
 ## Type of Profiles
 
-**Native profiles** are those created from within the application code itself. They can have additional information and make use of runtime specific characteristics. For example, in Go, the goroutines profile describes which parts of the Go application caused how many go-routines to be created (and currently active). Additionally, native profiles tend to be well symbolized since the languages and runtimes have built-in functionality to resolve stack traces to a human-readable format.
+**Native profiles** are those created from within the application code itself. They can have additional information and make use of runtime specific characteristics. For example, in Go, the goroutines profile describes which parts of the Go application caused how many goroutines to be created (and currently active). Additionally, native profiles tend to be well symbolized since the languages and runtimes have built-in functionality to resolve stack traces to a human-readable format.
 
-**Generic profiles** in contrast, are collected using sampling mechanisms available in Linux, such as perf or special eBPF programs. These profiles are great because they don't require any instrumentation, but in contrast, these types of profiles cannot have information of runtime specific characteristics. They can only profile generic things like CPU, allocations, network activity, disk I/O. One other advantage that generic profiles have over native profiles is that they can sample down into the kernel stack and offer even higher visibility than native profiling in that regard. Because of these advantages of generic profiles, we decided to create the Parca Agent.
+**Generic profiles** in contrast, are collected using sampling mechanisms available in Linux, such as [perf](https://github.com/conprof/perfessor) or special [eBPF program](https://ebpf.io/)s. These profiles are great because they don't require any instrumentation, but in contrast, these types of profiles cannot have information of runtime specific characteristics. They can only profile generic things like CPU, allocations, network activity, disk I/O. One other advantage that generic profiles have over native profiles is that they can sample down into the kernel stack and offer even higher visibility than native profiling in that regard. Because of these advantages of generic profiles, we decided to create the [Parca Agent](https://github.com/parca-dev/parca-agent).
 
-The asynchronous symbolization works with generic profiles because the native profiles usually come symbolized, and they just get ingested with their symbols to metadata store.
+The asynchronous symbolization works with generic profiles because the native profiles usually come symbolized as we mentioned above, and native profiles just get ingested with their symbols to metadata store to be utilize later on.
 
-## Sybolization
+## What can be symbolized?
 
 ### Kernel symbols
 
@@ -28,7 +28,7 @@ The languages that have runtimes (e.g. interpreted languages or languages with V
 
 ## Debug Information from binaries
 
-In Parca Agent, we check the running binaries and the running system for additional debug information (e.g. [debug packages](https://wiki.ubuntu.com/Debug%20Symbol%20Packages)), and then upload this information to the Parca for further symbolization of the profiles. You can check out additional details on the debug information store in [the storage document](/docs/storage#storing-debug-information).
+In Parca Agent, we check the running binaries debug information (i.e [DWARF](https://en.wikipedia.org/wiki/DWARF)) and the running system for additional debug information (e.g. [debug packages](https://wiki.ubuntu.com/Debug%20Symbol%20Packages)), and then upload this information to the Parca for further symbolization of the profiles. You can check out additional details on the debug information store in [the storage document](/docs/storage#storing-debug-information).
 
 ## Language Specific Support
 
