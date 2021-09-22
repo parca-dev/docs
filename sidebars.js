@@ -56,6 +56,11 @@ module.exports = {
     },
     {
       type: 'doc',
+      label: 'Observability',
+      id: 'observability',
+    },
+    {
+      type: 'doc',
       label: 'Community',
       id: 'community',
     },
