@@ -2,7 +2,11 @@
 
 ## Data model
 
+Parca's multi-dimensional data-model originates from the [Prometheus](https://prometheus.io/docs/concepts/data_model/) project. It allows for concise and easy to use label-selectors to slice and dice the data when [querying](./querying).
+
 ## Stable links
+
+Parca has a strong philosophy on having stable links. Observability projects work best when they can be shared with teams and so Parca does its best to represent the state of the frontend via the URL to be shared with other people via chat such as Discord, Slack or issue trackers like GitHub or GitLab.
 
 ## Pprof
 
@@ -17,11 +21,12 @@ The pprof utility offers a robust set of tools for exploring profiles. Parca spe
 Often to better understand how your application is behaving you need to compare two profiles. Parca allows you to make selections of two points in time that you want to compare and will generate an icicle graph of the difference between the two selected profiles.
 
 If a span is larger in the second profile, you'll see that span colored in red, and will be darker shade the larger the difference is. This allows one to quickluy visually identify where a program is growing in usage scope. 
+
 ![image](https://user-images.githubusercontent.com/8681572/133893354-38719c9e-fc80-4d27-8b08-33f917d99df8.png)
 
 You'll see in the image below with the profile selections reversed from the previous example, that the spans that are now smaller in the second selection are colored green. This allows you to quickly visually identify where improvements to usage are being made.
+
 ![image](https://user-images.githubusercontent.com/8681572/133893380-ca093b33-992c-4878-b96c-2f7c82473b65.png)
 
 If a span remains blue, it means there was no significant change between the two compared profiles for that section of code.
-
 
