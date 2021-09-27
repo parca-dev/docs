@@ -21,9 +21,15 @@ module.exports = {
       id: 'overview',
     },
     {
-      type: 'doc',
+      type: 'category',
       label: 'Parca',
-      id: 'parca',
+      items: [
+        'parca',
+        'querying',
+        'storage',
+        'symbolization',
+        'observability',
+      ]
     },
     {
       type: 'category',
@@ -41,26 +47,6 @@ module.exports = {
     },
     {
       type: 'doc',
-      label: 'Profiling 101',
-      id: 'profiling-101',
-    },
-    {
-      type: 'doc',
-      label: 'Storage',
-      id: 'storage',
-    },
-    {
-      type: 'doc',
-      label: 'Symbolization',
-      id: 'symbolization',
-    },
-    {
-      type: 'doc',
-      label: 'Observability',
-      id: 'observability',
-    },
-    {
-      type: 'doc',
       label: 'Community',
       id: 'community',
     },
@@ -72,6 +58,7 @@ module.exports = {
         'kubernetes',
         'openshift',
         'systemd',
+        'profiling-101',
         'troubleshooting-parca-agent',
       ],
     }

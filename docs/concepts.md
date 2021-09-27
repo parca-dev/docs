@@ -2,6 +2,8 @@
 
 ## Data model
 
+## Stable links
+
 ## Pprof
 
 Parca ingests profiles using the open source pprof profile.proto format. More can be read about pprof and the format here https://github.com/google/pprof/blob/master/doc/README.md

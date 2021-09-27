@@ -14,9 +14,9 @@ Parca's main features are:
 * targets are discovered via service discovery or static configuration
 * super low overhead profiler, powered by [eBPF](https://ebpf.io/)
 
-## What is software profiling?
+## What is profiling?
 
-Profiles describe a particular aspect of the execution of code. There are two main types of profiles: tracing and sampling. Parca focuses on sampling profiling, because it can be done with very little overhead, and therefore can always be on in production environments. Probably the most common type of profiling is CPU profiling, the amount of time the CPU spends executing particular types of code. Other types of profiling can include memory allocations, or breaking down how much memory is currently being held by a program, typically referred to as heap profiling.
+Profiles describe a particular aspect of the execution of code. There are two main types of profiles: tracing and sampling. Parca focuses on sampling profiling, because it can be done with very little overhead, and therefore can always be on in production environments. Probably the most common type of profiling is CPU profiling, the amount of time the CPU spends executing particular piece of code. Profilers can vary in their resolution and whether they just record the function name or also the line numbers. Profiling types, other than CPU profiling, can include memory allocations, or breaking down how much memory is currently being held by a program, typically referred to as heap profiling. It may also be useful to have runtime specific profiling, such as in Go, there is goroutine profiling.
 
 Raw data for sampling profiles are stack-traces, as well as values attached to those stack-traces.
 
