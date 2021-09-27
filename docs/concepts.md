@@ -2,7 +2,7 @@
 
 ## Data model
 
-Parca's multi-dimensional data-model originates from the [Prometheus](https://prometheus.io/docs/concepts/data_model/) project. It allows for concise and easy to use label-selectors to slice and dice the data when [querying](./querying).
+Parca's multi-dimensional data-model originates from the [Prometheus](https://prometheus.io/docs/concepts/data_model/) project. It allows for concise and easy to use label-selectors to slice and dice the data when [querying](./querying-parca).
 
 ## Stable links
 
