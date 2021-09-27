@@ -35,7 +35,7 @@ Here are some example Service Level Objectives for Parca.
 | Latency         | The proportion of sufficiently fast requests to `ProfileStoreService.WriteRaw`, as measured by Parca's gRPC metrics interceptor. | 95% of requests in < 100ms in 4w |
 | **DebugInfo**   |                                                              |                                  |
 | Availability    | The proportion of successful `DebugInfoService.Upload` requests, as measured by Parca's gRPC interceptor. | 99% in 4w                        |
-| Latency         | The proportion of sufficiently fast requests to `DebugInfoService.Upload`, as measured by Parca's gRPC metrics interceptor. | 95% of requests in < 100ms in 4w |
+| Latency         | The proportion of sufficiently fast requests to `DebugInfoService.Upload`, as measured by Parca's gRPC metrics interceptor. | 95% of requests in < 30s in 4w   |
 | Availability    | The proportion of successful `DebugInfoService.Exists` requests, as measured by Parca's gRPC interceptor. | 99% in 4w                        |
 | Latency         | The proportion of sufficiently fast requests to `DebugInfoService.Exists`, as measured by Parca's gRPC metrics interceptor. | 95% of requests in < 100ms in 4w |
 | **Query**       |                                                              |                                  |
@@ -52,13 +52,13 @@ Parca considers gRPC codes `Aborted, Unavailable, Internal, Unknown, Unimplement
 
 #### Pyrra 
 
-Parca contains Service Level Objective files for [Pyrra](https://github.com/pyrra-dev/pyrra). Pyrra will setup alerting based on the given SLOs and contains a UI for the most important aspects of these SLOs.
+Parca contains [Service Level Objective files](https://github.com/parca-dev/parca/tree/main/deploy/pyrra) for [Pyrra](https://github.com/pyrra-dev/pyrra). Pyrra will setup alerting based on the given SLOs and contains a UI for the most important aspects of these SLOs.
 
 ![Parca Pyrra example SLO](/img/pyrra.png)
 
 ### Grafana Dashboard
 
-Parca ships with a Grafana dashboard that gives a good overview of Parca's state and should be a good entry point when trouble shooting. 
+Parca ships with a [Grafana dashboard](https://github.com/parca-dev/parca/blob/main/deploy/grafana/parca.json) that gives a good overview of Parca's state and should be a good entry point when trouble shooting. 
 This dashboard should follow the above given SLOs for Parca.  
 
 ![Parca Grafana dashboard](/img/grafana.png)
