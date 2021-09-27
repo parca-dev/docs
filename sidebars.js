@@ -27,6 +27,11 @@ module.exports = {
         'parca',
         'storage',
         'symbolization',
+        {
+          type: 'link',
+          label: 'gRPC APIs',
+          href: 'https://buf.build/parca-dev/parca',
+        },
         'observability',
       ]
     },
