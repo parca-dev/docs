@@ -25,7 +25,6 @@ module.exports = {
       label: 'Parca',
       items: [
         'parca',
-        'querying',
         'storage',
         'symbolization',
         'observability',
@@ -58,6 +57,7 @@ module.exports = {
         'kubernetes',
         'openshift',
         'systemd',
+        'querying-parca',
         'profiling-101',
         'troubleshooting-parca-agent',
       ],
