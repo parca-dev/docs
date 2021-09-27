@@ -65,6 +65,10 @@ module.exports = {
               to: '/docs/overview',
             },
             {
+              label: 'FAQ',
+              to: '/docs/faq',
+            },
+            {
               label: 'Parca from Binary',
               to: '/docs/binary',
             },
