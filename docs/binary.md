@@ -156,8 +156,8 @@ sudo systemctl start parca-agent
 Once Parca and Parca Agent are both running, you can navigate to the web interface on the browser.
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself and receiving from the Agent.
 
-![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
+![image](https://raw.githubusercontent.com/parca-dev/parca.dev/5e42b10a374f93256f4153dd0f0a6e89a91001cf/static/img/tutorial/cpu_sample_count.png?token=AAEC7APTPGZUMJIERPEN2UTBKG5IS)
 
 Selecting `parca_agent_cpu_sample_count` as profile types and clicking the `Search` button will retrieve the profiles from Parca Agent for the time selection (default Last Hour).
 
-![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
+![image](https://raw.githubusercontent.com/parca-dev/parca.dev/5e42b10a374f93256f4153dd0f0a6e89a91001cf/static/img/tutorial/cpu_sample_count_select.png?token=AAEC7AMIVQIT36DV533QJ43BKG5KQ)
