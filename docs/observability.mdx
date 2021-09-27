@@ -1,5 +1,7 @@
 # Observability for Parca
 
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
 Parca supports four pillars of Observability. Monitoring, Logging, Tracing, and Profiling.
 
 ## Profiling
@@ -13,7 +15,7 @@ Parca logs are structured by default. Parca's log level can be configured with `
 
 ## Tracing
 
-Parca has tracing for some of its functionality. You can configure the OpenTelemetry collector with `--otlp-address=STRING`. 
+Parca has tracing for some of its functionality. You can configure the OpenTelemetry collector with `--otlp-address=STRING`.
 
 For a local setup with Jaeger check [scripts/local-tracing/](https://github.com/parca-dev/parca/tree/main/scripts/local-tracing).
 
@@ -50,16 +52,23 @@ Here are some example Service Level Objectives for Parca.
 
 Parca considers gRPC codes `Aborted, Unavailable, Internal, Unknown, Unimplemented, DataLoss` as errors. Every other gRPC code is considered successful.
 
-#### Pyrra 
+#### Pyrra
 
 Parca contains [Service Level Objective files](https://github.com/parca-dev/parca/tree/main/deploy/pyrra) for [Pyrra](https://github.com/pyrra-dev/pyrra). Pyrra will setup alerting based on the given SLOs and contains a UI for the most important aspects of these SLOs.
 
+<BrowserWindow>
+
 ![Parca Pyrra example SLO](/img/pyrra.png)
+
+</BrowserWindow>
 
 ### Grafana Dashboard
 
-Parca ships with a [Grafana dashboard](https://github.com/parca-dev/parca/blob/main/deploy/grafana/parca.json) that gives a good overview of Parca's state and should be a good entry point when trouble shooting. 
-This dashboard should follow the above given SLOs for Parca.  
+Parca ships with a [Grafana dashboard](https://github.com/parca-dev/parca/blob/main/deploy/grafana/parca.json) that gives a good overview of Parca's state and should be a good entry point when troubleshooting.
+This dashboard should follow the above-given SLOs for Parca.
+
+<BrowserWindow>
 
 ![Parca Grafana dashboard](/img/grafana.png)
 
+</BrowserWindow>

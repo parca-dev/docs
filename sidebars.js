@@ -64,6 +64,7 @@ module.exports = {
       label: 'Tutorial',
       items: [
         'binary',
+        'agent-binary',
         'kubernetes',
         'openshift',
         'systemd',

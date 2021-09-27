@@ -12,12 +12,11 @@ export default function HomepageQuickstart() {
     const {versions} = usePluginData('docusaurus-github-releases-plugin');
 
     const curlInstructions = {
-        "server": `curl -sL https://github.com/parca-dev/parca/releases/download/${versions.parca}/parca_${versions.parca}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca`,
+        "server": `curl -sL https://github.com/parca-dev/parca/releases/download/${versions.server}/parca_${versions.server}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca`,
         "agent": `curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca-agent`
     }[binaryMode]
 
-    const minikubeInstructions = `# Minikube needs to be configured with a real virtual machine driver\nminikube start --driver=virtualbox\n# Use to deploy Parca Server (API and UI)\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca/${versions.parca}/deploy/manifests/server-manifest.yaml\n# Use to deploy Parca Agent for all nodes\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca/${versions.parca}/deploy/manifests/agent-manifest.yaml`
-
+    const minikubeInstructions = `# Minikube needs to be configured with a real virtual machine driver\nminikube start --driver=virtualbox\n# Use to deploy Parca Server (API and UI)\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca/${versions.server}/deploy/server-manifest.yaml\n# Use to deploy Parca Agent for all nodes\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca-agent/${versions.agent}/deploy/manifest.yaml`
     const snippet = mode == 'binary' ? curlInstructions : minikubeInstructions;
     const link = mode == 'binary' ? '/docs/binary' : '/docs/kubernetes';
     const text = mode == 'binary' ? 'Parca from Binary - Tutorial 5min ⏱️' : 'Parca in Kubernetes - Tutorial 5min ⏱️';

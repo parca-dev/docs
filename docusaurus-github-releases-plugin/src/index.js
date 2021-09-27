@@ -6,13 +6,13 @@ module.exports = function () {
         async loadContent() {
             var response = await fetch("https://api.github.com/repos/parca-dev/parca/releases?per_page=1");
             var releases = await response.json();
-            const parca = releases[0] ? releases[0].tag_name : 'v0.0.3-alpha.1';
+            const server = releases[0] ? releases[0].tag_name : 'v0.0.3-alpha.1';
 
             response = await fetch("https://api.github.com/repos/parca-dev/parca-agent/releases?per_page=1");
             releases = await response.json();
             const agent = releases[0] ? releases[0].tag_name : 'v0.0.1-alpha.3';
 
-            return {parca: parca, agent: agent};
+            return {server: server, agent: agent};
         },
         async contentLoaded({content, actions}) {
             const {setGlobalData} = actions;
