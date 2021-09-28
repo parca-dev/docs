@@ -183,5 +183,5 @@ A slightly more interesting query would be `{__name__="heap_inuse_space_bytes",j
 
 Instead of storing the series IDs as `[]uint64` Parca actually stores those series IDs for the index as [roaring Bitmaps](http://roaringbitmap.org/). These bitmaps are especially good at storing small and large cardinalities of IDs. Bitmaps are optimized for calculating the intersections, unions and differences, which is exactly what Parca needs to do with these IDs.
 
-More specifically Parca uses [github.com/dgraph-io/sroar](https://github.com/dgraph-io/sroar) that has Roaring Bitmaps in Go, with the aim to have equality between in-memory representation and on-disk representation. Essentially serializing bitmaps to `[]byte` right away, which will it make easy to store on disk later on.
+More specifically, Parca uses [github.com/dgraph-io/sroar](https://github.com/dgraph-io/sroar) that has Roaring Bitmaps in Go, intending to have equality between in-memory representation and on-disk representation—essentially serializing bitmaps to `[]byte` right away, which will it make easy to store on disk later on.
 
