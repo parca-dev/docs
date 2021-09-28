@@ -30,7 +30,7 @@ As of right now, Parca supports retention by garbage collecting chunks with a _m
 
 </center>
 
-## Write Path
+## Storing
 
 ### Write Requests
 
@@ -131,3 +131,57 @@ Additionally, Parca exposes endpoints to ingest the debug information for execut
 The debug information store is nothing complicated; it's just a thin wrapper around [an object storage](https://en.wikipedia.org/wiki/Object_storage). For this, we used the battle-tested Thanos Object Storage engine. [There are several object storages that have been supported](https://thanos.io/tip/thanos/storage.md/#supported-clients). Parca uses [build ID](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/developer_guide/compiling-build-id)s as keys for stored debug information. And the values are [ELF object files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/developer_guide/compiling-build-id). Before the Parca Agent uploads any object files, it makes sure that the files don't contain any executable byte code.
 
 The Parca Agent utilizes this API and the storage to upload discovered debug information on the systems it encounters. It only uploads the information for the stack traces it collects. However, it is not reserved for the agent. For example, your CI could utilize the API and the storage if you don't want to deploy binaries with debug information in your production environments.
+
+## Querying
+
+After ingesting data, Parca holds the data in memory in a layout optimized for querying flame graphs.
+
+### Query Language
+
+Similar to Prometheus' [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) (Prometheus Query Language) Parca supports queries like `heap_inuse_space_bytes{job="parca"}` which can be rewritten to `{__name__="heap_inuse_space_bytes",job="parca"}`.
+
+Every key value pair is called a _matcher_. These can contain `=` (equals), `!=` (not equals), `=~`(matches regex), `!~` (not matches regex) to match all the wanted series.
+
+### Index
+
+Parca creates an inverted index of all labels to their corresponding series when a new series is created.
+
+Let's say, Parca has the following series with their given labels:
+
+| ID   | Labels                                                    |
+| ---- | --------------------------------------------------------- |
+| 1    | `{__name__="heap_inuse_space_bytes",job="parca"}`         |
+| 2    | `{__name__="heap_inuse_space_bytes",job="prometheus"}`    |
+| 3    | `{__name__="profile_cpu_nanoseconds",job="parca"}`        |
+| 4    | `{__name__="profile_cpu_nanoseconds",job="thanos-query"}` |
+
+The inverted index (postings) gets these individual labels passed and stores them in a data structure like this `map[string]map[string]Bitmap`. The first map has the label name as the key, and the second map the label value. The bitmap stores all the series IDs for that given label set. For this example, we'll imagine this as an array of `uint64`.
+
+The following is what the index would look like for the example above:
+
+```json
+{
+  "__name__": {
+    "heap_inuse_space_bytes": [1,2],
+    "profile_cpu_nanoseconds": [3,4]
+  },
+  "job": {
+    "parca": [1,3],
+    "prometheus": [2],
+    "thanos-query": [4]
+  }
+}
+```
+
+With this index Parca can now look up every matcher of the query to find the series IDs.
+
+Let's say we query for `{__name__="heap_inuse_space_bytes"}`, Parca will look at the `__name__` map and then for `heap_inuse_space_bytes` within that, finding an array `[1,2]`. These series are then looked up by their ID and added to a slice of `[]Series`.
+
+A slightly more interesting query would be `{__name__="heap_inuse_space_bytes",job="parca"}`. For the matcher `__name__="heap_inuse_space_bytes"` Parca has the series IDs `[1,2]` and for the matcher `job="parca"` Parca has the series IDs `[1,3]`. Because the query wants both the matchers to match Parca calculates the intersection of `[1,2]` and `[1,3]` which results in `[1]`.
+
+#### Bitmaps
+
+Instead of storing the series IDs as `[]uint64` Parca actually stores those series IDs for the index as [roaring Bitmaps](http://roaringbitmap.org/). These bitmaps are especially good at storing small and large cardinalities of IDs. Bitmaps are optimized for calculating the intersections, unions and differences, which is exactly what Parca needs to do with these IDs.
+
+More specifically, Parca uses [github.com/dgraph-io/sroar](https://github.com/dgraph-io/sroar) that has Roaring Bitmaps in Go, intending to have equality between in-memory representation and on-disk representation—essentially serializing bitmaps to `[]byte` right away, which will it make easy to store on disk later on.
+
