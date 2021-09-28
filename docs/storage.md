@@ -157,7 +157,7 @@ Let's say, Parca has the following series with their given labels:
 
 The inverted index (postings) gets these the individual labels passed an stores them in a data structure like this `map[string]map[string]Bitmap`. The first map has the label name as key and the second map the label value. The bitmap stores all the series IDs for that given label set, for this example we'll imagine this as an array of `uint64`.
 
-This is what the index would look like for the example above:
+The following is what the index would look like for the example above:
 
 ```json
 {
