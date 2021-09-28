@@ -1,14 +1,30 @@
 # Parca from Binary
 
-You can download the latest binary release for your architecture from our [releases page](https://github.com/parca-dev/parca.dev/releases)
+import WithVersions from '@site/src/components/WithVersions';
+import CodeBlock from '@theme/CodeBlock';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+You can download the latest binary release for your architecture from our [releases page](https://github.com/parca-dev/parca/releases).
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca
+    </CodeBlock>
+  }
+</WithVersions>
 
 We also produce Docker images that can be pulled:
-```
-docker pull ghcr.io/parca-dev/parca:latest
-```
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      docker pull github.com/parca-dev/parca:{versions.server}
+    </CodeBlock>
+  }
+</WithVersions>
 
 We provide an example configuration file that you can use to get Parca running, and the scrape configuration section should look familiar to anyone familiar with Prometheus.
-```
+
+```yaml
 debug_info:
   bucket:
     type: "FILESYSTEM"
@@ -23,16 +39,18 @@ scrape_configs:
   - job_name: "default"
     scrape_interval: "1s"
     static_configs:
-      - targets: [ '127.0.0.1:7070' ]
+      - targets: ["127.0.0.1:7070"]
 ```
 
 To start Parca, pass this config file with the `config-path` flag:
-```
+
+```shell
 parca --config-path="parca.yaml"
 ```
 
 You should be greeted with the splash and some log lines:
-```
+
+```shell
 ooooooooo.
 `888   `Y88.
  888   .d88'  .oooo.   oooo d8b  .ooooo.   .oooo.
@@ -52,7 +70,8 @@ o888o        `Y888""8o d888b    `Y8bod8P' `Y888""8o
 This will start the Parca server on port `7070` and configure it to retrieve profiles from itself every 1 second automatically.
 
 Other flags can be found using the `help` flag.
-```
+
+```shell
 parca --help
 
 Usage: parca
@@ -70,16 +89,27 @@ Flags:
 
 Once Parca is running, you can navigate to the web interface on the browser.
 
+<BrowserWindow>
+
 ![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
 
+</BrowserWindow>
 
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself.
 Selecting one of these profile types and clicking the `Search` button will retrieve the profiles of that type for the time selection (default Last Hour)
 
+<BrowserWindow>
+
 ![image](https://user-images.githubusercontent.com/8681572/133893237-f069a552-e928-4065-80db-603fb5f85e6a.png)
+
+</BrowserWindow>
 
 This should result in a time series based on the profile that is interactable. Clicking anywhere on the line graph should then bring up an icicle graph for the profile that you've selected.
 
+<BrowserWindow>
+
 ![image](https://user-images.githubusercontent.com/8681572/133893258-96fdbc0a-8036-4d89-bb4c-578fb131c8e0.png)
+
+</BrowserWindow>
 
 You can then interact with the icicle graph to better understand how Parca is behaving.

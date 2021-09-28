@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
 import styles from './HomepageQuickstart.module.css';
-import gettingStartedSimple from '!!raw-loader!./gettingStartedSimple.bash';
-import gettingStartedMinikube from '!!raw-loader!./gettingStartedMinikube.bash';
 import {usePluginData} from '@docusaurus/useGlobalData';
+// import gettingStartedSimple from '!!raw-loader!./gettingStartedSimple.bash';
+// import gettingStartedMinikube from '!!raw-loader!./gettingStartedMinikube.bash';
 
 export default function HomepageQuickstart() {
     const [mode, setMode] = useState('binary');
-    const [binaryMode, setBinaryMode] = useState('linux');
+    const [binaryMode, setBinaryMode] = useState('server');
     const {versions} = usePluginData('docusaurus-github-releases-plugin');
 
-    const filename = {
-        "linux": `parca_Linux_arm64.tar.gz`,
-        "macos": `parca_Darwin_arm64.tar.gz`
+    const curlInstructions = {
+        "server": `curl -sL https://github.com/parca-dev/parca/releases/download/${versions.server}/parca_${versions.server}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca`,
+        "agent": `curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca-agent`
     }[binaryMode]
 
-    const curlInstructions = `curl -sL https://github.com/parca-dev/parca/releases/download/${versions.parca}/${filename} | tar xvfz\n./parca`
-    const minikubeInstructions = `minikube start --driver=virtualbox # needs to be a real virtual machine driver\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca/${versions.parca}/deploy/manifests/parca-deployment.yaml`
-
+    const minikubeInstructions = `# Minikube needs to be configured with a real virtual machine driver\nminikube start --driver=virtualbox\n# Use to deploy Parca Server (API and UI)\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca/${versions.server}/deploy/server-manifest.yaml\n# Use to deploy Parca Agent for all nodes\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca-agent/${versions.agent}/deploy/manifest.yaml`
     const snippet = mode == 'binary' ? curlInstructions : minikubeInstructions;
     const link = mode == 'binary' ? '/docs/binary' : '/docs/kubernetes';
     const text = mode == 'binary' ? 'Parca from Binary - Tutorial 5min ⏱️' : 'Parca in Kubernetes - Tutorial 5min ⏱️';
@@ -32,7 +30,7 @@ export default function HomepageQuickstart() {
                             <button
                                 className={`button button--lg button--outline ${styles.buttonGroupButton} ${ mode == 'binary' ? 'button--warning button--active' : 'button--secondary' }`}
                                 onClick={() => setMode('binary')}
-                            >Binary</button>
+                             >Binary</button>
                             <button
                                 style={{ marginLeft: 10 }}
                                 className={`button button--lg button--outline ${styles.buttonGroupButton} ${ mode != 'binary' ? 'button--warning button--active' : 'button--secondary' }`}
@@ -46,14 +44,14 @@ export default function HomepageQuickstart() {
                     <div className="col col--12">
                         <div>
                             <button
-                                className={`button button--lg button--outline ${styles.buttonGroupButton} ${ binaryMode == 'linux' ? 'button--warning button--active' : 'button--secondary' }`}
-                                onClick={() => setBinaryMode('linux')}
-                            >Linux</button>
+                                className={`button button--lg button--outline ${styles.buttonGroupButton} ${ binaryMode == 'server' ? 'button--warning button--active' : 'button--secondary' }`}
+                                onClick={() => setBinaryMode('server')}
+                            >Server</button>
                             <button
                                 style={{ marginLeft: 10 }}
-                                className={`button button--lg button--outline ${styles.buttonGroupButton} ${ binaryMode != 'linux' ? 'button--warning button--active' : 'button--secondary' }`}
-                                onClick={() => setBinaryMode('macos')}
-                            >MacOS</button>
+                                className={`button button--lg button--outline ${styles.buttonGroupButton} ${ binaryMode != 'server' ? 'button--warning button--active' : 'button--secondary' }`}
+                                onClick={() => setBinaryMode('agent')}
+                            >Agent</button>
                         </div>
                     </div>
                 </div>
