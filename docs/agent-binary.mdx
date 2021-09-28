@@ -29,7 +29,7 @@ sudo parca-agent --http-address=":7072" --node=systemd-test --systemd-units=dock
 
 :::info
 
-The Agent needs to run as a privileged user to load necessary eBPF programs to Kernel. Please check [our FAQ for further information](http://localhost:3000/docs/faq#since-parca-agent-has-to-run-as-root-for-ebpf-what-are-the-security-considerations).
+The Agent needs to run as a privileged user to load necessary eBPF programs to Kernel. Please check [our FAQ for further information](/docs/faq#since-parca-agent-has-to-run-as-root-for-ebpf-what-are-the-security-considerations).
 
 :::
 
@@ -51,6 +51,17 @@ level=debug ts=2021-09-27T11:24:47.143340129Z caller=systemdmanager.go:200 syste
 level=debug ts=2021-09-27T11:24:47.143385627Z caller=profile.go:165 systemdunit=docker.service msg="starting cgroup profiler"
 level=debug ts=2021-09-27T11:24:48.142750722Z caller=systemdmanager.go:131 msg="running systemd manager" units=1
 ```
+
+To view the active profilers port-forward and visit `http://localhost:7071`:
+```
+kubectl -n parca port-forward `kubectl -n parca get pod -lapp.kubernetes.io/name=parca-agent -ojsonpath="{.items[0].metadata.name}"` 7071
+```
+
+<BrowserWindow>
+
+TODO(kakkoyun): Add a screenshot!
+
+</BrowserWindow>
 
 Once Parca and Parca Agent are both running, you can navigate to the web interface on the browser.
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself and receiving from the Agent.
