@@ -134,7 +134,7 @@ The Parca Agent utilizes this API and the storage to upload discovered debug inf
 
 ## Querying
 
-After ingesting data, Parca holds the data in-memory in a layout optimized for querying flame graphs.
+After ingesting data, Parca holds the data in memory in a layout optimized for querying flame graphs.
 
 ### Query Language
 
