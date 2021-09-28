@@ -34,12 +34,12 @@ WantedBy=multi-user.target
 The command in the above configuration targets the Parca server that is presumably running on your system. And it uses the `systemd` service discovery to find the cgroups that have been running on your system.
 
 To use the configuration, we need to move it a directory that `systemd` can load:
-```
+```shell
 cp parca-agent.service /etc/systemd/system/parca-agent.service
 ```
 
 And then simply start the unit:
-```
+```shell
 sudo systemctl start parca-agent
 ```
 
