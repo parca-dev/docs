@@ -2,7 +2,7 @@
 
 :::tip
 
-You can learn [how to run the Parca Agent binary](/docs/agent-binary.) if you haven't already.
+You can learn [how to run the Parca Agent binary](/docs/agent-binary). if you haven't already.
 
 :::
 
@@ -30,6 +30,8 @@ SyslogIdentifier=parcaagent
 [Install]
 WantedBy=multi-user.target
 ```
+
+The command in the above configuration targets the Parca server that is presumably running on your system. And it uses the `systemd` service discovery to find the cgroups that have been running on your system.
 
 To use the configuration, we need to move it a directory that `systemd` can load:
 ```
