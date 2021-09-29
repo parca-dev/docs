@@ -41,7 +41,8 @@ module.exports = {
       items: [
         'parca-agent',
         'parca-agent-design',
-        'parca-agent-security'
+        'parca-agent-security',
+        'parca-agent-systemd'
       ]
     },
     {
