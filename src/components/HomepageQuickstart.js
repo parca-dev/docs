@@ -16,7 +16,12 @@ export default function HomepageQuickstart() {
         "agent": `curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca-agent`
     }[binaryMode]
 
-    const minikubeInstructions = `# Minikube needs to be configured with a real virtual machine driver\nminikube start --driver=virtualbox\n# Use to deploy Parca Server (API and UI)\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca/${versions.server}/deploy/manifest.yaml\n# Use to deploy Parca Agent for all nodes\nkubectl apply -f https://raw.githubusercontent.com/parca-dev/parca-agent/${versions.agent}/deploy/manifest.yaml`
+    const kubernetesInstructions = {
+        "server": `kubectl apply -f https://github.com/parca-dev/parca/releases/download/${versions.server}/manifest.yaml`,
+        "agent": `kubectl apply -f https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/kubernetes-manifest.yaml`
+    }
+
+    const minikubeInstructions = `# Minikube needs to be configured with a real virtual machine driver\nminikube start --driver=virtualbox\n# Use to deploy Parca Server (API and UI)\n${kubernetesInstructions.server}\n# Use to deploy Parca Agent for all nodes\n${kubernetesInstructions.agent}`
     const snippet = mode == 'binary' ? curlInstructions : minikubeInstructions;
     const link = mode == 'binary' ? '/docs/binary' : '/docs/kubernetes';
     const text = mode == 'binary' ? 'Parca from Binary - Tutorial 5min ⏱️' : 'Parca in Kubernetes - Tutorial 5min ⏱️';
