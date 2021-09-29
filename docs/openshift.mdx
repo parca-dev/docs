@@ -1,0 +1,122 @@
+# OpenShift
+
+import WithVersions from '@site/src/components/WithVersions';
+import CodeBlock from '@theme/CodeBlock';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+:::tip
+
+To quickly try out the Parca and Parca Agent with OpenShift cluster or a local cluster with [Red Hat CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview).
+
+```shell
+crc setup
+crc start
+```
+:::
+
+Most of the work is the same as Kubernetes, so in this tutorial, we will only go through the changes that need to be done in the resources.
+
+Let's quickly apply the manifests first.
+
+## Setup
+
+### Setting up Parca Server
+
+To provision the Parca against any Kubernetes cluster, and use the API and UI:
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      oc apply -f https://github.com/parca-dev/parca/releases/download/{versions.server}/manifest.yaml
+    </CodeBlock>
+  }
+</WithVersions>
+
+### Setting up Parca Agent
+
+To provision the Parca Agent as a `DaemonSet`:
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      oc apply -f https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/openshift-manifest.yaml
+    </CodeBlock>
+  }
+</WithVersions>
+
+## Changes
+
+:::caution
+
+These changes are already applied through the manifests above. You don't need to do this manually.
+
+:::
+
+Let's go through which resources are different from plain Kubernetes.
+
+In the Parca Agent `DaemonSet/container`:
+
+```diff
+    ...
+    spec:
+      containers:
+      - args:
+        - /bin/parca-agent
+        - --log-level=info
+        - --node=$(NODE_NAME)
+        - --kubernetes
+        - --store-address=parca.parca.svc.cluster.local:7070
+        - --insecure
+        - --insecure-skip-verify
+        - --temp-dir=tmp
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        image: ghcr.io/parca-dev/parca-agent:latest
+        name: parca-agent
+        securityContext:
++          capabilities:
++            add:
++            - SYS_ADMIN
+          privileged: true
++         runAsUser: 0
+    ....
+```
+
+And we need to add another `ClusterRole`:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: parca-agent-scc
+rules:
+- apiGroups:
+  - security.openshift.io
+  resourceNames:
+  - privileged
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+```
+
+And of course, a `RoleBinding` for the defined role:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: parca-agent
+  namespace: parca
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: parca-agent
+  namespace: parca
+```
+
+And that's it! Now you can collect the profiles from you OpenShift cluster!

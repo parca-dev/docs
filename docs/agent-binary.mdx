@@ -29,7 +29,7 @@ sudo parca-agent --http-address=":7072" --node=systemd-test --systemd-units=dock
 
 :::info
 
-The Agent needs to run as a privileged user to load necessary eBPF programs to Kernel. Please check [our FAQ for further information](http://localhost:3000/docs/faq#since-parca-agent-has-to-run-as-root-for-ebpf-what-are-the-security-considerations).
+The Agent needs to run as a privileged user to load necessary eBPF programs to Kernel. Please check [our FAQ for further information](/docs/faq#since-parca-agent-has-to-run-as-root-for-ebpf-what-are-the-security-considerations).
 
 :::
 
@@ -51,6 +51,15 @@ level=debug ts=2021-09-27T11:24:47.143340129Z caller=systemdmanager.go:200 syste
 level=debug ts=2021-09-27T11:24:47.143385627Z caller=profile.go:165 systemdunit=docker.service msg="starting cgroup profiler"
 level=debug ts=2021-09-27T11:24:48.142750722Z caller=systemdmanager.go:131 msg="running systemd manager" units=1
 ```
+
+Now we can view the active profilers by visiting `http://localhost:7071`:
+<BrowserWindow>
+
+![image](../static/img/tutorial/systemd_active_profilers.png)
+
+</BrowserWindow>
+
+<br/>
 
 Once Parca and Parca Agent are both running, you can navigate to the web interface on the browser.
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself and receiving from the Agent.
