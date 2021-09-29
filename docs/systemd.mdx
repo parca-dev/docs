@@ -1,0 +1,153 @@
+# Parca and Parca Agent as systemd Units
+
+import WithVersions from '@site/src/components/WithVersions';
+import CodeBlock from '@theme/CodeBlock';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+## Setting up Parca
+
+You can download the latest binary release for your architecture from our [releases page](https://github.com/parca-dev/parca/releases).
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server}_`uname -s`_`uname -m`.tar.gz | tar xvfz
+    </CodeBlock>
+  }
+</WithVersions>
+
+Move the binary to a place where we can refer:
+```shell
+mv ./parca /usr/bin
+```
+
+:::note
+
+`/usr/bin` was selected as an exampled and used in the subsequent sections of this tutorial.
+
+:::
+
+Now you can run the Parca as a `systemd` unit with the following simple configuration:
+```toml
+[Unit]
+Description=Parca service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=parca
+Group=parca
+Restart=on-failure
+ExecStart=/usr/bin/parca --config-path=/etc/parca/parca.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=65535
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=yes
+RestrictNamespaces=yes
+MemoryDenyWriteExecute=yes
+PrivateDevices=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
+```
+
+To use the configuration, we need to move it a directory that `systemd` can load:
+```shell
+cp parca.service /etc/systemd/system/parca.service
+```
+
+And then simply start the unit:
+```shell
+sudo systemctl start parca
+```
+
+Parca runs with an example configuration file by default, that makes Parca to scrape itself.
+
+```yaml
+debug_info:
+  bucket:
+    type: "FILESYSTEM"
+    config:
+      directory: "./tmp"
+  cache:
+    type: "FILESYSTEM"
+    config:
+      directory: "./tmp"
+
+scrape_configs:
+  - job_name: "default"
+    scrape_interval: "1s"
+    static_configs:
+      - targets: ["127.0.0.1:7070"]
+```
+
+This will start the Parca server on port `7070` and configure it to retrieve profiles from itself every 1 second automatically.
+
+Once Parca is running, you can navigate to the web interface on the browser.
+
+<BrowserWindow>
+
+![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
+
+</BrowserWindow>
+
+## Setting up Parca Agent
+
+You can download the latest agent binary release for your architecture from our [releases page](https://github.com/parca-dev/parca-agent/releases).
+
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent}_`uname -s`_`uname -m`.tar.gz | tar xvfz
+    </CodeBlock>
+  }
+</WithVersions>
+
+Move the binary to a place where we can refer:
+```shell
+mv ./parca-agent /usr/bin
+```
+
+You can run the Parca Agent as a `systemd` unit with the following simple configuration:
+```toml
+[Unit]
+Description=Parca Agent
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+ExecStart=/usr/bin/parca-agent --http-address=":7071" --node=systemd-test --systemd-units=docker.service,parca.service,parca-agent.service --kubernetes=false --store-address=localhost:7070 --insecure
+
+Restart=on-failure
+RestartSec=10
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=parcaagent
+
+[Install]
+WantedBy=multi-user.target
+```
+
+The command in the above configuration targets the Parca server that is presumably running on your system. And it uses the `systemd` service discovery to find the cgroups that have been running on your system.
+
+To use the configuration, we need to move it a directory that `systemd` can load:
+```shell
+cp parca-agent.service /etc/systemd/system/parca-agent.service
+```
+
+And then simply start the unit:
+```shell
+sudo systemctl start parca-agent
+```
+
+The `systemd` service will be collecting profiles from `docker.service`, `parca.service` and `parca-agent.service` that have been running on your system.
