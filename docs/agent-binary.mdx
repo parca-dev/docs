@@ -52,16 +52,14 @@ level=debug ts=2021-09-27T11:24:47.143385627Z caller=profile.go:165 systemdunit=
 level=debug ts=2021-09-27T11:24:48.142750722Z caller=systemdmanager.go:131 msg="running systemd manager" units=1
 ```
 
-To view the active profilers port-forward and visit `http://localhost:7071`:
-```
-kubectl -n parca port-forward `kubectl -n parca get pod -lapp.kubernetes.io/name=parca-agent -ojsonpath="{.items[0].metadata.name}"` 7071
-```
-
+Now we can view the active profilers by visiting `http://localhost:7071`:
 <BrowserWindow>
 
-TODO(kakkoyun): Add a screenshot!
+![image](../static/img/tutorial/systemd_active_profilers.png)
 
 </BrowserWindow>
+
+<br/>
 
 Once Parca and Parca Agent are both running, you can navigate to the web interface on the browser.
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself and receiving from the Agent.
