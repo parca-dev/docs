@@ -30,8 +30,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title} - Infrastructure-wide continuous profiling`}
-      description="Infrastructure-wide continuous profiling">
+      title={`${siteConfig.title} - Open Source infrastructure-wide continuous profiling`}
+      description="Open Source infrastructure-wide continuous profiling">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
