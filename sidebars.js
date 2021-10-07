@@ -25,6 +25,7 @@ module.exports = {
       label: 'Parca',
       items: [
         'parca',
+        'ingestion',
         'storage',
         'symbolization',
         {
@@ -71,6 +72,7 @@ module.exports = {
         'systemd',
         'querying-parca',
         'profiling-101',
+        'instrumenting-go',
         'troubleshooting-parca-agent',
       ],
     }

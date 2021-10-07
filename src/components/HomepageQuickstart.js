@@ -17,7 +17,7 @@ export default function HomepageQuickstart() {
     }[binaryMode]
 
     const kubernetesInstructions = {
-        "server": `kubectl apply -f https://github.com/parca-dev/parca/releases/download/${versions.server}/manifest.yaml`,
+        "server": `kubectl apply -f https://github.com/parca-dev/parca/releases/download/${versions.server}/kubernetes-manifest.yaml`,
         "agent": `kubectl apply -f https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/kubernetes-manifest.yaml`
     }
 
