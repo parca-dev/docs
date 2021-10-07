@@ -10,10 +10,12 @@ CORS
 CRI
 CapabilityBoundingSet
 CodeBlock
+CodeQL
 CodeReady
 Conprof
 DebugInfo
 Debuginfo
+Dependabot
 ExecReload
 ExecStart
 FILESYSTEM
