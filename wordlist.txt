@@ -55,6 +55,7 @@ QueryRange
 RestartSec
 RestrictNamespaces
 RestrictRealtime
+Runtime
 Ryzen
 SLI
 SLO
@@ -151,6 +152,7 @@ provisioner
 pv
 pwjv
 qvv
+runtime
 runtimes
 sL
 sandboxing
