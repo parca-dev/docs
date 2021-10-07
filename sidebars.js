@@ -25,6 +25,7 @@ module.exports = {
       label: 'Parca',
       items: [
         'parca',
+        'ingestion',
         'storage',
         'symbolization',
         {
@@ -65,14 +66,33 @@ module.exports = {
       type: 'category',
       label: 'Tutorial',
       items: [
-        'binary',
-        'agent-binary',
-        'kubernetes',
-        'openshift',
-        'systemd',
+        {
+          type: 'category',
+          label: 'Running Parca',
+          items: [
+            'binary',
+            'agent-binary',
+            'systemd',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Deploying Parca',
+          items: [
+            'kubernetes',
+            'openshift',
+          ]
+        },
         'querying-parca',
-        'profiling-101',
         'troubleshooting-parca-agent',
+        {
+          type: 'category',
+          label: 'Profiling 101',
+          items: [
+            'profiling-101',
+            'instrumenting-go',
+          ]
+        },
       ],
     }
   ],

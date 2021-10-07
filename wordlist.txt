@@ -31,12 +31,15 @@ KASLR
 Kubernetes
 LLVM
 LimitNOFILE
+ListenAndServe
 LockPersonality
 MAINPID
 MemoryDenyWriteExecute
+Mutex
 NAMESPACE
 Nakryiko
 NoNewPrivileges
+NodeJS
 Observability
 OpenShift
 OpenTelemetry
@@ -44,6 +47,7 @@ PID
 PIDs
 Parca
 Parca's
+Println
 PrivateDevices
 PromQL
 ProtectControlGroups

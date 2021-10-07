@@ -1,4 +1,4 @@
-# Profiling 101
+# CPU Profiling
 
 Understand basics of CPU profiling in **5 minutes** ⏱️!
 
