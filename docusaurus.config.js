@@ -28,7 +28,6 @@ module.exports = {
       disableSwitch: true,
     },
     navbar: {
-      title: 'Home',
       logo: {
         alt: 'Parca Logo',
         src: 'img/logo.svg',
