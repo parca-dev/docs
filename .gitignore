@@ -23,3 +23,5 @@ yarn-error.log*
 
 # Once we don't need to pull from private repos this can be automated in the build process
 #/docs/parca-agent-*
+
+*.dic
