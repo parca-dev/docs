@@ -22,7 +22,15 @@ Let's quickly apply the manifests first.
 
 ### Setting up Parca Server
 
-To provision the Parca against any Kubernetes cluster, and use the API and UI:
+Start by creating a project for Parca components to run in.
+
+```shell
+oc new-project parca \
+    --description="Parca Continuous Profiling" --display-name="Parca Continuous Profiling"
+```
+
+To provision the Parca against any OpenShift cluster, and use the API and UI:
+
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">

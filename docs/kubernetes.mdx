@@ -22,7 +22,14 @@ The Agent needs to access to Kernel and run as a privileged user to load necessa
 
 ## Setting up Parca Server
 
+Start by creating a namespace for Parca components to run in.
+
+```shell
+kubectl create namespace parca
+```
+
 To provision the Parca against any Kubernetes cluster, and use the API and UI:
+
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
@@ -37,7 +44,7 @@ kubectl get pods -A
 ```
 
 ```shell
-❯ kubectl get pods -A
+kubectl get pods -A
 
 NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE
 kube-system   coredns-78fcd69978-pwjv7        1/1     Running   0          59m
@@ -78,7 +85,7 @@ kubectl get pods -n parca
 ```
 
 ```shell
-❯ k get pods -n parca
+kubectl get pods -n parca
 
 NAME                        READY   STATUS    RESTARTS   AGE
 parca-5f879c46ff-pv649      1/1     Running   0          54m
