@@ -5,6 +5,7 @@ BPF
 BTF
 Brancyzk
 BrowserWindow
+CLI
 CNCF
 CORS
 CRI
@@ -82,6 +83,7 @@ cgroup
 cgroups
 config
 configs
+conprof
 containerd
 coredns
 cors
@@ -92,6 +94,7 @@ debuginfod
 debuginfos
 dev
 dgraph
+dir
 docusaurus
 dropdown
 eBPF
@@ -168,6 +171,7 @@ tmp
 toml
 toolchain
 tsdb
+uname
 url
 usr
 vsyscall
