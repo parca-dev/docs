@@ -32,7 +32,7 @@ func iterate(iterations int) {
 }
 ```
 
-When executed this program takes 5 seconds to execute in total (on an AMD Ryzen 5 3400GE CPU). With profiling we can understand _what_ was executing during those 5 seconds and for how long. For the sake of simplicity, a sampling CPU profiler looks at the "current" stack trace 100x per second (the sampling rate is typically configurable, but 100x is both common and easiers to calculate with).
+When executed this program takes 5 seconds to execute in total (on an AMD Ryzen 5 3400GE CPU). With profiling we can understand _what_ was executing during those 5 seconds and for how long. For the sake of simplicity, a sampling CPU profiler looks at the "current" stack trace 100x per second (the sampling rate is typically configurable, but 100x is both common and easier to calculate with).
 
 ### Data format
 

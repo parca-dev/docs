@@ -30,10 +30,10 @@ Simply said, much like with any other observability data, you never know at whic
 
 ## When is continuous profiling useful?
 
-There are more potential use cases, but the three that are most commont are:
+There are more potential use cases, but the three that are most common are:
 
-* Saving money: Statisically significant insight into what code causes the most resources to be used, allows engineers to optimize those pieces and be confident, that resource usage will be lower after optimizing.
-* Understand difference: Always collecting data from all proccesses allows comparing why execution of code was different in time, across processes or even versions of code (Parca's powerful multi-dimensional model allows comparing profiling data on any label dimension).
+* Saving money: Statistically significant insight into what code causes the most resources to be used, allows engineers to optimize those pieces and be confident, that resource usage will be lower after optimizing.
+* Understand difference: Always collecting data from all processes allows comparing why execution of code was different in time, across processes or even versions of code (Parca's powerful multi-dimensional model allows comparing profiling data on any label dimension).
 * Understand incidents: Collecting data in the past allows us to understand incidents even after they have happened and without manual capturing of profiling data.
 
 ## Components
