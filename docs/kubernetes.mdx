@@ -38,7 +38,7 @@ To provision the Parca against any Kubernetes cluster, and use the API and UI:
   }
 </WithVersions>
 
-You can verify by selecting pods if everthing runs as expected:
+You can verify by selecting pods if everything runs as expected:
 ```shell
 kubectl get pods -A
 ```
@@ -70,6 +70,12 @@ So let's set up Parca Agent in our cluster and collect data from our cluster.
 
 ## Setting up Parca Agent
 
+First, let's make sure we have the namespace we are going to use is created (if you haven't already done this in the previous step):
+
+```shell
+kubectl create namespace parca
+```
+
 To provision the Parca Agent as a `DaemonSet`:
 <WithVersions language="bash">
   { versions =>
@@ -79,7 +85,7 @@ To provision the Parca Agent as a `DaemonSet`:
   }
 </WithVersions>
 
-You can verify by selecting pods if everthing runs as expected:
+You can verify by selecting pods if everything runs as expected:
 ```shell
 kubectl get pods -n parca
 ```
@@ -92,7 +98,7 @@ parca-5f879c46ff-pv649      1/1     Running   0          54m
 parca-agent-b66vt           1/1     Running   0          54m
 ```
 
-Let's setup a port-forward using the default port `7071`.
+Let's set up a port-forward using the default port `7071`.
 ```
 kubectl -n parca port-forward `kubectl -n parca get pod -lapp.kubernetes.io/name=parca-agent -ojsonpath="{.items[0].metadata.name}"` 7071
 ```
@@ -120,9 +126,17 @@ You can use `--insecure` and `--insecure-skip-verify` for simpler setups.
 ```
 
 :::
+
+## Exploring the collected data
+
 Once Parca and Parca Agent are both running, you can navigate to the web interface on the browser.
 You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself and receiving from the Agent.
 
+:::info
+
+Parca supports any pprof formatted profile, but here we are demonstrating Parca Agent's automatic profiling with zero-instrumentation, which currently only supports CPU profiling.
+
+:::
 <BrowserWindow>
 
 ![image](../static/img/tutorial/profile_type_dropdown_selected.png)
@@ -176,7 +190,7 @@ And you can click the samples on the graph to focus on the individual profiles.
 To further sample targets on Kubernetes use the `--pod-label-selector=` flag.
 For example, to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, use `--pod-label-selector=app.kubernetes.io/name=my-web-app`.
 
-The relevant manifest cahanges on `parca-agent-daemonSet.yaml` would like the following:
+The relevant manifest changes on `parca-agent-daemonSet.yaml` would like the following:
 ```diff
 ...
 template:
