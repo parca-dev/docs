@@ -22,6 +22,25 @@ Read the docs on more in-depth explanations on [Parca Agent Security](./parca-ag
 
 ## Does Parca have our binaries or code?
 
-No. Profiling data is made up of statistics representing for example how much time the CPU has spent in a particular function, but the function metadata is decoupled from the actual executable and source code. Parca only ever gets to see the measured statistics and function name metadata.
+No. Profiling data is made up of statistics representing. For example, how much time the CPU has spent in a particular function, but the function metadata is decoupled from the actual executable and source code. Parca only ever gets to see the measured statistics and function name metadata.
 
 Read the docs on [symbolization](https://www.parca.dev/docs/symbolization) to understand further why.
+
+## What are the 0x7f79e7a26b10 memory addresses I see in profiles?
+
+This means the Parca server is failed to symbolize the profile it received. For the [generic profiles](/docs/symbolization#type-of-profiles), the function metadata is decoupled from the actual executable and source code. In this particular situation, Parca has the profile but not the metadata.
+
+This could happen when your executable or the libraries that your executable uses do not include the debug information.
+To solve this, either you can provide the debug information in your environment (by recompiling the binary with debug info), or [you can upload additional object files that include the debug information for your executables to Parca server](https://buf.build/parca-dev/parca/docs/main/parca.debuginfo.v1alpha1). We have created an auxiliary tool called [`parca-debug-info`](/docs/parca-agent-debuginfo-cli) to ease up the process.
+
+Please read the docs on [symbolization](https://www.parca.dev/docs/symbolization) to understand how it works.
+
+## What happened to Conprof?
+
+The Parca project is the continuation of Conprof. Parca already includes almost all the features and builds more on top of Conprof.
+Conprof, as of we open-sourced Parca, is archived, and there won't be any future development on it. And all the relevant issues are migrated to Parca.
+You can still find Conprof under [https://github.com/parca-dev/conprof-archived](https://github.com/parca-dev/conprof-archived).
+
+The migration from Conprof to Parca should be painless for an end-user. Especially considering they both share the exact discovery mechanism.
+If you have a dependency on the API as a developer, unfortunately, they are not 100% compatible.
+Please let us know if you need any help in case of a migration.

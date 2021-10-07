@@ -12,8 +12,8 @@ export default function HomepageQuickstart() {
     const {versions} = usePluginData('docusaurus-github-releases-plugin');
 
     const curlInstructions = {
-        "server": `curl -sL https://github.com/parca-dev/parca/releases/download/${versions.server}/parca_${versions.server}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca`,
-        "agent": `curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n./parca-agent`
+        "server": `# Download the binary specific to your OS and architecture\ncurl -sL https://github.com/parca-dev/parca/releases/download/${versions.server}/parca_${versions.server}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n# Run\n./parca`,
+        "agent": `# Download the binary specific to your OS and architecture\ncurl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz\n# Run\n./parca-agent`
     }[binaryMode]
 
     const kubernetesInstructions = {
