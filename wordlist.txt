@@ -1,4 +1,3 @@
-
 APIs
 Andrii
 BPF
@@ -10,6 +9,7 @@ CNCF
 CORS
 CRI
 CapabilityBoundingSet
+Civo
 CodeBlock
 CodeQL
 CodeReady
@@ -154,6 +154,7 @@ perf
 pprof
 pprof's
 pre
+proc
 profiler
 profilers
 proto

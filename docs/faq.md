@@ -40,7 +40,7 @@ This problem could happen because of several reasons:
 
 > To solve the last one, either you can provide the debug information in your environment (by recompiling the binary with debug info), or [you can upload additional object files that include the debug information for your executables to Parca server](https://buf.build/parca-dev/parca/docs/main/parca.debuginfo.v1alpha1). We have created an auxiliary tool called [`parca-debug-info`](/docs/parca-agent-debuginfo-cli) to ease-up the process.
 
-* If the async symbolization hasn't worked yet. This could happen freshly ingested profiles.
+* If the asynchronous symbolization hasn't worked yet. This could happen freshly ingested profiles.
 
 > Please read the docs on [symbolization](https://www.parca.dev/docs/symbolization) to understand how it works.
 
