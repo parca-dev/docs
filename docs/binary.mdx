@@ -8,7 +8,7 @@ You can download the latest binary release for your architecture from our [relea
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca
+      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca
     </CodeBlock>
   }
 </WithVersions>
@@ -40,6 +40,11 @@ scrape_configs:
     scrape_interval: "1s"
     static_configs:
       - targets: ["127.0.0.1:7070"]
+```
+
+You can download from our repo:
+```shell
+curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > parca.yaml
 ```
 
 To start Parca, pass this config file with the `config-path` flag:

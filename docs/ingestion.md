@@ -10,6 +10,7 @@ The collected data can be [sent to a Parca server](https://buf.build/parca-dev/p
 
 ### Guides
 
+* [Getting started with Parca Scraping on Kubernetes](https://www.katacoda.com/parca/scenarios/scraping)
 * [Parca On Kubernetes](/docs/kubernetes) (if you are using [OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) refer to the separate [Parca On OpenShift](/docs/openshift) documentation)
 * [systemd Unit Profiling with Parca Agent](/docs/systemd)
 

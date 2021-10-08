@@ -14,7 +14,7 @@ You can download the latest debug-info` binary release for your architecture fro
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca-debug-info
+      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca-debug-info
     </CodeBlock>
   }
 </WithVersions>
