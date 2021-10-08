@@ -6,11 +6,19 @@ import BrowserWindow from '@site/src/components/BrowserWindow';
 
 ## Setting up Parca
 
+:::tip
+
+You can find interactive version of this tutorial at our Katacoda account.
+Check [https://www.katacoda.com/parca/scenarios/systemd](https://www.katacoda.com/parca/scenarios/systemd).
+
+:::
+
 You can download the latest binary release for your architecture from our [releases page](https://github.com/parca-dev/parca/releases).
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server}_`uname -s`_`uname -m`.tar.gz | tar xvfz
+      curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > parca.yaml
+      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
     </CodeBlock>
   }
 </WithVersions>
@@ -20,11 +28,46 @@ Move the binary to a place where we can refer:
 mv ./parca /usr/bin
 ```
 
+Let's install external dependencies:
+```
+apt-get install llvm binutils elfutils
+```
+
 :::note
 
 `/usr/bin` was selected as an example and used in the subsequent sections of this tutorial.
 
 :::
+
+
+And let's create a user for Parca:
+```
+adduser --system --no-create-home --group parca
+```
+
+Parca runs with an example configuration file by default, that makes Parca to scrape itself.
+
+```yaml
+debug_info:
+  bucket:
+    type: "FILESYSTEM"
+    config:
+      directory: "/tmp"
+  cache:
+    type: "FILESYSTEM"
+    config:
+      directory: "/tmp"
+
+scrape_configs:
+  - job_name: "default"
+    scrape_interval: "1s"
+    static_configs:
+      - targets: ["127.0.0.1:7070"]
+```
+
+```
+mkdir -p /etc/parca && cp editor/parca.yaml /etc/parca/parca.yaml
+```
 
 Now you can run the Parca as a `systemd` unit with the following simple configuration:
 ```toml
@@ -37,6 +80,7 @@ After=network-online.target
 User=parca
 Group=parca
 Restart=on-failure
+RestartSec=10
 ExecStart=/usr/bin/parca --config-path=/etc/parca/parca.yaml
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=65535
@@ -52,7 +96,9 @@ RestrictRealtime=yes
 RestrictNamespaces=yes
 MemoryDenyWriteExecute=yes
 PrivateDevices=yes
-CapabilityBoundingSet=
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=parca
 
 [Install]
 WantedBy=multi-user.target
@@ -66,26 +112,6 @@ cp parca.service /etc/systemd/system/parca.service
 And then simply start the unit:
 ```shell
 sudo systemctl start parca
-```
-
-Parca runs with an example configuration file by default, that makes Parca to scrape itself.
-
-```yaml
-debug_info:
-  bucket:
-    type: "FILESYSTEM"
-    config:
-      directory: "./tmp"
-  cache:
-    type: "FILESYSTEM"
-    config:
-      directory: "./tmp"
-
-scrape_configs:
-  - job_name: "default"
-    scrape_interval: "1s"
-    static_configs:
-      - targets: ["127.0.0.1:7070"]
 ```
 
 This will start the Parca server on port `7070` and configure it to retrieve profiles from itself every 1 second automatically.
@@ -105,7 +131,7 @@ You can download the latest agent binary release for your architecture from our 
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent}_`uname -s`_`uname -m`.tar.gz | tar xvfz
+      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
     </CodeBlock>
   }
 </WithVersions>

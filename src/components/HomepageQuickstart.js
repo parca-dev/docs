@@ -13,13 +13,15 @@ export default function HomepageQuickstart() {
 
     const curlInstructions = {
         "server": `# Download the binary specific to your OS and architecture
-curl -sL https://github.com/parca-dev/parca/releases/download/${versions.server}/parca_${versions.server}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz
+curl -sL https://github.com/parca-dev/parca/releases/download/${versions.server}/parca_${versions.server.substring(1)}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz -
+# Get basic configuration
+curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > parca.yaml
 # Run Parca and access the Web UI on port 7070
 ./parca`,
         "agent": `# Download the binary specific to your architecture (only works on Linux)
-curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz
+curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent.substring(1)}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz -
 # Run Parca Agent and access the Web UI on port 7071
-./parca-agent`
+./parca-agent --node=systemd-test --systemd-units=parca-agent.service --kubernetes=false`
     }[binaryMode]
 
     const kubernetesInstructions = {
