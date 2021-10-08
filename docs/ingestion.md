@@ -2,13 +2,18 @@
 
 There are two ways to ingest data into Parca.
 
-## Generic Profiling
+## Push based
 
-The recommend way to use for generic profiling is Parca Agent. Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/) to capture raw profiling data with very low overhead. It observes user-space, and kernel-space stack traces 100 times per second and builds [pprof](https://github.com/google/pprof) formatted profiles from the extracted data. For in-depth detail and explanation refer to the the [Parca Agent Design](/docs/parca-agent-design) documentation.
+The recommended way to use for generic profiling is Parca Agent. Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/) to capture raw profiling data with very low overhead. It observes user-space, and kernel-space stack traces 100 times per second and builds [pprof](https://github.com/google/pprof) formatted profiles from the extracted data. For in-depth detail and explanation refer to the the [Parca Agent Design](/docs/parca-agent-design) documentation.
 
-The collected data can be viewed locally via HTTP endpoints and optionally be configured to be [sent to a Parca server](https://buf.build/parca-dev/parca/docs/main/parca.profilestore.v1alpha1), where it can be queried and analyzed over time. [See our tutorials](/docs/parca-agent#tutorials) to learn how to use it.
+The collected data can be [sent to a Parca server](https://buf.build/parca-dev/parca/docs/main/parca.profilestore.v1alpha1), where it can be queried and analyzed over time.
 
-## Native Profiling
+### Guides
+
+* [Parca On Kubernetes](/docs/kubernetes) (if you are using [OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) refer to the separate [Parca On OpenShift](/docs/openshift) documentation)
+* [systemd Unit Profiling with Parca Agent](/docs/systemd)
+
+## Pull based
 
 Another way Parca works, is by collecting profiles in [pprof](https://github.com/google/pprof) format from HTTP endpoints.
 So all applications have to do is use one of the client libraries for pprof and expose an HTTP endpoint serving it.
@@ -22,12 +27,12 @@ Pprof client libraries exist for various languages:
 | [NodeJS](https://github.com/google/pprof-nodejs) | Yes | Yes | No | No | No |  |
 | [JVM](https://github.com/papertrail/profiler) | Yes | No | No | No | No |  |
 
-## Guides
+### Guides
 
-* [Go: Instrument your Go app with pprof](/docs/instrumenting-go)
+* [Instrument your Go app with pprof](/docs/instrumenting-go)
 
 ### Alternative approaches
 
-Additionally any [`perf`](https://perf.wiki.kernel.org/index.php/Main_Page) profile can be converted to pprof using [`perf_data_converter`](https://github.com/google/perf_data_converter), so even programs that do not have native support for pprof can benefit from continuous profiling with Parca. We do, however, recommend to use native instrumentation when possible, as it allows language and runtime specific nuances to be encoded in the respective libraries.
+Additionally, any [`perf`](https://perf.wiki.kernel.org/index.php/Main_Page) profile can be converted to pprof using [`perf_data_converter`](https://github.com/google/perf_data_converter), so even programs that do not have native support for pprof can benefit from continuous profiling with Parca. We do, however, recommend to use native instrumentation when possible, as it allows language and runtime specific nuances to be encoded in the respective libraries.
 
 Once there is an HTTP endpoint that serves profiles in pprof format, all that needs to be done is configure Parca to collect the profile in a regular interval. See [`parca/parca.yaml`](https://github.com/parca-dev/parca/blob/main/parca.yaml) for an example configuration.
