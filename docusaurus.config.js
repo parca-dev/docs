@@ -51,6 +51,11 @@ module.exports = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          href: 'https://twitter.com/ParcaDev',
+          label: 'Twitter',
+          position: 'right',
+        },
       ],
     },
     footer: {
