@@ -59,6 +59,11 @@ module.exports = {
     },
     {
       type: 'doc',
+      label: 'Demo',
+      id: 'demo',
+    },
+    {
+      type: 'doc',
       label: 'Community',
       id: 'community',
     },
