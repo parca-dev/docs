@@ -19,6 +19,7 @@ function HomepageHeader() {
         <h1 className="hero__title">
             <SvgLogo style={{ width: 200 }} alt={siteConfig.title} />
         </h1>
+        <h1 className="hero__title">From profiles to understanding</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <HomepageQuickstart />
       </div>
