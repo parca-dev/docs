@@ -8,7 +8,7 @@ You can download the latest binary release for your architecture from our [relea
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca
+      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz - parca
     </CodeBlock>
   }
 </WithVersions>

@@ -8,7 +8,7 @@ You can download the latest agent binary release for your architecture from our 
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz ./parca-agent
+      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz - parca-agent
     </CodeBlock>
   }
 </WithVersions>
