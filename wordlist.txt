@@ -185,3 +185,6 @@ vsyscall
 vt
 xvfz
 yaml
+Katacoda
+substring
+ghcr
