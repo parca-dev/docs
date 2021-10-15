@@ -119,6 +119,12 @@ module.exports = {
       //theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+	algolia: {
+	  apiKey: '525d17aaac0e93dea054f39af7b692bd',
+	  indexName: 'parca',
+	  appId: 'BH4D9OD16A',
+	  contextualSearch: false,
+	},
   },
   presets: [
     [
