@@ -2,6 +2,10 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+<a href="https://vercel.com/?utm_source=parca-dev&utm_campaign=oss" target="_blank" aria-label="Powered by Vercel">
+  <img src="./static/img/powered-by-vercel.svg" alt="Powered by Vercel" />
+</a>
+
 ## Installation
 
 ```console

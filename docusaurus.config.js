@@ -110,6 +110,12 @@ module.exports = {
               label: 'GitHub',
               href: 'https://github.com/parca-dev/parca',
             },
+            {
+              html: `
+                <a href="https://vercel.com/?utm_source=parca-dev&utm_campaign=oss" target="_blank" aria-label="Powered by Vercel">
+                  <img src="/img/powered-by-vercel.svg" alt="Powered by Vercel" />
+                </a>`,
+            },
           ],
         },
       ],
