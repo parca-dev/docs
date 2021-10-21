@@ -24,6 +24,7 @@ module.exports = {
       textColor: '#091E42', // Defaults to `#000`.
       isCloseable: true, // Defaults to `true`.
     },
+    metadatas: [{name: 'og:image', content: 'https://parca.dev/img/logo.png'}],
     colorMode: {
       disableSwitch: true,
     },
