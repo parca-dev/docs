@@ -34,6 +34,12 @@ Start by creating a namespace for Parca components to run in.
 kubectl create namespace parca
 ```
 
+:::note
+
+Creating this namespace is not strictly necessary, but it prevents a race with the following commands, to make the guide more smooth.
+
+:::
+
 To provision the Parca against any Kubernetes cluster, and use the API and UI:
 
 <WithVersions language="bash">
@@ -81,6 +87,12 @@ First, let's make sure we have the namespace we are going to use is created (if 
 ```shell
 kubectl create namespace parca
 ```
+
+:::note
+
+Creating this namespace is not strictly necessary, but it prevents a race with the following commands, to make the guide more smooth.
+
+:::
 
 To provision the Parca Agent as a `DaemonSet`:
 <WithVersions language="bash">
