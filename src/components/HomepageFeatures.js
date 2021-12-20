@@ -76,7 +76,7 @@ const UseCaseList = [
         image: <UpwardGraph className={styles.featureImage} title="Improve Performance" />,
         description: (
             <>
-                Using profiling data collected over time, Parca can with confidence and statistical significance determine hot paths to optimize. Additionally it can show differences between any label dimension, such as deploys, versions, and regions.
+                Using profiling data collected over time, Parca can (with confidence and statistical significance) determine hot paths to optimize. Additionally it can show differences between any label dimension, such as deploys, versions, and regions.
             </>
         ),
     },
@@ -85,7 +85,7 @@ const UseCaseList = [
         image: <Alert className={styles.featureImage} title="Understand Incidents" />,
         description: (
             <>
-                Profiling data provides unique insight and depth into what a process executed over time. Memory leaks, but also momentary spikes in CPU or I/O causing unexpected behavior, is traditionally difficult to troubleshoot are a breeze with continuous profiling.
+                Profiling data provides unique insight and depth into what a process executed over time. Memory leaks, but also momentary spikes in CPU or I/O causing unexpected behavior (which are traditionally difficult to troubleshoot) are a breeze with continuous profiling.
             </>
         ),
     },

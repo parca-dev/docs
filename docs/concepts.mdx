@@ -39,3 +39,17 @@ You'll see in the image below with the profile selections reversed from the prev
 </BrowserWindow>
 
 If a span remains blue, it means there was no significant change between the two compared profiles for that section of code.
+
+## Cumulative and Diff values
+
+When comparing two profiles, it's not unusual to see a `Cumulative` value and `Diff` value in the tooltip that displays when you hover over the icicle graph.
+
+<BrowserWindow>
+
+![image](https://user-images.githubusercontent.com/9016992/146777868-90f145fd-aaab-451d-8848-247877a7dde3.png)
+
+</BrowserWindow>  
+
+As an example, a stack trace like `main() > foo() > bar()` where `main` calls `foo` that calls `bar`. In one profile, we observe this stack trace running at 500ns, so its cumulative value will be 500 and then later in another profile, we see this stack trace but it was running for only 300ns, thus it's cumulative value will be 300.
+
+However, if we compare the latest stack trace that was running at 300ns to the former one running 500ns, we see that the diff is 300-500 = -200. It means that compared to the first profile we've seen this same stack trace 200ns less.
