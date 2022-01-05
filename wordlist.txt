@@ -144,6 +144,7 @@ namespace
 natively
 nodejs
 numlabels
+ns
 observability
 oc
 openshift
@@ -177,6 +178,7 @@ systemd
 tmp
 toml
 toolchain
+tooltip
 tsdb
 uname
 url
