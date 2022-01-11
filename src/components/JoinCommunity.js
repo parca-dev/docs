@@ -7,6 +7,7 @@ import Slack from '../../static/img/slack.svg';
 import Meeting from '../../static/img/meeting.svg';
 import GitHub from '../../static/img/github.svg';
 import Twitter from '../../static/img/twitter.svg';
+import YouTube from '../../static/img/youtube.svg';
 
 export default function JoinCommunity() {
     return (
@@ -36,6 +37,9 @@ export default function JoinCommunity() {
                         </a>
                         <a className={`button button--lg button--outline button--primary`} style={{ marginLeft: 10 }} href="https://twitter.com/ParcaDev">
                             <Twitter id="twitterIcon" className={styles.communityButtonImage} /><span> Twitter</span>
+                        </a>
+                        <a className={`button button--lg button--outline button--primary`} style={{ marginLeft: 10 }} href="https://www.youtube.com/channel/UCRrqAGuajRqIX_E_arNnYCw">
+                            <YouTube id="youTubeIcon" className={styles.communityButtonImage} /><span> YouTube</span>
                         </a>
                     </div>
                 </div>

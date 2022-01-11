@@ -98,6 +98,10 @@ module.exports = {
               label: 'Twitter',
               href: 'https://twitter.com/ParcaDev',
             },
+            {
+              label: 'YouTube',
+              href: 'https://www.youtube.com/channel/UCRrqAGuajRqIX_E_arNnYCw',
+            },
           ],
         },
         {
