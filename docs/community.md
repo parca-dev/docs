@@ -8,10 +8,13 @@ Please contact the Parca maintainers at parca-team@googlegroups.com to report an
 
 ## Contact
 
-You can reach out to the rest of the Parca community including the core developers on our [Discord](https://discord.com/invite/ZgUpYgpzXy)
+You can reach out to the rest of the Parca community including the core developers on our [Discord](https://discord.com/invite/ZgUpYgpzXy).
 
 ## Contributing
 
-If you'd like to contribute, we'd love to have you do so!
+If you'd like to contribute, we'd love to have you do so! For major changes, please open an issue first to discuss what you would like to change. If you are not entirely sure about this, you can discuss this on the [Parca Discord](https://discord.gg/ZgUpYgpzXy) server as well. If there is an existing issue you would like to work on, please comment on the issue.
 
-Parca uses [GitHub](https://github.com/parca-dev/) to manage reviews, issues and pull requests.
+For detailed instructions, please refer to the `CONTRIBUTING.md` files in [parca](https://github.com/parca-dev/parca/blob/main/CONTRIBUTING.md) and [parca-agent](https://github.com/parca-dev/parca-agent/blob/main/CONTRIBUTING.md) respectively.
+
+Parca uses [GitHub](https://github.com/parca-dev/) to manage reviews, issues and pull requests. Contributions to Parca documentation and this
+website can be made [here](https://github.com/parca-dev/parca.dev).
