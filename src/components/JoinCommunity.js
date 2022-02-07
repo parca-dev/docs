@@ -23,8 +23,8 @@ export default function JoinCommunity() {
             <div className="row">
                 <div className="col col--12">
                     <div style={{ textAlign: 'center' }}>
-                        <Link to='/docs/community' className={`button button--lg button--outline button--primary`}>
-                            <Meeting id="meetingIcon" className={styles.communityButtonImage} /><span> Community Meetings</span>
+                        <Link to='/docs/community#office-hours' className={`button button--lg button--outline button--primary`}>
+                            <Meeting id="meetingIcon" className={styles.communityButtonImage} /><span> Office Hours</span>
                         </Link>
                         <a className={`button button--lg button--outline button--primary`} style={{ marginLeft: 10 }} href="https://discord.gg/ZgUpYgpzXy">
                             <Discord id="discordIcon" className={styles.communityButtonImage} /><span> Discord</span>
