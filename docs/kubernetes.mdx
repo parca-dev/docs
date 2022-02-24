@@ -205,6 +205,12 @@ And you can click the samples on the graph to focus on the individual profiles.
 To further sample targets on Kubernetes use the `--pod-label-selector=` flag.
 For example, to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, use `--pod-label-selector=app.kubernetes.io/name=my-web-app`.
 
+:::tip
+
+To learn more about label selectors, please check out [official Kubernetes documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+:::
+
 The relevant manifest changes on `parca-agent-daemonSet.yaml` would like the following:
 ```diff
 ...
