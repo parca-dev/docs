@@ -57,6 +57,11 @@ module.exports = {
           label: 'Twitter',
           position: 'right',
         },
+        {
+          href: 'https://discord.gg/ZgUpYgpzXy',
+          label: 'Discord',
+          position: 'right',
+	},
       ],
     },
     footer: {
