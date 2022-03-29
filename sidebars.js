@@ -28,6 +28,7 @@ module.exports = {
         'ingestion',
         'storage',
         'symbolization',
+        'debuginfod',
         {
           type: 'link',
           label: 'gRPC APIs',
