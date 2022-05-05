@@ -50,7 +50,7 @@ If the new member proposal is accepted, the proposed team member should be conta
 deny their acceptance of team membership.
 This email will also be CC'd to [parca-team][team] for record-keeping purposes.
 
-If they choose to accept, the [onboarding](#onboarding) procedure is followed.
+If they choose to accept, the [on-boarding](#on-boarding) procedure is followed.
 
 Team members may retire at any time by emailing [the team][team].
 
@@ -60,7 +60,7 @@ Any removal vote can cover only one single person.
 
 Upon death of a member, they leave the team automatically.
 
-In case a member leaves, the [offboarding](#offboarding) procedure is applied.
+In case a member leaves, the [off-boarding](#off-boarding) procedure is applied.
 
 The current team members are:
 
@@ -199,12 +199,12 @@ A vote on multiple alternatives is considered decided in favor of one alternativ
 favor, and a vote from at least two thirds of those eligible to vote. Should no alternative reach this quorum, another
 vote on a reduced number of options may be called separately.
 
-## On- / Offboarding
+## On- / Off-boarding
 
-The On- / Offboarding section is informational and can be changed by [lazy consensus](#consensus) unless challenged.
+The On- / Off-boarding section is informational and can be changed by [lazy consensus](#consensus) unless challenged.
 If no consensus can be reached, the matter may be resolved by [majority vote](#majority-vote).
 
-### Onboarding
+### On-boarding
 
 The new member is
 
@@ -215,7 +215,7 @@ The new member is
 * optionally added to the community, junkyard, and related organizations and repositories.
 * added to the [team mailing list][team].
 
-### Offboarding
+### Off-boarding
 
 The ex-member is
 
@@ -229,7 +229,7 @@ The ex-member is
   in case of an involuntary departure but can be appropriately batched with other departures or routine cycling
   otherwise).
 * removed from group accounts where applicable. Services with some variety of a group account include but are not
-  restricted to GSuite, Netlify, Twitter, Youtube.
+  restricted to Vercel, Twitter, Youtube.
 * not allowed to call themselves an active team member anymore, nor allowed to imply this to be the case.
 * added to a list of previous members if they so choose.
 
