@@ -21,6 +21,11 @@ module.exports = {
       id: 'overview',
     },
     {
+      type: 'doc',
+      label: 'Demo',
+      id: 'demo',
+    },
+    {
       type: 'category',
       label: 'Parca',
       items: [
@@ -60,8 +65,8 @@ module.exports = {
     },
     {
       type: 'doc',
-      label: 'Demo',
-      id: 'demo',
+      label: 'Governance',
+      id: 'governance',
     },
     {
       type: 'doc',
