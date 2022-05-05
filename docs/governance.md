@@ -286,7 +286,7 @@ their will, propose this to the [team mailing list][team]. Discussions will be h
 
 [devs]: https://groups.google.com/forum/#!forum/parca-developers
 
-[gh]: https://github.com/parca
+[gh]: https://github.com/parca-dev
 
 [lazy]: https://couchdb.apache.org/bylaws.html#lazy
 
