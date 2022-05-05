@@ -79,6 +79,15 @@ module.exports = {
               to: '/docs/faq',
             },
             {
+              label: 'Governance',
+              to: '/docs/governance',
+            },
+          ],
+        },
+        {
+          title: 'Quick Start',
+          items: [
+            {
               label: 'Parca from Binary',
               to: '/docs/binary',
             },
