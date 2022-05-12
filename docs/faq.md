@@ -6,7 +6,7 @@ Frequently asked questions. If anything is unclear or not covered in the documen
 
 Infrastructure-wide always-on automatic profiling with Parca Agent currently supports all compiled languages, e.g. C, C++, Rust, Go (with extended support for Go). [Further language support](https://github.com/parca-dev/parca-agent/issues?q=is%3Aissue+is%3Aopen+label%3Afeature%2Flanguage-support) coming in the upcoming weeks and months.
 
-Parca itself supports any [pprof](https://github.com/google/pprof) formatted profile. Any library or implementation that outputs valid pprof profiles is supported by Parca.
+Parca itself supports any [pprof](https://github.com/google/pprof) formatted profile. Any library or implementation that outputs valid pprof profiles is supported by Parca. More details about pprof client libraries for various langauges can be found [here](https://www.parca.dev/docs/ingestion#pull-based).
 
 ## What overhead does always-on profiling have?
 
