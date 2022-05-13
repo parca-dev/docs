@@ -48,6 +48,7 @@ module.exports = {
       items: [
         'parca-agent',
         'parca-agent-design',
+        'parca-agent-language-support',
         'parca-agent-security',
         'parca-agent-systemd',
         'parca-agent-debuginfo-cli'
