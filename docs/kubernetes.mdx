@@ -51,21 +51,11 @@ To provision the Parca against any Kubernetes cluster, and use the API and UI:
 </WithVersions>
 
 You can verify by selecting pods if everything runs as expected:
-```shell
-kubectl get pods -A
-```
 
 ```shell
-kubectl get pods -A
+kubectl get pods -n parca
 
 NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE
-kube-system   coredns-78fcd69978-pwjv7        1/1     Running   0          59m
-kube-system   etcd-parca                      1/1     Running   0          59m
-kube-system   kube-apiserver-parca            1/1     Running   0          59m
-kube-system   kube-controller-manager-parca   1/1     Running   0          59m
-kube-system   kube-proxy-qvv2b                1/1     Running   0          59m
-kube-system   kube-scheduler-parca            1/1     Running   0          59m
-kube-system   storage-provisioner             1/1     Running   0          59m
 parca         parca-5f879c46ff-pv649          1/1     Running   0          53m
 ```
 
@@ -228,7 +218,7 @@ template:
       - --node=$(NODE_NAME)
       - --kubernetes
       - --store-address=parca.parca.svc.cluster.local:7070
-+        - --pod-label-selector=app=my-web-app
++     - --pod-label-selector=app=my-web-app
       - --insecure
       - --insecure-skip-verify
       - --temp-dir=/tmp
