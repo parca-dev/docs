@@ -32,6 +32,8 @@ module.exports = {
       logo: {
         alt: 'Parca Logo',
         src: 'img/logo.svg',
+        href: 'https://parca.dev/',
+        target: '_self',
       },
       items: [
         {
