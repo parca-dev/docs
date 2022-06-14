@@ -6,7 +6,7 @@ Parca Community Office Hours are bi-weekly public meetings focused on Parca and 
 
 When? Thursdays 17:00 UTC (see [here](https://everytimezone.com/s/c0ffbf98) to see what that is in your timezone)
 
-* [Meeting calendar](https://calendar.google.com/calendar/embed?src=c_gpsbv9i59r8ocrri0m6aktt618%40group.calendar.google.com)
+* [Meeting calendar](https://calendar.google.com/calendar/embed?src=c_gpsbv9i59r8ocrri0m6aktt618%40group.calendar.google.com) ([Import Calendar](https://calendar.google.com/calendar/u/0?cid=Y19ncHNidjlpNTlyOG9jcnJpMG02YWt0dDYxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t))
 * [Meeting notes](https://docs.google.com/document/d/1h2Ni_Q14doE_kScJsLCQewKHRPZXsyWVQt7X0iRzAXo/edit)
 * [Recordings on YouTube](https://www.youtube.com/channel/UCRrqAGuajRqIX_E_arNnYCw/featured)
 
