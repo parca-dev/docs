@@ -44,6 +44,10 @@ scrape_configs:
     # 
     static_configs:
      - targets: [ '127.0.0.1:7070' ]
+    # Configuration for relabeling of target label sets.
     relabel_configs:
-      -
+      - source_labels: __address__
+        target_label: instance
 ```
+
+See [Prometheus documetation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) for details about relabelling.
