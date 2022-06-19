@@ -40,6 +40,7 @@ module.exports = {
           href: 'https://buf.build/parca-dev/parca',
         },
         'observability',
+        'configuration',
       ]
     },
     {
