@@ -50,4 +50,4 @@ scrape_configs:
         target_label: instance
 ```
 
-See [Prometheus documetation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) for details about relabelling.
+See [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) for details about relabelling.
