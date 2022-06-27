@@ -49,6 +49,7 @@ ListenAndServe
 LockPersonality
 Loibl
 MAINPID
+Manoj
 MemoryDenyWriteExecute
 Mutex
 NAMESPACE
@@ -94,11 +95,13 @@ SyslogIdentifier
 Thanos
 UI
 VDSO
+Vivek
 VMs
 Vercel
 Virtualbox
 WantedBy
 WithVersions
+Wojciechowski
 Yomi
 Youtube
 aa
@@ -184,6 +187,7 @@ openshift
 otlp
 parca
 parcaagent
+params
 perf
 pprof
 pprof's
