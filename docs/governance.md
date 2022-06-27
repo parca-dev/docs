@@ -70,6 +70,8 @@ The current team members are:
 * Kemal Akkoyun ([Polar Signals](https://polarsignals.com))
 * Sumera Priyadarsini ([Polar Signals](https://polarsignals.com))
 * Yomi Eluwande ([Polar Signals](https://polarsignals.com))
+* Manoj Vivek ([Polar Signals](https://polarsignals.com))
+* Monica Wojciechowski ([Polar Signals](https://polarsignals.com))
 
 _Please note that Parca had received significant contributions from a number of unlisted individuals before this
 governance document, and thus formal team membership, was created._
