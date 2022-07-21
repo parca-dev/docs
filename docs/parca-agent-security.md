@@ -2,26 +2,33 @@
 
 Parca Agent requires to be run as `root` user (or `CAP_SYS_ADMIN`). Various security precautions have been taken to protect users running Parca Agent.
 
+## Rust in eBPF
+
+Even though eBPF verifier does an amazing job to prevent faulty code in Kernel-space, we also use [Rust](https://www.rust-lang.org/) to write the BPF program to catch the human errors as early as possible. Details of the implementation can be found in the [eBPF Day '22 talk](https://youtu.be/oWHQrlE2-G8) from one of our team members.
+
 ## Reproducible builds
 
 Parca Agent binaries and container image build processes have been specifically designed to be byte-by-byte reproducible.
 
 * Go dependencies are pinned via `go.mod` and `go.sum`, ensuring Go dependencies to be byte-by-byte reproducible.
-* Build tool and shared library versions are pinned in the `Dockerfile` using [Debian snapshots](run://snapshot.debian.org/).
+* Build tool and shared library versions are pinned everywhere in the repository. And updates are handled by [Renovate](https://github.com/renovatebot/renovate) bot.
+* Build tool and pipeline are configured to produce reproducible binaries. Details can be found in [tool configuration file](https://github.com/parca-dev/parca-agent/blob/main/.goreleaser.yml).
 * [libbpf](https://github.com/libbpf/libbpf) is included and versioned in this repository via a git submodule.
 
 ### No Clang/LLVM
 
-Parca Agent uses BPF CO-RE (Compile Once – Run Everywhere) using [libbpf](https://github.com/libbpf/libbpf), and pre-compiles all BPF programs, and statically embeds them in the target binary, from where it is loaded via libbpf when used. This means that Parca Agent does not need to compile the BPF program at startup or runtime like when using [bcc-tools](https://github.com/iovisor/bcc/tree/master/tools), meaning no Clang & LLVM, nor kernel headers need to be installed on the host. The only requirement is a [BTF](https://www.kernel.org/doc/html/latest/bpf/btf.html) capable Kernel (Linux Kernel 4.18+).
+Parca Agent uses BPF CO-RE (Compile Once – Run Everywhere) using [libbpf](https://github.com/libbpf/libbpf), and pre-compiles all BPF programs, and statically embeds them in the target binary, from where it is loaded via libbpf when used. This means that Parca Agent does not need to compile the BPF program at startup or runtime like when using [bcc-tools](https://github.com/iovisor/bcc/tree/master/tools), meaning no Clang & LLVM, nor kernel headers need to be installed on the host. The only requirement is a [BTF](https://www.kernel.org/doc/html/latest/bpf/btf.html) capable Kernel (Linux Kernel 5.1+).
+### No external dependencies
 
-The result is a Go binary that is that only requires dynamic linking with:
+The resulting Go binary is `statically linked`. It does not depend on any external shared object dependencies.
 
-* libpthread
-* libelf
-* libz
-* libc
+`libbpf` is also statically compiled and included in the resulting Go binary. Fewer things required equals a smaller attack surface.
 
-libbpf is statically compiled and included in the resulting Go binary. Fewer things required equals a smaller attack surface.
+The binary statically links all the required libraries:
+
+* libpthread (Needed by Go runtime)
+* libelf (Needed by libbpf)
+* libz (Needed by libbpf)
 
 Read more on CO-RE and libbpf:
 
@@ -30,16 +37,17 @@ Read more on CO-RE and libbpf:
 
 ## Sigstore
 
-We intend to soon provide signatures of release artifacts via [sigstore](https://sigstore.dev/). See [parca-dev/parca-agent#16](https://github.com/parca-dev/parca-agent/issues/16) for more details and progress.
+We provide signatures of release artifacts via [sigstore](https://sigstore.dev/). See [parca-dev/parca-agent#16](https://github.com/parca-dev/parca-agent/issues/16) for more details.
+And also see the default registry for the signatures: [ghrc.io/parca-dev/parca-agent](https://github.com/parca-dev/parca-agent/pkgs/container/parca-agent)
 
 ## Automated code scanning
 
-Parca Agent uses automated code scanning to analyze the code in Parca Agent repository to find security vulnerabilities and coding errors. 
+Parca Agent uses automated code scanning to analyze the code in Parca Agent repository to find security vulnerabilities and coding errors.
 Any problems identified by the analysis are shown in review process, thanks to [CodeQL](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning).
 
 ## Automated dependency updates
 
-Parca Agent supply chain uses [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/configuring-dependabot-security-updates) to constantly keep the dependencies up-to-date against any security vulnerabilities.
+Parca Agent supply chain uses [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/configuring-dependabot-security-updates) and [Renovate](https://github.com/renovatebot/renovate) to constantly keep the dependencies up-to-date against any security vulnerabilities.
 
 ## Report Security Vulnerabilities
 
