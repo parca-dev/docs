@@ -43,9 +43,13 @@ scrape_configs:
 ```
 
 You can download from our repository:
-```shell
-curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > parca.yaml
-```
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sL https://raw.githubusercontent.com/parca-dev/parca/{versions.server}/parca.yaml > parca.yaml
+    </CodeBlock>
+  }
+</WithVersions>
 
 To start Parca, pass this config file with the `config-path` flag:
 
