@@ -72,6 +72,8 @@ The current team members are:
 * Yomi Eluwande ([Polar Signals](https://polarsignals.com))
 * Manoj Vivek ([Polar Signals](https://polarsignals.com))
 * Monica Wojciechowski ([Polar Signals](https://polarsignals.com))
+* Javier Honduvilla Coto ([Polar Signals](https://polarsignals.com))
+* Vaishali Thakkar ([Polar Signals](https://polarsignals.com))
 
 _Please note that Parca had received significant contributions from a number of unlisted individuals before this
 governance document, and thus formal team membership, was created._
