@@ -94,6 +94,10 @@ module.exports = {
               to: '/docs/binary',
             },
             {
+              label: 'Parca from Snapcraft',
+              to: '/docs/snap',
+            },
+            {
               label: 'Parca in Kubernetes',
               to: '/docs/kubernetes',
             },
