@@ -1,0 +1,109 @@
+# Parca from Snapcraft
+
+import BrowserWindow from "@site/src/components/BrowserWindow"
+
+You can install Parca using the [snap](https://snapcraft.io/about) package.
+
+```shell
+sudo snap install parca --channel edge
+```
+
+The snap has two primary modes of operation, one-shot or service.
+
+## Invoking `parca` manually
+
+```shell
+parca --help
+Usage: parca
+
+Flags:
+  -h, --help                                             Show context-sensitive help.
+      --config-path="parca.yaml"                         Path to config file.
+      --mode="all"                                       Scraper only runs a scraper that sends to a remote gRPC endpoint. All runs all components.
+      --log-level="info"                                 log level.
+      --port=":7070"                                     Port string for server
+      --cors-allowed-origins=CORS-ALLOWED-ORIGINS,...    Allowed CORS origins.
+# ...
+```
+
+You can find more information about invoking `parca` manually in the [binary installation](https://www.parca.dev/docs/binary) docs.
+
+## Using the `parca` service
+
+The snap package also ships with a minimally configurable service that is managed by `snapd`.
+
+To get started without any customisation, once the snap is installed, invoke:
+
+```shell
+sudo snap start parca
+```
+
+This will start `parca` on http://localhost:7070, with a default active memory storage limit of 512MB.
+
+There are a few config options available for the snap service:
+
+```shell
+sudo snap get parca
+Key                    Value
+enable-persistence     false
+log-level              info
+port                   7070
+storage-active-memory  536870912
+```
+
+Each can be customised individually. If a config value is changed, the service must be restarted for the changes to take effect. For example:
+
+```shell
+# Change the bind port
+sudo snap set parca port=8080
+
+# Restart the service
+sudo snap restart parca
+```
+
+You can view the `parca` service logs using the `snap logs` command:
+
+```shell
+sudo snap logs parca
+2022-08-31T17:05:24+01:00 systemd[1]: Started Service for snap application parca.parca-svc.
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]: ooooooooo.
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]: `888   `Y88.
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:  888   .d88'  .oooo.   oooo d8b  .ooooo.   .oooo.
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:  888ooo88P'  `P  )88b  `888""8P d88' `"Y8 `P  )88b
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:  888          .oP"888   888     888        .oP"888
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:  888         d8(  888   888     888   .o8 d8(  888
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]: o888o        `Y888""8o d888b    `Y8bod8P' `Y888""8o
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]:
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]: level=info name=parca ts=2022-08-31T16:05:24.28687815Z caller=factory.go:52 msg="loading bucket configuration"
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]: level=info name=parca ts=2022-08-31T16:05:24.296458501Z caller=badger.go:53 msg="Set nextTxnTs to 0"
+2022-08-31T17:05:24+01:00 parca.parca-svc[513345]: level=info name=parca ts=2022-08-31T16:05:24.312880949Z caller=server.go:93 msg="starting server" addr=:7070
+```
+
+Once Parca is running, you can navigate to the web interface on the browser.
+
+<BrowserWindow>
+
+![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
+
+</BrowserWindow>
+
+You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself.
+Selecting one of these profile types and clicking the `Search` button will retrieve the profiles of that type for the time selection (default Last Hour)
+
+<BrowserWindow>
+
+![image](https://user-images.githubusercontent.com/8681572/133893237-f069a552-e928-4065-80db-603fb5f85e6a.png)
+
+</BrowserWindow>
+
+This should result in a time series based on the profile that is interactable. Clicking anywhere on the line graph should then bring up an icicle graph for the profile that you've selected.
+
+<BrowserWindow>
+
+![image](https://user-images.githubusercontent.com/8681572/133893258-96fdbc0a-8036-4d89-bb4c-578fb131c8e0.png)
+
+</BrowserWindow>
+
+You can then interact with the icicle graph to better understand how Parca is behaving.

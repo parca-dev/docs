@@ -84,6 +84,7 @@ module.exports = {
           label: 'Running Parca',
           items: [
             'binary',
+            'snap',
             'agent-binary',
             'systemd',
           ]
