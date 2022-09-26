@@ -65,15 +65,16 @@ In case a member leaves, the [off-boarding](#off-boarding) procedure is applied.
 The current team members are:
 
 * Frederic Branczyk ([Polar Signals](https://polarsignals.com))
-* Thor Hansen ([Polar Signals](https://polarsignals.com))
-* Matthias Loibl ([Polar Signals](https://polarsignals.com))
-* Kemal Akkoyun ([Polar Signals](https://polarsignals.com))
-* Sumera Priyadarsini ([Polar Signals](https://polarsignals.com))
-* Yomi Eluwande ([Polar Signals](https://polarsignals.com))
-* Manoj Vivek ([Polar Signals](https://polarsignals.com))
-* Monica Wojciechowski ([Polar Signals](https://polarsignals.com))
 * Javier Honduvilla Coto ([Polar Signals](https://polarsignals.com))
+* Kemal Akkoyun ([Polar Signals](https://polarsignals.com))
+* Manoj Vivek ([Polar Signals](https://polarsignals.com))
+* Matthias Loibl ([Polar Signals](https://polarsignals.com))
+* Maxime Brunet
+* Monica Wojciechowski ([Polar Signals](https://polarsignals.com))
+* Sumera Priyadarsini ([Polar Signals](https://polarsignals.com))
+* Thor Hansen ([Polar Signals](https://polarsignals.com))
 * Vaishali Thakkar ([Polar Signals](https://polarsignals.com))
+* Yomi Eluwande ([Polar Signals](https://polarsignals.com))
 
 _Please note that Parca had received significant contributions from a number of unlisted individuals before this
 governance document, and thus formal team membership, was created._
