@@ -16,98 +16,92 @@ module.exports = {
   // But you can create a sidebar manually
   tutorialSidebar: [
     {
-      type: 'doc',
-      label: 'Overview',
-      id: 'overview',
+      type: "doc",
+      label: "Overview",
+      id: "overview",
     },
     {
-      type: 'doc',
-      label: 'Demo',
-      id: 'demo',
+      type: "doc",
+      label: "Demo",
+      id: "demo",
     },
     {
-      type: 'category',
-      label: 'Parca',
+      type: "category",
+      label: "Parca",
       items: [
-        'parca',
-        'ingestion',
-        'storage',
-        'symbolization',
-        'debuginfod',
+        "parca",
+        "ingestion",
+        "storage",
+        "symbolization",
+        "debuginfod",
         {
-          type: 'link',
-          label: 'gRPC APIs',
-          href: 'https://buf.build/parca-dev/parca',
+          type: "link",
+          label: "gRPC APIs",
+          href: "https://buf.build/parca-dev/parca",
         },
-        'observability',
-        'configuration',
-      ]
+        "observability",
+        "configuration",
+      ],
     },
     {
-      type: 'category',
-      label: 'Parca Agent',
+      type: "category",
+      label: "Parca Agent",
       items: [
-        'parca-agent',
-        'parca-agent-design',
-        'parca-agent-language-support',
-        'parca-agent-security',
-        'parca-agent-systemd',
-        'parca-agent-debuginfo-cli'
-      ]
+        "parca-agent",
+        "parca-agent-design",
+        "parca-agent-language-support",
+        "parca-agent-security",
+        "parca-agent-systemd",
+        "parca-agent-debuginfo-cli",
+      ],
     },
     {
-      type: 'doc',
-      label: 'Concepts',
-      id: 'concepts',
+      type: "doc",
+      label: "Concepts",
+      id: "concepts",
     },
     {
-      type: 'doc',
-      label: 'FAQ',
-      id: 'faq',
+      type: "category",
+      label: "Grafana Plugin",
+      items: ["grafana-flamegraph-plugin", "grafana-datasource-plugin"],
     },
     {
-      type: 'doc',
-      label: 'Governance',
-      id: 'governance',
+      type: "doc",
+      label: "FAQ",
+      id: "faq",
     },
     {
-      type: 'doc',
-      label: 'Community',
-      id: 'community',
+      type: "doc",
+      label: "Governance",
+      id: "governance",
     },
     {
-      type: 'category',
-      label: 'Tutorial',
+      type: "doc",
+      label: "Community",
+      id: "community",
+    },
+    {
+      type: "category",
+      label: "Tutorial",
       items: [
         {
-          type: 'category',
-          label: 'Running Parca',
-          items: [
-            'binary',
-            'snap',
-            'agent-binary',
-            'systemd',
-          ]
+          type: "category",
+          label: "Running Parca",
+          items: ["binary", "snap", "agent-binary", "systemd"],
         },
         {
-          type: 'category',
-          label: 'Deploying Parca',
-          items: [
-            'kubernetes',
-            'openshift',
-          ]
+          type: "category",
+          label: "Deploying Parca",
+          items: ["kubernetes", "openshift"],
         },
-        'querying-parca',
-        'troubleshooting-parca-agent',
+        "querying-parca",
+        "troubleshooting-parca-agent",
         {
-          type: 'category',
-          label: 'Profiling 101',
-          items: [
-            'profiling-101',
-            'instrumenting-go',
-          ]
+          type: "category",
+          label: "Profiling 101",
+          items: ["profiling-101", "instrumenting-go"],
         },
       ],
-    }
+    },
   ],
 };
