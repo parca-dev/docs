@@ -2,7 +2,7 @@
 
 ## Getting started
 
-1. Install the Parca flamegraph plugin from the [Grafana plugin repository](https://grafana.com/grafana/plugins/parca-panel/).
+1. Install the Parca flamegraph plugin by following the instructions in this [article](https://www.polarsignals.com/blog/posts/2022/10/20/parca-plugin-for-grafana/#:~:text=once%20it%27s%20ready!-,Manual%20Installation,-You%20can%20install). <!-- from the [Grafana plugin repository](https://grafana.com/grafana/plugins/parca-panel/). -->
 2. Make sure that Parca datasource plugin is installed and configured in Grafana, if not, follow the instructions [here](#configuring-the-datasource).
 3. Configure the Parca flamegraph panel:
    1. Add a new panel to your dashboard.
@@ -16,7 +16,7 @@
 
 ## Configuring the Datasource
 
-1. Install the Parca datasource plugin from the [Grafana plugin repository](https://grafana.com/grafana/plugins/parca-datasource/).
+1. Install the Parca datasource plugin by following the instructions in this [article](https://www.polarsignals.com/blog/posts/2022/10/20/parca-plugin-for-grafana/#:~:text=once%20it%27s%20ready!-,Manual%20Installation,-You%20can%20install). <!-- from the [Grafana plugin repository](https://grafana.com/grafana/plugins/parca-datasource/). -->
 2. In the Grafana UI, navigate to the `Configuration` -> `Data Sources` page.
 3. Click on the `Add data source` button.
 4. Select the `Parca` datasource.
