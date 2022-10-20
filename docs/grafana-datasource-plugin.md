@@ -2,7 +2,7 @@
 The Parca Datasource plugin for Grafana allows you to connect to a Parca server and query for profiles from the Grafana dashboard.
 
 ## Usage
-1. Install the Parca datasource plugin by following the instructions in this [article](https://www.polarsignals.com/blog/posts/2022/10/20/parca-plugin-for-grafana/#:~:text=once%20it%27s%20ready!-,Manual%20Installation,-You%20can%20install). <!--> from the [Grafana plugin repository](https://grafana.com/grafana/plugins/parca-datasource/). -->
+1. Install the Parca datasource plugin by following the instructions in this [article](https://www.polarsignals.com/blog/posts/2022/10/20/parca-plugin-for-grafana/#:~:text=once%20it%27s%20ready!-,Manual%20Installation,-You%20can%20install). <!-- from the [Grafana plugin repository](https://grafana.com/grafana/plugins/parca-datasource/). -->
 2. In the Grafana UI, navigate to the `Configuration` -> `Data Sources` page.
 3. Click on the `Add data source` button.
 4. Select the `Parca` datasource.
