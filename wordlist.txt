@@ -250,3 +250,8 @@ Honduvilla
 Coto
 Thakkar
 Vaishali
+datasource
+Datasource
+Snapcraft
+sudo
+Maxime
