@@ -29,18 +29,3 @@
 
 ![Parca Flamegraph](https://raw.githubusercontent.com/parca-dev/parca/main/ui/packages/app/grafana-panel-plugin/src/img/screenshots/panel.png)
 ![Parca Flamegraph Config](https://raw.githubusercontent.com/parca-dev/parca/main/ui/packages/app/grafana-panel-plugin/src/img/screenshots/panel-config.png)
-
-
-## How to use Parca in Grafana today
-### Installation
-Our plugins(datasource and flamegraph) are right now submitted for review to the Grafana plugin repository and awaiting approval. Once they are approved, you can install
-them from the Grafana plugin repository. Until then, you can install them manually and use them by following the steps below:
-
-1. You need to set two environment variables to install the plugins. 
-   1. `GF_DEFAULT_APP_MODE=development` - This will allow you to install unsigned plugins into Grafana. Since the plugins are awaiting approval and not signed yet, you need to set this environment variable.
-   2. `GF_INSTALL_PLUGINS=https://storage.googleapis.com/grafana-plugins-review/parca-datasource-plugin-0.0.2.zip;parca-datasource,https://storage.googleapis.com/grafana-plugins-review/parca-panel-plugin-0.0.2.zip;parca-panel`  - This will instruct Grafana
-   to download the plugins and install them when it starts.
-2. Now restart you Grafana server and you should have the plugins installed and ready to use.
-
-### Usage
-Once plugins are installed, it is pretty straign forward to use them. Like any other Grafana plugin, you need to create a Parca datasource and then add panels that use Parca Flamegraph to visualize the profiles from Parca datasource. Please refer the [docs](https://www.parca.dev/docs/grafana-flamegraph-plugin) for more details.
