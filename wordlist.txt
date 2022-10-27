@@ -19,6 +19,8 @@ CodeBlock
 CodeQL
 CodeReady
 Conprof
+Coto
+Datasource
 DebugInfo
 Debuginfo
 Dependabot
@@ -33,6 +35,7 @@ GitLab
 Goroutines
 Grafana
 HUP
+Honduvilla
 JIT
 JVM
 Jaeger
@@ -50,6 +53,7 @@ LockPersonality
 Loibl
 MAINPID
 Manoj
+Maxime
 MemoryDenyWriteExecute
 Metastore
 Mutex
@@ -88,16 +92,19 @@ SLO
 SLOs
 SYSV
 Sigstore
+Snapcraft
 StandardError
 StandardOutput
 Sumera
 Supermajority
 SyslogIdentifier
+Thakkar
 Thanos
 UI
 UUIDs
 VDSO
 VMs
+Vaishali
 Vercel
 Virtualbox
 Vivek
@@ -108,6 +115,7 @@ Yomi
 Youtube
 aa
 addr
+ainur
 api
 apiserver
 arcticDB
@@ -126,8 +134,10 @@ conprof
 containerd
 coredns
 cors
+cpu
 cri
 datacenter
+datasource
 de
 debuginfo
 debuginfod
@@ -200,6 +210,7 @@ params
 parca
 parcaagent
 perf
+pid
 polarsignals
 pprof
 pprof's
@@ -226,6 +237,7 @@ stacktrace
 stacktraces
 submodule
 substring
+sudo
 supermajority
 symbolizable
 symbolizer
@@ -244,14 +256,6 @@ vsyscall
 vt
 www
 xvfz
+xyproto
 yaml
 zsh
-Honduvilla
-Coto
-Thakkar
-Vaishali
-datasource
-Datasource
-Snapcraft
-sudo
-Maxime

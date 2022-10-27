@@ -50,6 +50,7 @@ module.exports = {
         "parca-agent",
         "parca-agent-design",
         "parca-agent-language-support",
+        "parca-agent-labelling",
         "parca-agent-security",
         "parca-agent-systemd",
         "parca-agent-debuginfo-cli",
