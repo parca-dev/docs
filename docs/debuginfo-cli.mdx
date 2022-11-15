@@ -15,7 +15,7 @@ You can download the latest `parca-debuginfo` binary release for your architectu
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca-debuginfo/releases/download/{versions.debuginfo_cli}/parca-debuginfo_{versions.debuginfo_cli.substring(1)}_`uname -s`_`uname -m`.tar.gz
+      curl -sLO https://github.com/parca-dev/parca-debuginfo/releases/download/{versions.debuginfo_cli}/parca-debuginfo_{versions.debuginfo_cli.substring(1)}_`uname -s`_`uname -m`.tar.gz
     </CodeBlock>
   }
 </WithVersions>
@@ -23,7 +23,7 @@ You can download the latest `parca-debuginfo` binary release for your architectu
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca-debuginfo/releases/{versions.debuginfo_cli}/download/checksums.txt | shasum --ignore-missing -a 256 --check
+      curl -sL https://github.com/parca-dev/parca-debuginfo/releases/download/{versions.debuginfo_cli}/checksums.txt | shasum --ignore-missing -a 256 --check
     </CodeBlock>
   }
 </WithVersions>
