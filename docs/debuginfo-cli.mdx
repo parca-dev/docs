@@ -1,33 +1,49 @@
-# Debug Info CLI
+# Debuginfo CLI
 
 import WithVersions from '@site/src/components/WithVersions';
 import CodeBlock from '@theme/CodeBlock';
 import BrowserWindow from '@site/src/components/BrowserWindow';
 
-The debug-info CLI is an auxiliary tool that helps you to upload debug information for your binaries.
+The `parca-debuginfo` CLI is an auxiliary tool that helps you to upload debug information for your binaries.
 It is useful when you do not want to deploy binaries with debug information to your production environments, yet you want to utilize Parca Agent.
-By using the debug-info tool, you can extract and upload the debug information from your binaries to your Parca server and then strip the debug information from the binaries before you deploy them.
+By using the `parca-debuginfo` tool, you can extract and upload the debug information from your binaries to your Parca server and then strip the debug information from the binaries before you deploy them.
 
 Read the docs on [symbolization](https://www.parca.dev/docs/symbolization) to understand the process.
 
-You can download the latest debug-info` binary release for your architecture from our [releases page](https://github.com/parca-dev/parca-agent/releases).
+You can download the latest `parca-debuginfo` binary release for your architecture from our [releases page](https://github.com/parca-dev/parca-debuginfo/releases).
+
 <WithVersions language="bash">
   { versions =>
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz - parca-debug-info
+      curl -sL https://github.com/parca-dev/parca-debuginfo/releases/download/{versions.debuginfo_cli}/parca-debuginfo_{versions.debuginfo_cli.substring(1)}_`uname -s`_`uname -m`.tar.gz
     </CodeBlock>
   }
 </WithVersions>
 
-The debug-info tool has to commands:
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sL https://github.com/parca-dev/parca-debuginfo/releases/{versions.debuginfo_cli}/download/checksums.txt | shasum --ignore-missing -a 256 --check
+    </CodeBlock>
+  }
+</WithVersions>
+
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      tar -xzf parca-debuginfo_{versions.debuginfo_cli.substring(1)}_`uname -s`_`uname -m`.tar.gz parca-debuginfo
+    </CodeBlock>
+  }
+</WithVersions>
+
+The `parca-debuginfo` tool has to commands:
 
 ```shell
-Usage: parca-debug-info <command>
+Usage: parca-debuginfo <command>
 
 Flags:
   -h, --help                Show context-sensitive help.
       --log-level="info"    Log level.
-      --temp-dir="tmp"      Temporary directory path to use for object files.
 
 Commands:
   upload --store-address=STRING <path> ...
@@ -36,14 +52,16 @@ Commands:
   extract <path> ...
     Extract debug information.
 
-Run "parca-debug-info <command> --help" for more information on a command.
+  buildid <path>
+    Extract buildid.
 
+Run "parca-debuginfo <command> --help" for more information on a command.
 ```
 
 `Upload` command to directly extract and upload the debug information to a Parca server:
 
 ```shell
-Usage: parca-debug-info upload --store-address=STRING <path> ...
+Usage: main upload --store-address=STRING <path> ...
 
 Upload debug information files.
 
@@ -53,7 +71,6 @@ Arguments:
 Flags:
   -h, --help                        Show context-sensitive help.
       --log-level="info"            Log level.
-      --temp-dir="tmp"              Temporary directory path to use for object files.
 
       --store-address=STRING        gRPC address to sends symbols to.
       --bearer-token=STRING         Bearer token to authenticate with store.
@@ -63,18 +80,18 @@ Flags:
 ```
 
 ```shell
-parca-debug-info upload --store-address=localhost:7070 --insecure parca-agent
+parca-debuginfo upload --store-address=localhost:7070 --insecure /path/to/your/binary
 ```
 
 ```shell
-level=info ts=2021-10-07T12:28:30.710169775Z caller=debuginfo.go:109 msg="debug information uploaded successfully" buildid=324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653 file=dist/parca-agent_linux_amd64/parca-agent
+level=info ts=2021-10-07T12:28:30.710169775Z caller=debuginfo.go:109 msg="debug information uploaded successfully" buildid=324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653 file=/path/to/your/binary
 level=info ts=2021-10-07T12:28:30.710224803Z caller=main.go:154 msg=done!
 ```
 
 And another command `Extract` to extract the debug information for local investigations.
 
 ```shell
-Usage: parca-debug-info extract <path> ...
+Usage: main extract <path> ...
 
 Extract debug information.
 
@@ -84,13 +101,12 @@ Arguments:
 Flags:
   -h, --help                Show context-sensitive help.
       --log-level="info"    Log level.
-      --temp-dir="tmp"      Temporary directory path to use for object files.
 
       --output-dir="out"    Output directory path to use for extracted debug information files.
 ```
 
 ```shell
-parca-debug-info extract --insecure parca-agent
+parca-debuginfo extract --insecure /path/to/your/binary
 ```
 
 ```shell
@@ -103,4 +119,30 @@ By default, you can find extracted information in `out` directory where you exec
 ```shell
 ls out
 324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653
+```
+
+If all you want to do is extract the buildid of a binary, you can use the `buildid` command:
+
+```shell
+Usage: main buildid <path>
+
+Extract buildid.
+
+Arguments:
+  <path>    Paths to extract buildid.
+
+Flags:
+  -h, --help                Show context-sensitive help.
+      --log-level="info"    Log level.
+```
+
+For example for your own binary use:
+
+```shell
+parca-debuginfo buildid /path/to/your/binary
+```
+
+```shell
+Build ID: 324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653
+level=info msg=done!
 ```

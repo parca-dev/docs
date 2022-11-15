@@ -47,19 +47,23 @@ module.exports = {
       type: "category",
       label: "Parca Agent",
       items: [
-        "parca-agent",
-        "parca-agent-design",
-        "parca-agent-language-support",
+        'parca-agent',
+        'parca-agent-design',
         "parca-agent-labelling",
-        "parca-agent-security",
-        "parca-agent-systemd",
-        "parca-agent-debuginfo-cli",
-      ],
+        'parca-agent-language-support',
+        'parca-agent-security',
+        'parca-agent-systemd',
+      ]
     },
     {
-      type: "doc",
-      label: "Concepts",
-      id: "concepts",
+      type: 'doc',
+      label: 'Debuginfo CLI',
+      id: 'debuginfo-cli',
+    },
+    {
+      type: 'doc',
+      label: 'Concepts',
+      id: 'concepts',
     },
     {
       type: "category",
