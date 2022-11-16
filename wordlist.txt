@@ -259,3 +259,10 @@ xvfz
 xyproto
 yaml
 zsh
+cli
+checksums
+shasum
+txt
+xzf
+buildid
+sLO

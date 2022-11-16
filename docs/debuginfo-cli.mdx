@@ -1,0 +1,154 @@
+# Debuginfo CLI
+
+import WithVersions from '@site/src/components/WithVersions';
+import CodeBlock from '@theme/CodeBlock';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+The `parca-debuginfo` CLI is an auxiliary tool that helps you to upload debug information for your binaries.
+It is useful when you do not want to deploy binaries with debug information to your production environments, yet you want to utilize Parca Agent.
+By using the `parca-debuginfo` tool, you can extract and upload the debug information from your binaries to your Parca server and then strip the debug information from the binaries before you deploy them.
+
+Read the docs on [symbolization](https://www.parca.dev/docs/symbolization) to understand the process.
+
+You can download the latest `parca-debuginfo` binary release for your architecture from our [releases page](https://github.com/parca-dev/parca-debuginfo/releases).
+
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sLO https://github.com/parca-dev/parca-debuginfo/releases/download/{versions.debuginfo_cli}/parca-debuginfo_{versions.debuginfo_cli.substring(1)}_`uname -s`_`uname -m`.tar.gz
+    </CodeBlock>
+  }
+</WithVersions>
+
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      curl -sL https://github.com/parca-dev/parca-debuginfo/releases/download/{versions.debuginfo_cli}/checksums.txt | shasum --ignore-missing -a 256 --check
+    </CodeBlock>
+  }
+</WithVersions>
+
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      tar -xzf parca-debuginfo_{versions.debuginfo_cli.substring(1)}_`uname -s`_`uname -m`.tar.gz parca-debuginfo
+    </CodeBlock>
+  }
+</WithVersions>
+
+If you want to move the CLI to a path in your `$PATH` you can move the binary:
+
+```shell
+mv parca-debuginfo /usr/local/bin/parca-debuginfo
+```
+
+The `parca-debuginfo` tool has to commands:
+
+```shell
+Usage: parca-debuginfo <command>
+
+Flags:
+  -h, --help                Show context-sensitive help.
+      --log-level="info"    Log level.
+
+Commands:
+  upload --store-address=STRING <path> ...
+    Upload debug information files.
+
+  extract <path> ...
+    Extract debug information.
+
+  buildid <path>
+    Extract buildid.
+
+Run "parca-debuginfo <command> --help" for more information on a command.
+```
+
+`Upload` command to directly extract and upload the debug information to a Parca server:
+
+```shell
+Usage: main upload --store-address=STRING <path> ...
+
+Upload debug information files.
+
+Arguments:
+  <path> ...    Paths to upload.
+
+Flags:
+  -h, --help                        Show context-sensitive help.
+      --log-level="info"            Log level.
+
+      --store-address=STRING        gRPC address to sends symbols to.
+      --bearer-token=STRING         Bearer token to authenticate with store.
+      --bearer-token-file=STRING    File to read bearer token from to authenticate with store.
+      --insecure                    Send gRPC requests via plaintext instead of TLS.
+      --insecure-skip-verify        Skip TLS certificate verification.
+```
+
+```shell
+parca-debuginfo upload --store-address=localhost:7070 --insecure /path/to/your/binary
+```
+
+```shell
+level=info ts=2021-10-07T12:28:30.710169775Z caller=debuginfo.go:109 msg="debug information uploaded successfully" buildid=324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653 file=/path/to/your/binary
+level=info ts=2021-10-07T12:28:30.710224803Z caller=main.go:154 msg=done!
+```
+
+And another command `Extract` to extract the debug information for local investigations.
+
+```shell
+Usage: main extract <path> ...
+
+Extract debug information.
+
+Arguments:
+  <path> ...    Paths to extract debug information.
+
+Flags:
+  -h, --help                Show context-sensitive help.
+      --log-level="info"    Log level.
+
+      --output-dir="out"    Output directory path to use for extracted debug information files.
+```
+
+```shell
+parca-debuginfo extract --insecure /path/to/your/binary
+```
+
+```shell
+level=info ts=2021-10-07T12:30:27.549546915Z caller=main.go:138 msg="debug information extracted" file=out/324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653
+level=info ts=2021-10-07T12:30:27.549605633Z caller=main.go:154 msg=done!
+```
+
+By default, you can find extracted information in `out` directory where you executed the tool:
+
+```shell
+ls out
+324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653
+```
+
+If all you want to do is extract the buildid of a binary, you can use the `buildid` command:
+
+```shell
+Usage: main buildid <path>
+
+Extract buildid.
+
+Arguments:
+  <path>    Paths to extract buildid.
+
+Flags:
+  -h, --help                Show context-sensitive help.
+      --log-level="info"    Log level.
+```
+
+For example for your own binary use:
+
+```shell
+parca-debuginfo buildid /path/to/your/binary
+```
+
+```shell
+Build ID: 324367736569664b3941566c467a727543434d622f576479554f6838735973614362395a71307441742f61754d4a7357616c32695a734e576b77337256472f3836554d764a506b7846656d333936726d417653
+level=info msg=done!
+```
