@@ -47,12 +47,8 @@ adduser --system --no-create-home --group parca
 Parca runs with an example configuration file by default, that makes Parca to scrape itself.
 
 ```yaml
-debug_info:
+object_storage:
   bucket:
-    type: "FILESYSTEM"
-    config:
-      directory: "/tmp"
-  cache:
     type: "FILESYSTEM"
     config:
       directory: "/tmp"

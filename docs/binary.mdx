@@ -25,12 +25,8 @@ We also produce Docker images that can be pulled:
 We provide an example configuration file that you can use to get Parca running, and the scrape configuration section should look familiar to anyone familiar with Prometheus.
 
 ```yaml
-debug_info:
+object_storage:
   bucket:
-    type: "FILESYSTEM"
-    config:
-      directory: "./tmp"
-  cache:
     type: "FILESYSTEM"
     config:
       directory: "./tmp"
