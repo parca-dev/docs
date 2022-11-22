@@ -5,12 +5,8 @@ Parca obtains configuration information via a YAML file.
 The overall structure of a config file for Parca is as follows:
 
 ```yaml
-debug_info:
+object_storage:
   bucket:
-    type: "FILESYSTEM"
-    config:
-      directory: "./tmp"
-  cache:
     type: "FILESYSTEM"
     config:
       directory: "./tmp"
