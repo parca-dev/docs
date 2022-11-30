@@ -41,7 +41,7 @@ There are more potential use cases, but the three that are most common are:
 The Parca project houses two main components:
 
 * Parca: The server that stores profiling data and allows it to be queried and analyzed over time.
-* Parca Agent: An eBPF based profiler, that can automatically discover targets to profile such as Kubernetes containers or systemd units.
+* Parca Agent: An eBPF-based whole-system profiler.
 
 ## Architecture
 

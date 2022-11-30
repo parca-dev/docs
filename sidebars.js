@@ -52,7 +52,6 @@ module.exports = {
         "parca-agent-labelling",
         'parca-agent-language-support',
         'parca-agent-security',
-        'parca-agent-systemd',
       ]
     },
     {

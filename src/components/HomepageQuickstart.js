@@ -21,7 +21,7 @@ curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > par
         "agent": `# Download the binary specific to your architecture (only works on Linux)
 curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.agent}/parca-agent_${versions.agent.substring(1)}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz -
 # Run Parca Agent and access the Web UI on port 7071
-./parca-agent --node=systemd-test --systemd-units=parca-agent.service --kubernetes=false`
+./parca-agent --node=test`
     }[binaryMode]
 
     const kubernetesInstructions = {
