@@ -2,7 +2,7 @@
 sync-parca-agent:
 	rm -rf tmp/
 	mkdir -p tmp
-	rm docs/parca-agent-design.md docs/parca-agent-security.md
+	rm docs/parca-agent-design.md docs/parca-agent-security.md docs/parca-agent-labelling.md
 	git clone \
 		--depth 1  \
 		--filter=blob:none  \

@@ -117,17 +117,28 @@ Now we can view the active profilers by visiting `http://localhost:7071`:
 
 <br/>
 
-To continuously send every profile collected to a Parca server configure the `--store-address` and the potential credentials needed.
-For example, to send to a Parca server in the `parca` namespace set: `--store-address=parca.parca.svc:7070`.
+And all the discovered processes:
+<BrowserWindow>
+
+![image](../static/img/tutorial/processes.png)
+
+</BrowserWindow>
+
+<br/>
+
+To continuously send every profile collected to a Parca server configure the `--remote-store-address` and the potential credentials needed.
+For example, to send to a Parca server in the `parca` namespace set: `--remote-store-address=parca.parca.svc:7070`.
 This has already been set up for our current setup in the previously applied manifests.
 
 :::tip
 
-You can use `--insecure` and `--insecure-skip-verify` for simpler setups.
+You can use `--remote-store-insecure` and `--remote-store-insecure-skip-verify` for simpler setups.
 
 ``` shell
---insecure                           Send gRPC requests via plaintext instead of TLS.
---insecure-skip-verify               Skip TLS certificate verification.
+      --remote-store-insecure     Send gRPC requests via plaintext instead of
+                                  TLS.
+      --remote-store-insecure-skip-verify
+                                  Skip TLS certificate verification.
 ```
 
 :::
@@ -190,18 +201,18 @@ And you can click the samples on the graph to focus on the individual profiles.
 </BrowserWindow>
 
 
-### Kubernetes label selector for specific apps
+### Selecting a subset of applications to profile
 
-To further sample targets on Kubernetes use the `--pod-label-selector=` flag.
-For example, to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, use `--pod-label-selector=app.kubernetes.io/name=my-web-app`.
+Metadata discovery mechanism enriches the collected profiles with Kubernetes labels. You can use relabelling feature of the Parca Agent to drop a subset of labels.
+Agent utilizes the exact same labelling mechanism Prometheus provides.
 
 :::tip
 
-To learn more about label selectors, please check out [official Kubernetes documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+To learn more about relabelling please see the [Prometheus `relabel_config` documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config).
 
 :::
 
-The relevant manifest changes on `parca-agent-daemonSet.yaml` would like the following:
+First you need to specify a configuration file if you haven't already. The relevant manifest changes on `parca-agent-daemonSet.yaml` would like the following:
 ```diff
 ...
 template:
@@ -216,11 +227,29 @@ template:
       - /bin/parca-agent
       - --log-level=info
       - --node=$(NODE_NAME)
-      - --kubernetes
-      - --store-address=parca.parca.svc.cluster.local:7070
-+     - --pod-label-selector=app=my-web-app
-      - --insecure
-      - --insecure-skip-verify
+      - --remote-store-address=parca.parca.svc.cluster.local:7070
+      - --remote-store-insecure
+      - --remote-store-insecure-skip-verify
++     - --config-path="/etc/parca-agent.yaml"
       - --temp-dir=/tmp
 ...
 ```
+
+:::info
+
+For brevity, we skip the details of mounting a `ConfigMap` with relevant content to `/etc/parca-agent.yaml` location.
+
+:::
+
+For example, to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, the relevant configuration file `/etc/parca-agent.yaml` would like the following:
+```yaml
+relabel_configs:
+- source_labels: [app_kubernetes_io_name]
+  regex: my-web-app
+  action: keep
+```
+
+:::tip
+
+Pay attention to how label names are sanitized. `app.kubernetes.io/name` becomes `app_kubernetes_io_name`
+:::

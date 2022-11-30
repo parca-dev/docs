@@ -2,10 +2,6 @@
 
 Parca Agent requires to be run as `root` user (or `CAP_SYS_ADMIN`). Various security precautions have been taken to protect users running Parca Agent.
 
-## Rust in eBPF
-
-Even though eBPF verifier does an amazing job to prevent faulty code in Kernel-space, we also use [Rust](https://www.rust-lang.org/) to write the BPF program to catch the human errors as early as possible. Details of the implementation can be found in the [eBPF Day '22 talk](https://youtu.be/oWHQrlE2-G8) from one of our team members.
-
 ## Reproducible builds
 
 Parca Agent binaries and container image build processes have been specifically designed to be byte-by-byte reproducible.
@@ -17,7 +13,8 @@ Parca Agent binaries and container image build processes have been specifically 
 
 ### No Clang/LLVM
 
-Parca Agent uses BPF CO-RE (Compile Once – Run Everywhere) using [libbpf](https://github.com/libbpf/libbpf), and pre-compiles all BPF programs, and statically embeds them in the target binary, from where it is loaded via libbpf when used. This means that Parca Agent does not need to compile the BPF program at startup or runtime like when using [bcc-tools](https://github.com/iovisor/bcc/tree/master/tools), meaning no Clang & LLVM, nor kernel headers need to be installed on the host. The only requirement is a [BTF](https://www.kernel.org/doc/html/latest/bpf/btf.html) capable Kernel (Linux Kernel 5.1+).
+Parca Agent uses BPF CO-RE (Compile Once – Run Everywhere) using [libbpf](https://github.com/libbpf/libbpf), and pre-compiles all BPF programs, and statically embeds them in the target binary, from where it is loaded via libbpf when used. This means that Parca Agent does not need to compile the BPF program at startup or runtime like when using [bcc-tools](https://github.com/iovisor/bcc/tree/master/tools), meaning no Clang & LLVM, nor kernel headers need to be installed on the host. The only requirement is a [BTF](https://www.kernel.org/doc/html/latest/bpf/btf.html) capable Kernel (Linux Kernel 4.18+).
+
 ### No external dependencies
 
 The resulting Go binary is `statically linked`. It does not depend on any external shared object dependencies.
@@ -47,7 +44,7 @@ Any problems identified by the analysis are shown in review process, thanks to [
 
 ## Automated dependency updates
 
-Parca Agent supply chain uses [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/configuring-dependabot-security-updates) and [Renovate](https://github.com/renovatebot/renovate) to constantly keep the dependencies up-to-date against any security vulnerabilities.
+Parca Agent supply chain uses [Renovate](https://github.com/renovatebot/renovate) and [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/configuring-dependabot-security-updates) to constantly keep the dependencies up-to-date against any security vulnerabilities.
 
 ## Report Security Vulnerabilities
 

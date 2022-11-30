@@ -4,18 +4,9 @@ Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/)
 
 The collected data can be viewed locally via HTTP endpoints and optionally be configured to be sent to a Parca server, where it can be queried and analyzed over time.
 
-It discovers targets to profile through:
-
-* **Kubernetes**: Discovering containers on the Kubernetes node the Parca agent is running on.
-* **systemd**: Discovering systemd units on the node the Parca agent is running on.
-
-Target discovery mechanisms can be combined so that both systemd units as well as Kubernetes containers are discovered and automatically profiled.
-
 ## Requirements
 
 * Linux Kernel version 4.18+
-* A source of targets to discover from Kubernetes or systemd.
-
 ## Supported Profiles
 
 Profiles available for compiled languages (e.g. C, C++, Go, Rust):
