@@ -27,8 +27,7 @@ By default, the Agent uses Kubernetes service discovery. So we need to disable i
 parca-agent \
   --http-address=":7071" \
   --node=systemd-test \
-+  --kubernetes=false \
-  --insecure
+  --remote-store-insecure
 ```
 :::
 
@@ -40,13 +39,21 @@ parca-agent \
   --http-address=":7071" \
   --node=systemd-test \
 +  --systemd-units=docker.service,my-app.service \
-  --kubernetes=false \
-  --insecure
+  --remote-store-insecure
 ```
 
 Now we can view the active profilers by visiting `http://localhost:7071`:
  <BrowserWindow>
 
- ![image](../static/img/tutorial/systemd_active_profilers.png)
+ ![image](../static/img/tutorial/active_profilers.png)
 
  </BrowserWindow>
+
+<br/>
+
+And all the discovered processes:
+<BrowserWindow>
+
+![image](../static/img/tutorial/processes.png)
+
+</BrowserWindow>

@@ -146,7 +146,7 @@ Type=simple
 User=root
 Group=root
 
-ExecStart=/usr/bin/parca-agent --http-address=":7071" --node=systemd-test --systemd-units=docker.service,parca.service,parca-agent.service --kubernetes=false --store-address=localhost:7070 --insecure
+ExecStart=/usr/bin/parca-agent --http-address=":7071" --node=systemd-test --remote-store-address=localhost:7070 --remote-store-insecure
 
 Restart=on-failure
 RestartSec=10
