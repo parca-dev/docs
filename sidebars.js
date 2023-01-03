@@ -47,22 +47,22 @@ module.exports = {
       type: "category",
       label: "Parca Agent",
       items: [
-        'parca-agent',
-        'parca-agent-design',
+        "parca-agent",
+        "parca-agent-design",
         "parca-agent-labelling",
-        'parca-agent-language-support',
-        'parca-agent-security',
-      ]
+        "parca-agent-language-support",
+        "parca-agent-security",
+      ],
     },
     {
-      type: 'doc',
-      label: 'Debuginfo CLI',
-      id: 'debuginfo-cli',
+      type: "doc",
+      label: "Debuginfo CLI",
+      id: "debuginfo-cli",
     },
     {
-      type: 'doc',
-      label: 'Concepts',
-      id: 'concepts',
+      type: "doc",
+      label: "Concepts",
+      id: "concepts",
     },
     {
       type: "category",
@@ -99,6 +99,7 @@ module.exports = {
           items: ["kubernetes", "openshift"],
         },
         "querying-parca",
+        "filter-by-function",
         "troubleshooting-parca-agent",
         {
           type: "category",
