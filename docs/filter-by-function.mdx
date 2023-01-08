@@ -1,0 +1,29 @@
+# Filter By Function
+
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+Parca allows filtering profiles by function name. This is useful to narrow down the scope of a profile to a specific function or set of functions. 
+This is useful to understand how a specific function is doing, or to understand how a set of functions interacting with a specific function is behaving.
+
+### How it works
+The filter by function feature filters the samples to retain only the ones that has at least one node matching the given text pattern. The text pattern can be a substring of a function name or a package name. The filter is case-insensitive.
+
+### How to use it
+Find the "Filter by function" input box in the visualization bar above the flame graph. Enter the text pattern and press enter. The flame graph will be updated to show only the samples that have at least one function matching the given text pattern.
+
+<BrowserWindow>
+
+![Filter By Function Input](../static/img/tutorial/filter-by-function-input.png)
+
+</BrowserWindow>
+
+The picture below shows the result of filtering with pattern `symbolizer`. The flame graph shows only the samples that have at least one node matching the `symbolizer` text.
+
+<BrowserWindow>
+
+![Filter By Function Input](../static/img/tutorial/filter-by-function-result.png)
+
+</BrowserWindow>
+
+<br />
+This way, you can filter the samples to show only the ones that are of interest to you when you're troubleshooting a performance issue.

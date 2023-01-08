@@ -19,7 +19,7 @@ scrape_configs:
       # Name of keys with value(s)
       - key_1: ['value1', 'value2']
     # How frequently to scrape the targets of this scrape config.
-    scrape_interval: "3s"
+    scrape_interval: "30s"
     # Timeout for scraping targets of this config.
     scrape_timeout: "5s"
     # URL scheme with which to fetch metrics from targets.
@@ -42,7 +42,7 @@ scrape_configs:
      - targets: [ '127.0.0.1:7070' ]
     # Configuration for relabeling of target label sets.
     relabel_configs:
-      - source_labels: __address__
+      - source_labels: [__address__]
         target_label: instance
 ```
 
