@@ -24,7 +24,7 @@ Learn more about how profiling works in the [Profiling 101 documentation page](.
 
 ## What is continuous profiling?
 
-As mentioned to above, sampling profiling can be achieved with very low overhead, therefore it can always be on in production. However, because of the nature of sampling profiling, it is possible that some parts of an execution are missed, therefore continuous profiling attempts to gather data continuously, so that with enough data it is statistically significant.
+As mentioned above, sampling profiling can be achieved with very low overhead, therefore it can always be on in production. However, because of the nature of sampling profiling, it is possible that some parts of an execution are missed, therefore continuous profiling attempts to gather data continuously, so that with enough data it is statistically significant.
 
 Simply said, much like with any other observability data, you never know at which point in time you are going to need profiling data, so always collect it at low overhead.
 
