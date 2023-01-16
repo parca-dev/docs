@@ -78,4 +78,4 @@ In a columnar database data is stored by columns instead of by rows, allowing th
 
 Sorting by the dynamic columns and immediately followed by the timestamp column has been shown in benchmarks to be an effective way of ignoring data that is outside of the requested time range. In our example above, we might only be interested in the `cpu{pod="mypod1",node="mynode1"}` from `t2` to `t3`. Upon iterating over the data, FrostDB ignores all the data below `t2`.
 
-Read more on how arcticDB and Parca were originally created in the announcement blog post: https://www.polarsignals.com/blog/posts/2022/05/04/introducing-arcticdb/
+Read more on how FrostDB ([previously called arcticDB](https://www.polarsignals.com/blog/posts/2022/06/16/arcticdb-is-now-frostdb/)) and Parca were originally created in the announcement blog post: https://www.polarsignals.com/blog/posts/2022/05/04/introducing-arcticdb/
