@@ -34,7 +34,7 @@ Pprof client libraries exist for various languages:
 ## Combining Push and Pull based Ingestion
 
 Deploy the Parca Agent as described above. Additionally collecting profiles in [pprof](https://github.com/google/pprof) format from HTTP endpoints. 
-If both are deployed the CPU profiles would be collected twice. Once by the Parca Agent and once by the Parca scraping the application's HTTP ednpoints.
+If both are deployed the CPU profiles would be collected twice. Once by the Parca Agent and once by the Parca scraping the application's HTTP endpoints.
 
 To disable cpu profiling collections change the configuration:
 
