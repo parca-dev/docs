@@ -23,7 +23,7 @@
 5. Enter the API URL of the Parca server in the `API Endpoint` field. For example, `http://localhost:7070/api`.
    Note: Please make sure cors configuration of the Parca server allow requests from your Grafana Dashboard origin. If you Grafana dashboard is running at `http://localhost:3000`, then ensure that the Parca server is started with either `--cors-allowed-origins='http://localhost:3000'` or `--cors-allowed-origins='\*'` flag. Please refer the [docs](https://www.parca.dev/docs/grafana-datasource-plugin#allow-cors-requests).
    
-   If you have [deployed Parca in Kubernetes](https://www.parca.dev/docs/kubernetes), you can enter the ClusterIP of the Parca service created when applying the Parca server manifest to your cluster in the `API Endpoint` field. The ClusterIP can be found using `kubectl get service -n parca parca`.
+   If you have [deployed Parca in Kubernetes](https://www.parca.dev/docs/kubernetes), you can enter `http://parca.parca.svc.cluster.local/api` in the `API Endpoint` field.
 6. Click on the `Save & Test` button. If the connection is successful, you should see a green `Data source is working` message.
 7. Now you can use the Parca datasource in your panels.
 
