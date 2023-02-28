@@ -26,6 +26,13 @@ No. Profiling data is made up of statistics representing. For example, how much 
 
 Read the docs on [symbolization](https://www.parca.dev/docs/symbolization) to understand further why.
 
+## What happened to the Merge button?
+
+Until Parca v0.16.0 Parca had a merge button next to the Search and Compare button.
+
+With version v0.16.0 the merge button is gone. Profiles that can be merged will automatically merge across the selected time range. Some profiles (goroutines, memory heap, and allocations) never made sense to be merged. Therefore, the functionality to
+merge these profiles is gone and you need to select individual profiles from the metrics graph.
+
 ## What are the 0x7f79e7a26b10 memory addresses I see in profiles?
 
 This means the Parca server is failed to symbolize the profile that it received. For the [generic profiles](/docs/symbolization#type-of-profiles), the function metadata is decoupled from the actual executable and source code. In this particular situation, Parca has the profile but not the metadata.
