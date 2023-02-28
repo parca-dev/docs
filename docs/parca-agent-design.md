@@ -28,7 +28,7 @@ The way BPF programs communicate with user-space uses BPF maps. The Parca Agent 
 Parca Agent reads all data every 10 seconds. The data that is read from the BPF maps gets processed and then purged to reset for the next iteration.
 
 <p align="center">
-  <img alt="Parca Agent BPF program" src="https://docs.google.com/drawings/d/1Xq3VpXzO9wo2k91ZQKVBzzo4axszTA0SCrzRSnosNi4/export/svg" alt="drawing" width="600" />
+  <img alt="Parca Agent BPF program" src="https://docs.google.com/drawings/d/1NW9bP6jJ3i3CTymuuKEOmTfcQGKU-pn1qcWMUk6S3x8/export/svg" alt="drawing" width="600" />
 </p>
 
 ### CPU sampling frequency
