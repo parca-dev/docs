@@ -41,6 +41,17 @@ module.exports = {
         },
         "observability",
         "configuration",
+        {
+          type: "category",
+          label: "Profile Visualization",
+          items: [
+            {
+              type: "category",
+              label: "Flamegraph",
+              items: ["flamegraph-binary-based-colour-stack"],
+            },
+          ],
+        },
       ],
     },
     {
