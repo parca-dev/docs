@@ -6,17 +6,7 @@ Alternatively, you can use the Parca container image from [the GitHub Container 
 
 Once you have either the binary or the container, you can start profiling your applications with Parca.
 
-:::tip
-
-[Check out our tutorials for more. ](/docs/binary/)
-
-:::
-
-<br />
-
-
-:::info
-Please select your environment and use the following commands to quickly get started
+:::info Please select your environment and use the following commands to quickly get started
 :::
 
 import Tabs from "@theme/Tabs";
@@ -65,7 +55,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 <br />
 
-:::tip [Parca from Binary - Tutorial 5min ⏱️](/docs/binary)
+:::danger [Parca from Binary - Tutorial 5min ⏱️](/docs/binary)
 :::
 </TabItem>
 <TabItem value="container" label="Container">
@@ -94,29 +84,29 @@ Run Parca Agent (requires privileged more) and access the Web UI on port 7071 (a
 
 <br />
 
-:::tip [Parca from Binary - Tutorial 5min ⏱️](/docs/binary)
+:::danger [Parca from Binary - Tutorial 5min ⏱️](/docs/binary)
 :::
 
 </TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
 
-1. Minikube needs to be configured with a real virtual machine driver
-    ```bash
-    minikube start --driver=virtualbox
-    ```
-    :::tip
-    kvm2, or qemu2 can be used. As long as, driver is VM-based.
-    This is only a requirement for the Agent.
-    :::
+:::tip
 
-2. Create the namespace (not strictly necessary but prevents a race with the next commands)
+To quickly try out the Parca and Parca Agent with Kubernetes, you create a [minikube](https://minikube.sigs.k8s.io/docs/) cluster with an actual virtual machine, e.g. Virtualbox:
+
+```shell
+minikube start --driver=virtualbox
+```
+:::
+
+1. Create the namespace (not strictly necessary but prevents a race with the next commands)
     ```
     kubectl create namespace parca
     ```
 
 **Server**
 
-3. Use to deploy Parca Server (API and UI)
+2. Use to deploy Parca Server (API and UI)
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
@@ -127,7 +117,7 @@ Run Parca Agent (requires privileged more) and access the Web UI on port 7071 (a
 
 **Agent**
 
-4. Use to deploy Parca Agent for all nodes
+3. Use to deploy Parca Agent for all nodes
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
@@ -137,7 +127,7 @@ Run Parca Agent (requires privileged more) and access the Web UI on port 7071 (a
 </WithVersions>
 <br />
 
-:::tip [Parca in Kubernetes - Tutorial 5min ⏱️](/docs/kubernetes)
+:::danger [Parca in Kubernetes - Tutorial 5min ⏱️](/docs/kubernetes)
 :::
 </TabItem>
 </Tabs>
