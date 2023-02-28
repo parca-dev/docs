@@ -43,8 +43,8 @@ curl -sL https://github.com/parca-dev/parca-agent/releases/download/${versions.a
             case "kubernetes": return minikubeInstructions;
         }
     })();
-    const link = mode == 'binary' ? '/docs/binary' : '/docs/kubernetes';
-    const text = mode == 'binary' ? 'Parca from Binary - Tutorial 5min ⏱️' : 'Parca in Kubernetes - Tutorial 5min ⏱️';
+    const link = mode == 'kubernetes' ? '/docs/kubernetes' : '/docs/binary';
+    const text = mode == 'kubernetes' ? 'Parca in Kubernetes - Tutorial 5min ⏱️': 'Parca from Binary - Tutorial 5min ⏱️';
 
     return (
         <>

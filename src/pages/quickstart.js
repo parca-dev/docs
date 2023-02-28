@@ -65,7 +65,7 @@ export default function QuickstartPage() {
               className="button button--primary button--lg"
               to="/docs/overview"
             >
-              Documetation
+              Documentation
             </Link>
           </div>
         </div>
