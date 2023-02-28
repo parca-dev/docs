@@ -16,9 +16,9 @@ module.exports = {
   // But you can create a sidebar manually
   tutorialSidebar: [
     {
-      type: "link",
+      type: "doc",
       label: "Quick Start",
-      href: "/quickstart",
+      id: "quickstart",
     },
     {
       type: "doc",

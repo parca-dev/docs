@@ -44,7 +44,8 @@ module.exports = {
       },
       items: [
         {
-          to: "/quickstart",
+          type: "doc",
+          docId: "quickstart",
           position: "left",
           label: "Quick Start",
         },
