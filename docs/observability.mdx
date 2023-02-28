@@ -30,14 +30,14 @@ There are some FrostDB specific metrics that are useful to monitor as well.
 
 | Metric                      |  Description                                                |  Type     |
 | ----------------------------|------------------------------------------------------------ | --------- |
-| `granules_compactions_total`| Number of per table compaction events that have occurred.   | counter   |
-| `granules_created_total`    | Number of per table granules that have been created.        | counter   |
-| `blocks_rotated_total`      | Number of per table blocks that have rotated out.           | counter   |
-| `active_table_block_size`   | The estimated size in bytes of each tables active block size.  | gauge     |
-| `row_insert_size`           | Per table tracking of the size in bytes of rows inserted.   | histogram |
-| `thanos_objstore_bucket_last_successful_upload_time`| If bucket storage is enabled, the last successful upload to the bucket. | gauge |
-| `thanos_objstore_bucket_operation_failures_total`   | Total number of bucket operations that have failed. | counter |
-| `tx_high_watermark`         | The transaction number that is safe to read up to.          | gauge     |
+| `frostdb_granules_compactions_total`| Number of per table compaction events that have occurred.   | counter   |
+| `frostdb_granules_created_total`    | Number of per table granules that have been created.        | counter   |
+| `frostdb_blocks_rotated_total`      | Number of per table blocks that have rotated out.           | counter   |
+| `frostdb_active_table_block_size`   | The estimated size in bytes of each tables active block size.  | gauge     |
+| `frostdb_row_insert_size`           | Per table tracking of the size in bytes of rows inserted.   | histogram |
+| `frostdb_thanos_objstore_bucket_last_successful_upload_time`| If bucket storage is enabled, the last successful upload to the bucket. | gauge |
+| `frostdb_thanos_objstore_bucket_operation_failures_total`   | Total number of bucket operations that have failed. | counter |
+| `frostdb_tx_high_watermark`         | The transaction number that is safe to read up to.          | gauge     |
 
 
 ### Service Level Objectives
