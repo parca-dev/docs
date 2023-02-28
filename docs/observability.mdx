@@ -26,12 +26,12 @@ Parca exposes Prometheus metrics on [localhost:7070/metrics](http://localhost:70
 Parca's monitoring is mostly focused on read and write requests to Parca.
 For that reason the `grpc_server_handled_total` is the most important metric for Parca and most of the other metrics and helpful for debugging overall.
 
-There are some FrostDB specific metics that are useful to monitor as well.
+There are some FrostDB specific metrics that are useful to monitor as well.
 
 | Metric                      |  Description                                                |  Type     |
 | ----------------------------|------------------------------------------------------------ | --------- |
-| `granules_compactions_total`| Number of per table compactions that have occured.          | counter   |
-| `granules_created_total`    | Number of per table granueles that have been created.       | counter   |
+| `granules_compactions_total`| Number of per table compaction events that have occurred.   | counter   |
+| `granules_created_total`    | Number of per table granules that have been created.        | counter   |
 | `blocks_rotated_total`      | Number of per table blocks that have rotated out.           | counter   |
 | `active_table_block_size`   | The estimated size in bytes of each tables active block size.  | gauge     |
 | `row_insert_size`           | Per table tracking of the size in bytes of rows inserted.   | histogram |
