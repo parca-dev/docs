@@ -21,7 +21,7 @@ scrape_configs:
     # How frequently to scrape the targets of this scrape config.
     scrape_interval: "30s"
     # Timeout for scraping targets of this config.
-    scrape_timeout: "5s"
+    scrape_timeout: "40s"
     # URL scheme with which to fetch metrics from targets.
     scheme: https
     # Config for adding custom scrape endpoints.

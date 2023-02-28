@@ -4,11 +4,13 @@ ainur
 Akkoyun
 amd
 Andrii
+AOT
 api
 APIs
 apiserver
 arcticDB
 arcticdb
+async
 autocompletion
 backend
 bb
@@ -69,6 +71,7 @@ DebugProcessNames
 deduplicate
 deduplicated
 demangle
+Deno
 Dependabot
 dev
 dgraph
@@ -124,6 +127,8 @@ iterateLong
 iterateShort
 Jaeger
 JIT
+jitdump
+js
 JVM
 KASLR
 Katacoda
@@ -297,6 +302,7 @@ vsyscall
 vt
 wal
 WantedBy
+Wasmtime
 WithVersions
 Wojciechowski
 www

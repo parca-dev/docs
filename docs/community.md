@@ -28,5 +28,7 @@ If you'd like to contribute, we'd love to have you do so! For major changes, ple
 
 For detailed instructions, please refer to the `CONTRIBUTING.md` files in [parca](https://github.com/parca-dev/parca/blob/main/CONTRIBUTING.md) and [parca-agent](https://github.com/parca-dev/parca-agent/blob/main/CONTRIBUTING.md) respectively.
 
+We use RFCs to document all things architecture and design for the Parca project. You can find an index of the RFCs [here](https://docs.google.com/document/d/171XgH4l_gxvGnETVKQBddo75jQz5aTSDOqO0EZ7LLqE/edit?usp=share_link).
+
 Parca uses [GitHub](https://github.com/parca-dev/) to manage reviews, issues and pull requests. Contributions to Parca documentation and this
 website can be made [here](https://github.com/parca-dev/parca.dev).
