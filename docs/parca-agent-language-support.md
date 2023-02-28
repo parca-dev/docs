@@ -1,4 +1,4 @@
-# Language Support
+# Other languages
 
 Support in Parca Agent for various languages is constantly improving, here are some indications and examples to help you get started. 
 
@@ -19,7 +19,6 @@ All JIT compiled languages with frame pointer, and [Perf map](https://github.com
 * [.NET](https://github.com/parca-dev/parca-demo/tree/main/dotnet)
 * [Deno](https://github.com/parca-dev/parca-demo/tree/main/deno)
 * [Erlang](https://github.com/parca-dev/parca-demo/tree/main/erlang)
-* [Java](https://github.com/parca-dev/parca-demo/tree/main/java)
 * [Julia](https://github.com/parca-dev/parca-demo/tree/main/julia)
 * [Node.js](https://github.com/parca-dev/parca-demo/tree/main/nodejs)
 * [PHP 8 and above](https://github.com/parca-dev/parca-demo/tree/main/php)
@@ -30,10 +29,6 @@ All JIT compiled languages with frame pointer, and [Perf map](https://github.com
 ## Interpreted
 
 _Coming soon_
-
-## Coming Soon
-
-* Extended support for JVM runtimes via [async-profiler](https://github.com/jvm-profiling-tools/async-profiler)
 
 :::info
 
