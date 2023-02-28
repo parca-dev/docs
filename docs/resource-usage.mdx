@@ -1,0 +1,19 @@
+# Resource Usage
+
+Parca retains profile samples in memory and rotates the in-memory block out 
+when it reaches a certain size in bytes based on configuration settings.
+
+# Recommended resources
+
+We recommend a rule of thumb of 60 bytes of memory for each sample.
+By default the Parca-Agent profiles each core at 19Hz, which means you can expect 
+Parca to require 60 bytes * 19 * number of cores. So if you were profiling a 100 cores at a time
+you'd expect Parca to ingest 114Kb/s.
+
+## Flags to adjust the active memory footprint
+
+|           Flag            |     Usage                      |       
+--------------------------------------------------------------
+| `--storage-granule-size`  | By increasing the granule size you'll decrease nominal memory footprint but increase memory usage during compactions. |
+| `--storage-active-memory` | Adjust the number of bytes held in memory before being rotated out. This is the easiest way to adjust Parcas memory footprint. |
+| `--storage-row-group-size`| Smaller row groups increase memory footprint but increasy query speed. Increasing row group size results in lower memory usage but slower queries. |
