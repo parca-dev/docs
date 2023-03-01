@@ -17,13 +17,13 @@ module.exports = {
   tutorialSidebar: [
     {
       type: "doc",
-      label: "Quick Start",
-      id: "quickstart",
+      label: "Overview",
+      id: "overview",
     },
     {
       type: "doc",
-      label: "Overview",
-      id: "overview",
+      label: "Quick Start",
+      id: "quickstart",
     },
     {
       type: "doc",
