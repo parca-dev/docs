@@ -18,6 +18,6 @@ Several talks and blog posts have been written for both Parca Server and Agent.
 2. [Introduction to Parca - Part 2](https://www.polarsignals.com/blog/posts/2023/01/19/introduction-to-parca-agent/)
 3. [Design Decisions of a Continuous Profiler](https://www.polarsignals.com/blog/posts/2022/12/14/design-of-continuous-profilers/)
 4. [DWARF-based Stack Walking Using eBPF](https://www.polarsignals.com/blog/posts/2022/11/29/profiling-without-frame-pointers/)
-5. [https://www.polarsignals.com/blog/posts/2022/08/24/system-wide-profiling/](System-wide profiling in Parca Agent)
+5. [System-wide profiling in Parca Agent](https://www.polarsignals.com/blog/posts/2022/08/24/system-wide-profiling/)
 6. [Parca now also in Grafana](https://www.polarsignals.com/blog/posts/2022/11/02/grafana-parca-core-plugin/)
 7. [Improved pprof.me](https://www.polarsignals.com/blog/posts/2022/10/12/improved-profile-sharing-service-pprof.me)
