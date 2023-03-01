@@ -24,7 +24,7 @@ import CodeBlock from '@theme/CodeBlock';
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz -
+        curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
         </CodeBlock>
     }
 </WithVersions>
@@ -43,7 +43,7 @@ import CodeBlock from '@theme/CodeBlock';
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_\`uname -s\`_\`uname -m\`.tar.gz | tar xvfz -
+        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
         </CodeBlock>
     }
 </WithVersions>
