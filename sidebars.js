@@ -39,8 +39,26 @@ module.exports = {
           label: "gRPC APIs",
           href: "https://buf.build/parca-dev/parca",
         },
-        "observability",
-        "configuration",
+        {
+          type: "category",
+          label: "Operation",
+          items: [
+            "observability",
+            "configuration",
+            "resource-usage",
+          ],
+        },
+        {
+          type: "category",
+          label: "Profile Visualization",
+          items: [
+            {
+              type: "category",
+              label: "Flamegraph",
+              items: ["flamegraph-binary-based-colour-stack"],
+            },
+          ],
+        },
       ],
     },
     {
