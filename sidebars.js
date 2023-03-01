@@ -102,6 +102,11 @@ module.exports = {
       label: "Community",
       id: "community",
     },
+   {
+      type: "doc",
+      label: "Resources",
+      id: "talks",
+    },
     {
       type: "category",
       label: "Tutorial",
