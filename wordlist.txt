@@ -16,6 +16,7 @@ backend
 bb
 bcc
 bd
+blog
 BPF
 bpftool
 Brancyzk
@@ -80,6 +81,7 @@ Distros
 distros
 docusaurus
 dropdown
+DWARF
 eBPF
 Elfutils
 elfutils
@@ -201,6 +203,7 @@ pid
 PIDs
 plaintext
 polarsignals
+posts
 pprof
 pprof's
 pre
@@ -229,6 +232,7 @@ QueryLabels
 QueryRange
 qvv
 reloader
+Rawkode
 RemoteStoreAddress
 RemoteStoreBatchWriteInterval
 RemoteStoreBearerToken
@@ -246,6 +250,7 @@ runtimes
 Ryzen
 samplestore
 sandboxing
+Several
 sha
 shasum
 Sigstore
@@ -274,7 +279,9 @@ symbolizer
 syslog
 SyslogIdentifier
 systemd
+System-wide
 SYSV
+talks
 Thakkar
 Thanos
 TLS
@@ -283,6 +290,7 @@ toml
 toolchain
 tooltip
 tsdb
+TSDB
 txt
 UI
 uname
