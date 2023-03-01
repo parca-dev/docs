@@ -14,10 +14,9 @@ module.exports = {
   projectName: "docusaurus", // Usually your repo name.
   scripts: [
     {
-      src: "https://plausible.io/js/plausible.js",
+      src: "/_vercel/insights/script.js",
       async: true,
       defer: true,
-      "data-domain": "parca.dev",
     },
   ],
   plugins: [
