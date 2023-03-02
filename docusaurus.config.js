@@ -45,9 +45,9 @@ module.exports = {
       items: [
         {
           type: "doc",
-          docId: "binary",
+          docId: "quickstart",
           position: "left",
-          label: "Download",
+          label: "Quick Start",
         },
         {
           type: "doc",
@@ -102,6 +102,10 @@ module.exports = {
         {
           title: "Quick Start",
           items: [
+            {
+              label: "How to get started",
+              to: "/quickstart",
+            },
             {
               label: "Parca from Binary",
               to: "/docs/binary",

@@ -22,6 +22,11 @@ module.exports = {
     },
     {
       type: "doc",
+      label: "Quick Start",
+      id: "quickstart",
+    },
+    {
+      type: "doc",
       label: "Demo",
       id: "demo",
     },
