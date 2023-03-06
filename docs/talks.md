@@ -10,7 +10,10 @@ Several talks and blog posts have been written for both Parca Server and Agent.
 4. [Leveraging Prometheus' TSDB for Conprof](https://www.youtube.com/watch?v=GwQZSS8tQH0)
 5. [Hands-on Introduction to Parca | Rawkode Live](https://www.youtube.com/watch?v=z3cEYklFdyo)
 6. [eBPF? Safety First!](https://youtu.be/oWHQrlE2-G8)
+7. [Profiling in the cloud-native era](https://archive.fosdem.org/2022/schedule/event/cloud_native_profiling/)
+8. [Building a Go Profiler Using Go](https://www.youtube.com/watch?v=OlHQ6gkwqyA)
 
+For more videos and up-to-date content could be found on [Polar Signals' Playlist](https://youtube.com/playlist?list=PLhTDiyZ1B3JnWqRWKyGX3GbBCgIyo_aHf).
 
 ## Blog Posts
 
