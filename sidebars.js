@@ -60,7 +60,10 @@ module.exports = {
             {
               type: "category",
               label: "Flamegraph",
-              items: ["flamegraph-binary-based-colour-stack"],
+              items: [
+                "flamegraph-binary-based-colour-stack",
+                "graph-tooltip-details",
+              ],
             },
           ],
         },
