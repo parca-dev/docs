@@ -14,10 +14,9 @@ module.exports = {
   projectName: "docusaurus", // Usually your repo name.
   scripts: [
     {
-      src: "https://plausible.io/js/plausible.js",
+      src: "/_vercel/insights/script.js",
       async: true,
       defer: true,
-      "data-domain": "parca.dev",
     },
   ],
   plugins: [
@@ -46,9 +45,9 @@ module.exports = {
       items: [
         {
           type: "doc",
-          docId: "binary",
+          docId: "quickstart",
           position: "left",
-          label: "Download",
+          label: "Quick Start",
         },
         {
           type: "doc",
@@ -103,6 +102,10 @@ module.exports = {
         {
           title: "Quick Start",
           items: [
+            {
+              label: "How to get started",
+              to: "/quickstart",
+            },
             {
               label: "Parca from Binary",
               to: "/docs/binary",

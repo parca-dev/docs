@@ -47,6 +47,10 @@ The agent does its best to enrich profiles with labels coming from various syste
 * `kernel_release`: The Linux kernel release used by the node as in `uname --kernel-release`.
 * `agent_revision`: The Git commit SHA Parca Agent was built from.
 
+### Java
+
+* `java`: `true` if the pid belongs to a Java process
+
 ## Configuration
 
 Parca Agent supports relabeling in the same fashion as Prometheus.

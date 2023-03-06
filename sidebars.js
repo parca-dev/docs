@@ -22,6 +22,11 @@ module.exports = {
     },
     {
       type: "doc",
+      label: "Quick Start",
+      id: "quickstart",
+    },
+    {
+      type: "doc",
       label: "Demo",
       id: "demo",
     },
@@ -39,8 +44,15 @@ module.exports = {
           label: "gRPC APIs",
           href: "https://buf.build/parca-dev/parca",
         },
-        "observability",
-        "configuration",
+        {
+          type: "category",
+          label: "Operation",
+          items: [
+            "observability",
+            "configuration",
+            "resource-usage",
+          ],
+        },
         {
           type: "category",
           label: "Profile Visualization",
@@ -97,6 +109,11 @@ module.exports = {
       type: "doc",
       label: "Community",
       id: "community",
+    },
+   {
+      type: "doc",
+      label: "Resources",
+      id: "talks",
     },
     {
       type: "category",
