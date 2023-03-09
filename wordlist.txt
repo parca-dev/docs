@@ -1,5 +1,6 @@
 aa
 addr
+agentpath
 ainur
 Akkoyun
 amd
@@ -128,6 +129,7 @@ io
 iterateLong
 iterateShort
 Jaeger
+jit
 JIT
 jitdump
 js
@@ -145,6 +147,7 @@ Ld
 libbpf
 libc
 libelf
+libperfmap
 libpthread
 libz
 LimitNOFILE
@@ -208,6 +211,7 @@ posts
 pprof
 pprof's
 pre
+PreserveFramePointer
 Println
 PrivateDevices
 Priyadarsini

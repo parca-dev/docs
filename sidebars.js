@@ -77,7 +77,11 @@ module.exports = {
         "parca-agent",
         "parca-agent-design",
         "parca-agent-labelling",
-        "parca-agent-language-support",
+        {
+          type: "category",
+          label: "Language Support",
+          items: ["java-support", "parca-agent-language-support"],
+        },
         "parca-agent-security",
       ],
     },
