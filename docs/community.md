@@ -2,9 +2,9 @@
 
 ## Office hours
 
-Parca Community Office Hours are bi-weekly public meetings focused on Parca and Parca Agent development and contributions and general community questions. Everyone is welcome to join!
+Parca Community Office Hours are public meetings that occur every two weeks focused on Parca and Parca Agent development and contributions, in addition to general community questions. Everyone is welcome to join!
 
-When? Thursdays 17:00 UTC (see [here](https://everytimezone.com/s/c0ffbf98) to see what that is in your timezone)
+Office Hours are held on Mondays alternating between 17:00 UTC and 10:00 UTC to account for attendees across different time zones (see [here](https://everytimezone.com/s/c0ffbf98) to see these times are in your timezone)
 
 * [Meeting calendar](https://calendar.google.com/calendar/embed?src=c_gpsbv9i59r8ocrri0m6aktt618%40group.calendar.google.com) ([Import Calendar](https://calendar.google.com/calendar/u/0?cid=Y19ncHNidjlpNTlyOG9jcnJpMG02YWt0dDYxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t))
 * [Meeting notes](https://docs.google.com/document/d/1h2Ni_Q14doE_kScJsLCQewKHRPZXsyWVQt7X0iRzAXo/edit)

@@ -22,6 +22,11 @@ module.exports = {
     },
     {
       type: "doc",
+      label: "Quick Start",
+      id: "quickstart",
+    },
+    {
+      type: "doc",
       label: "Demo",
       id: "demo",
     },
@@ -33,6 +38,7 @@ module.exports = {
         "ingestion",
         "storage",
         "symbolization",
+        "debuginfos",
         "debuginfod",
         {
           type: "link",
@@ -55,7 +61,10 @@ module.exports = {
             {
               type: "category",
               label: "Flamegraph",
-              items: ["flamegraph-binary-based-colour-stack"],
+              items: [
+                "flamegraph-binary-based-colour-stack",
+                "graph-tooltip-details",
+              ],
             },
           ],
         },
@@ -105,6 +114,11 @@ module.exports = {
       type: "doc",
       label: "Community",
       id: "community",
+    },
+   {
+      type: "doc",
+      label: "Resources",
+      id: "talks",
     },
     {
       type: "category",
