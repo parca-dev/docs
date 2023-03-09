@@ -51,9 +51,9 @@ module.exports = {
         },
         {
           type: "doc",
-          docId: "overview",
+          docId: "demo",
           position: "left",
-          label: "Documentation",
+          label: "Demo",
         },
         {
           type: "doc",

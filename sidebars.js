@@ -27,12 +27,17 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Demo",
-      id: "demo",
+      label: "Concepts",
+      id: "concepts",
+    },
+    {
+      type: "doc",
+      label: "FAQ",
+      id: "faq",
     },
     {
       type: "category",
-      label: "Parca",
+      label: "Server",
       items: [
         "parca",
         "ingestion",
@@ -56,23 +61,19 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Profile Visualization",
+          label: "Visualization",
           items: [
-            {
-              type: "category",
-              label: "Flamegraph",
-              items: [
-                "flamegraph-binary-based-colour-stack",
-                "graph-tooltip-details",
-              ],
-            },
+            "icicle-graph-interpretation",
+            "icicle-graph-anatomy",
+            "icicle-graph-binary-based-colour-stack",
+            "graph-tooltip-details",
           ],
         },
       ],
     },
     {
       type: "category",
-      label: "Parca Agent",
+      label: "Agent",
       items: [
         "parca-agent",
         "parca-agent-design",
@@ -91,19 +92,9 @@ module.exports = {
       id: "debuginfo-cli",
     },
     {
-      type: "doc",
-      label: "Concepts",
-      id: "concepts",
-    },
-    {
       type: "category",
       label: "Grafana Plugin",
       items: ["grafana-flamegraph-plugin", "grafana-datasource-plugin"],
-    },
-    {
-      type: "doc",
-      label: "FAQ",
-      id: "faq",
     },
     {
       type: "doc",
@@ -115,7 +106,7 @@ module.exports = {
       label: "Community",
       id: "community",
     },
-   {
+    {
       type: "doc",
       label: "Resources",
       id: "talks",
@@ -143,6 +134,11 @@ module.exports = {
           items: ["profiling-101", "instrumenting-go"],
         },
       ],
+    },
+    {
+      type: "doc",
+      label: "Demo",
+      id: "demo",
     },
   ],
 };
