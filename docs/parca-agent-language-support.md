@@ -19,6 +19,7 @@ All JIT compiled languages with frame pointer, and [Perf map](https://github.com
 * [.NET](https://github.com/parca-dev/parca-demo/tree/main/dotnet)
 * [Deno](https://github.com/parca-dev/parca-demo/tree/main/deno)
 * [Erlang](https://github.com/parca-dev/parca-demo/tree/main/erlang)
+* [Java](docs/java-support)
 * [Julia](https://github.com/parca-dev/parca-demo/tree/main/julia)
 * [Node.js](https://github.com/parca-dev/parca-demo/tree/main/nodejs)
 * [PHP 8 and above](https://github.com/parca-dev/parca-demo/tree/main/php)
