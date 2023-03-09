@@ -38,6 +38,7 @@ module.exports = {
         "ingestion",
         "storage",
         "symbolization",
+        "debuginfos",
         "debuginfod",
         {
           type: "link",

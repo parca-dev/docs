@@ -325,3 +325,17 @@ yaml
 Yomi
 Youtube
 zsh
+printf
+Zig's
+dwarfdump
+mainc
+DW
+Homebrew
+objfile
+pc
+stmt
+strp
+testdata
+RBP
+decl
+exprloc
