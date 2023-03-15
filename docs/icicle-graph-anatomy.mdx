@@ -2,6 +2,7 @@
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Animation from '@site/src/components/Animation';
 
 An icicle graph or a flame graph basically shows the call stack of a program.
 The width of the rectangle represents the time spent on CPU for a function.
@@ -38,14 +39,14 @@ func main() {
 
 The key aspect of icicle graphs is that they are drawn from the top to the bottom.
 
-![anatomy01-ig.svg](../static/img/iciclegraphs/anatomy01-ig.svg)
+![anatomy01-ig.svg](../static/img/graphs/anatomy01-ig.svg)
 
 </TabItem>
 <TabItem value="flame" label="Flame">
 
 The key aspect of flame graphs is that they are drawn from the bottom to the top.
 
-![anatomy01-fg.svg](../static/img/iciclegraphs/anatomy01-fg.svg)
+![anatomy01-fg.svg](../static/img/graphs/anatomy01-fg.svg)
 
 </TabItem>
 </Tabs>
@@ -78,12 +79,12 @@ func main() {
 <Tabs groupId="graph-type" queryString>
 <TabItem value="icicle" label="Icicle" default>
 
-![anatomy02-ig.svg](../static/img/iciclegraphs/anatomy02-ig.svg)
+![anatomy02-ig.svg](../static/img/graphs/anatomy02-ig.svg)
 
 </TabItem>
 <TabItem value="flame" label="Flame">
 
-![anatomy02-fg.svg](../static/img/iciclegraphs/anatomy02-fg.svg)
+![anatomy02-fg.svg](../static/img/graphs/anatomy02-fg.svg)
 
 </TabItem>
 </Tabs>
@@ -116,12 +117,12 @@ func main() {
 <Tabs groupId="graph-type" queryString>
 <TabItem value="icicle" label="Icicle" default>
 
-![anatomy03-ig.svg](../static/img/iciclegraphs/anatomy03-ig.svg)
+![anatomy03-ig.svg](../static/img/graphs/anatomy03-ig.svg)
 
 </TabItem>
 <TabItem value="flame" label="Flame">
 
-![anatomy03-fg.svg](../static/img/iciclegraphs/anatomy03-fg.svg)
+![anatomy03-fg.svg](../static/img/graphs/anatomy03-fg.svg)
 
 </TabItem>
 </Tabs>
@@ -140,7 +141,18 @@ For that we take samples of call stacks for a given interval and then aggregate 
 
 Sampling is the process of taking a sample of call stacks for a given interval.
 
-![sampling.gif](../static/img/iciclegraphs/sampling.gif)
+<Tabs groupId="graph-type" queryString>
+<TabItem value="icicle" label="Icicle" default>
+
+<Animation src={require('../static/anim/graphs/sampling_ig.riv').default} />
+
+</TabItem>
+<TabItem value="flame" label="Flame">
+
+<Animation src={require('../static/anim/graphs/sampling_fg.riv').default} />
+
+</TabItem>
+</Tabs>
 
 ### Sorting
 
@@ -149,18 +161,53 @@ Because even the samples are taken for a given interval are aggregated and the o
 And our goal is to determine the bottlenecks of the programs.
 There are other ways (e.g. tracing) to collect and represent the call stacks but we will focus on sampled profiling here.
 
-![sorting.gif](../static/img/iciclegraphs/sorting.gif)
+<Tabs groupId="graph-type" queryString>
+<TabItem value="icicle" label="Icicle" default>
+
+<Animation src={require('../static/anim/graphs/sorting_ig.riv').default} />
+
+</TabItem>
+<TabItem value="flame" label="Flame">
+
+<Animation src={require('../static/anim/graphs/sorting_fg.riv').default} />
+
+</TabItem>
+</Tabs>
 
 ### Merging (Grouping)
 
 Then we merge the samples with the same call stack.
 
-![grouping.gif](../static/img/iciclegraphs/grouping.gif)
+<Tabs groupId="graph-type" queryString>
+<TabItem value="icicle" label="Icicle" default>
 
+<Animation src={require('../static/anim/graphs/grouping_ig.riv').default} />
+
+</TabItem>
+<TabItem value="flame" label="Flame">
+
+<Animation src={require('../static/anim/graphs/grouping_fg.riv').default} />
+
+</TabItem>
+</Tabs>
 
 Let's see everything together.
 
-![all.gif](../static/img/iciclegraphs/all.gif)
+
+<Tabs groupId="graph-type" queryString>
+<TabItem value="icicle" label="Icicle" default>
+
+<Animation src={require('../static/anim/graphs/all_ig.riv').default} />
+
+</TabItem>
+<TabItem value="flame" label="Flame">
+
+<Animation src={require('../static/anim/graphs/all_fg.riv').default} />
+
+</TabItem>
+</Tabs>
+
+
 
 
 This is how a profile collected and represented in icicle graphs or flamegraphs.

@@ -2,6 +2,7 @@
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import BrowserWindow from '@site/src/components/BrowserWindow';
 
 Both icicle and flame graphs are visual representations of stack traces that can help you understand where your application is spending its resources (time, memory, etc).
 They are particularly useful for visualizing performance bottlenecks and optimizing your code to reduce the resources spent in certain functions or code blocks.
@@ -21,7 +22,7 @@ Here's a quick summary of how to interpret icicle graphs:
 _The colors do not represent anything significant, and are usually picked at random to be warm colors (other meaningful palettes are supported)._
 This visualization was called an "icicle graph", it looks like icicles. So the colors are chosen to be cold colors.
 
-![explained.svg](../static/img/iciclegraphs/icicle-graph-explained.svg)
+![explained.svg](../static/img/graphs/icicle-graph-explained.svg)
 
 </TabItem>
 <TabItem value="flame" label="Flame">
@@ -36,7 +37,7 @@ Here's a quick summary of how to interpret flame graphs:
 _The colors do not represent anything significant, and are usually picked at random to be warm colors (other meaningful palettes are supported)._
 This visualization was called an "flame graph", it looks like flames. So the colors are chosen to be warm colors.
 
-![explained.svg](../static/img/iciclegraphs/flame-graph-explained.svg)
+![explained.svg](../static/img/graphs/flame-graph-explained.svg)
 
 </TabItem>
 </Tabs>
@@ -47,46 +48,54 @@ This visualization was called an "flame graph", it looks like flames. So the col
 
 Let's take a look at an examples.
 
-![interpretation01.svg](../static/img/iciclegraphs/interpretation01-ig.svg)
+![interpretation01.svg](../static/img/graphs/interpretation01-ig.svg)
 
 The bottom edge of the graph shows the function that was consuming the resource. In this case, they are `d`, `f`, and `c`.
 
-![interpretation02.svg](../static/img/iciclegraphs/interpretation02-ig.svg)
+![interpretation02.svg](../static/img/graphs/interpretation02-ig.svg)
+
+TBD
+
+![interpretation02.svg](../static/img/graphs/interpretation03-ig.svg)
 
 The vertical axis shows the stack depth. For example, one of the leaf is `f` function. The function above it is `f`'s parent, which is `f`'s caller. In this case, it's `e`. The function above `e` is `b`, and so on.
 
-![interpretation03.svg](../static/img/iciclegraphs/interpretation03-ig.svg)
+![interpretation03.svg](../static/img/graphs/interpretation04-ig.svg)
 
 For example, in this case, `b` is consuming more resources than `c`.
 
-![interpretation04.svg](../static/img/iciclegraphs/interpretation04-ig.svg)
+![interpretation04.svg](../static/img/graphs/interpretation05-ig.svg)
 
 We can visually compare the length of the rectangles to see which function is consuming more resources.
 
-![interpretation05.svg](../static/img/iciclegraphs/interpretation05-ig.svg)
+![interpretation05.svg](../static/img/graphs/interpretation06-ig.svg)
 
 </TabItem>
 <TabItem value="flame" label="Flame">
 
 Let's take a look at an examples.
 
-![interpretation01.svg](../static/img/iciclegraphs/interpretation01-fg.svg)
+![interpretation01.svg](../static/img/graphs/interpretation01-fg.svg)
 
 The bottom edge of the graph shows the function that was consuming the resource. In this case, they are `d`, `f`, and `c`.
 
-![interpretation02.svg](../static/img/iciclegraphs/interpretation02-fg.svg)
+![interpretation02.svg](../static/img/graphs/interpretation02-fg.svg)
+
+TBD
+
+![interpretation02.svg](../static/img/graphs/interpretation03-fg.svg)
 
 The vertical axis shows the stack depth. For example, one of the leaf is `f` function. The function above it is `f`'s parent, which is `f`'s caller. In this case, it's `e`. The function above `e` is `b`, and so on.
 
-![interpretation03.svg](../static/img/iciclegraphs/interpretation03-fg.svg)
+![interpretation03.svg](../static/img/graphs/interpretation04-fg.svg)
 
 For example, in this case, `b` is consuming more resources than `c`.
 
-![interpretation04.svg](../static/img/iciclegraphs/interpretation04-fg.svg)
+![interpretation04.svg](../static/img/graphs/interpretation05-fg.svg)
 
 We can visually compare the length of the rectangles to see which function is consuming more resources.
 
-![interpretation05.svg](../static/img/iciclegraphs/interpretation05-fg.svg)
+![interpretation05.svg](../static/img/graphs/interpretation06-fg.svg)
 
 </TabItem>
 </Tabs>
@@ -97,10 +106,15 @@ We can visually compare the length of the rectangles to see which function is co
 <Tabs groupId="graph-type" queryString>
 <TabItem value="icicle" label="Icicle" default>
 
-<BrowserWindow>
+<BrowserWindow url="https://demo.parca.dev/">
 
-![Parca - All](../static/img/iciclegraphs/parca-all.png)
-![Parca - Kubelet](../static/img/iciclegraphs/parca-kubelet.png)
+![Parca - All](../static/img/graphs/parca-all.png)
+
+</BrowserWindow>
+
+<BrowserWindow url="https://demo.parca.dev/">
+
+![Parca - Kubelet](../static/img/graphs/parca-kubelet.png)
 
 </BrowserWindow>
 
