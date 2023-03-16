@@ -201,6 +201,7 @@ openshift
 OpenShift
 OpenTelemetry
 otlp
+parallelizing
 params
 parca
 Parca

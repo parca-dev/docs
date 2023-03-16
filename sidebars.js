@@ -63,8 +63,9 @@ module.exports = {
           type: "category",
           label: "Visualization",
           items: [
-            "icicle-graph-interpretation",
             "icicle-graph-anatomy",
+            "icicle-graph-understanding",
+            "icicle-graph-interpretation",
             "icicle-graph-binary-based-colour-stack",
             "graph-tooltip-details",
           ],

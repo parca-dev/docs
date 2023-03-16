@@ -4,137 +4,100 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import BrowserWindow from '@site/src/components/BrowserWindow';
 
-Both icicle and flame graphs are visual representations of stack traces that can help you understand where your application is spending its resources (time, memory, etc).
-They are particularly useful for visualizing performance bottlenecks and optimizing your code to reduce the resources spent in certain functions or code blocks.
+Have you ever faced performance issues while developing or maintaining a software application?
+Visualizing and analyzing performance data can be quite a challenge, especially when dealing with complex systems.
 
-Let's take a look at how to interpret icicle and flame graphs.
+Enter icicle and flame graphs - two powerful visualization tools that can help you identify bottlenecks and optimize your code.
 
-<Tabs groupId="graph-type" queryString>
-<TabItem value="icicle" label="Icicle" default>
+In this document, we'll delve into their importance, how they work, and how you can use them to improve your software's performance.
 
-Here's a quick summary of how to interpret icicle graphs:
+### Why?
 
-1. Each rectangle represents a function call in the stack.
-2. The y-axis shows stack depth (number of frames on the stack). The bottom rectangle shows the function that was consuming the resource. Everything above represents ancestry. The function above a function is its parent.
-3. The x-axis spans the samples. It does not show the passing of time, as most of the time-series graphs do. It's sorted alphabetically to maximize merging.
-4. The width of the rectangle shows the total resource usage. Functions with wide rectangles may consume more resource per execution than narrow rectangles, or, they may simply be called more often.
+Performance optimization is crucial for any software application, as it can greatly impact the user experience and system resources.
+However, identifying the causes of performance issues can be a daunting task, especially when dealing with large code-bases and complex call stacks.
+This is where icicle and flame graphs come in handy.
 
-_The colors do not represent anything significant, and are usually picked at random to be warm colors (other meaningful palettes are supported)._
-This visualization was called an "icicle graph", it looks like icicles. So the colors are chosen to be cold colors.
+1. **Visualizing complex data:** Icicle and flame graphs provide a graphical representation of the call stack data, making it easier to visualize and understand the relationships between different functions and their resource consumption.
 
-![explained.svg](../static/img/graphs/icicle-graph-explained.svg)
+2. **Identifying bottlenecks:** By visualizing the call stack data, icicle and flame graphs enable developers to identify performance bottlenecks, such as functions consuming a significant amount of CPU time or memory.
 
-</TabItem>
-<TabItem value="flame" label="Flame">
+3. **Comparing different profiles:** Icicle and flame graphs can be used to compare different profiles, helping developers understand the impact of changes in the code-base and make informed decisions about potential optimizations.
 
-Here's a quick summary of how to interpret flame graphs:
+4. **Platform-agnostic:** Both icicle and flame graphs can be generated from various programming languages and platforms, making them versatile tools for developers working on diverse projects.
 
-1. Each rectangle represents a function call in the stack.
-2. The y-axis shows stack depth (number of frames on the stack). The top rectangle shows the function that consuming the resource. Everything beneath represents ancestry. The function beneath a function is its parent.
-3. The x-axis spans the samples. It does not show the passing of time, as most of the time-series graphs do. It's sorted alphabetically to maximize merging.
-4. The width of the rectangle shows the total resource usage. Functions with wide rectangles may consume more resource per execution than narrow rectangles, or, they may simply be called more often.
+### How?
 
-_The colors do not represent anything significant, and are usually picked at random to be warm colors (other meaningful palettes are supported)._
-This visualization was called an "flame graph", it looks like flames. So the colors are chosen to be warm colors.
+#### Finding Performance Issues
 
-![explained.svg](../static/img/graphs/flame-graph-explained.svg)
+1. **Look for wide blocks:**
+Start by analyzing the icicle or flame graph to identify functions that consume a significant amount of resources, such as CPU time or memory.
+These functions are usually represented by wider rectangles in the graph, indicating that they are taking up a large portion of the total execution time.
+Make a list of these functions as potential targets for optimization.
 
-</TabItem>
-</Tabs>
+:::tip Wider blocks indicate a higher resource usage or longer duration. Focus on these blocks to identify potential bottlenecks.
+:::
 
+2. **Examine the call stack:**
+Examine the call stack hierarchy to understand the relationship between different functions.
+This will help you identify if the performance issue is caused by a single function or a combination of functions.
+Understanding the call stack can also reveal opportunities for optimization, such as refactoring or eliminating redundant calls.
 
-<Tabs groupId="graph-type" queryString>
-<TabItem value="icicle" label="Icicle" default>
+3. **Look for tall stacks:**
+In flame graphs, tall stacks indicate deep call hierarchies, which may signify complex and inefficient code.
 
-Let's take a look at an examples.
+2. **Examine recurring patterns:**
+Repeated patterns in the graph may indicate redundant or repetitive code that could be optimized.
 
-![interpretation01.svg](../static/img/graphs/interpretation01-ig.svg)
+##### Comparing Versions
 
-The bottom edge of the graph shows the function that was consuming the resource. In this case, they are `d`, `f`, and `c`.
+1. **Overlay graphs:**
+Overlay two graphs to compare different versions of the same system, making it easy to identify improvements or regressions.
 
-![interpretation02.svg](../static/img/graphs/interpretation02-ig.svg)
+2. **Analyze differences:**
+Look for changes in block width or stack height to determine if specific functions have become more or less efficient.
 
-TBD
+:::tip
+You're lucky! We got you covered. You can easily compare graphs using Parca.
+Go and check it out! https://demo.parca.dev
+:::
 
-![interpretation02.svg](../static/img/graphs/interpretation03-ig.svg)
+<BrowserWindow src="https://demo.parca.dev">
 
-The vertical axis shows the stack depth. For example, one of the leaf is `f` function. The function above it is `f`'s parent, which is `f`'s caller. In this case, it's `e`. The function above `e` is `b`, and so on.
-
-![interpretation03.svg](../static/img/graphs/interpretation04-ig.svg)
-
-For example, in this case, `b` is consuming more resources than `c`.
-
-![interpretation04.svg](../static/img/graphs/interpretation05-ig.svg)
-
-We can visually compare the length of the rectangles to see which function is consuming more resources.
-
-![interpretation05.svg](../static/img/graphs/interpretation06-ig.svg)
-
-</TabItem>
-<TabItem value="flame" label="Flame">
-
-Let's take a look at an examples.
-
-![interpretation01.svg](../static/img/graphs/interpretation01-fg.svg)
-
-The bottom edge of the graph shows the function that was consuming the resource. In this case, they are `d`, `f`, and `c`.
-
-![interpretation02.svg](../static/img/graphs/interpretation02-fg.svg)
-
-TBD
-
-![interpretation02.svg](../static/img/graphs/interpretation03-fg.svg)
-
-The vertical axis shows the stack depth. For example, one of the leaf is `f` function. The function above it is `f`'s parent, which is `f`'s caller. In this case, it's `e`. The function above `e` is `b`, and so on.
-
-![interpretation03.svg](../static/img/graphs/interpretation04-fg.svg)
-
-For example, in this case, `b` is consuming more resources than `c`.
-
-![interpretation04.svg](../static/img/graphs/interpretation05-fg.svg)
-
-We can visually compare the length of the rectangles to see which function is consuming more resources.
-
-![interpretation05.svg](../static/img/graphs/interpretation06-fg.svg)
-
-</TabItem>
-</Tabs>
-
-
-### Real-life Examples
-
-<Tabs groupId="graph-type" queryString>
-<TabItem value="icicle" label="Icicle" default>
-
-<BrowserWindow url="https://demo.parca.dev/">
-
-![Parca - All](../static/img/graphs/parca-all.png)
+![compare](../static/img/parca/compare.png)
 
 </BrowserWindow>
 
-<BrowserWindow url="https://demo.parca.dev/">
+Icicle and flame graphs are powerful tools for visualizing and analyzing system performance.
+By understanding how to interpret these graphs, you can identify bottlenecks and optimize resource usage within your system.
 
-![Parca - Kubelet](../static/img/graphs/parca-kubelet.png)
+#### Optimize the code
 
-</BrowserWindow>
+Once you have identified the problematic functions and analyzed the call stack, start optimizing the code. This may involve:
 
-</TabItem>
-<TabItem value="flame" label="Flame">
+a. **Optimizing algorithms:**
+Replace inefficient algorithms with more efficient ones or use data structures that provide better performance for the specific use case.
 
-<iframe id="flamegraph" width="100%" height="600" frameborder="0" scrolling="no"
-        src="https://www.brendangregg.com/FlameGraphs/cpu-bash-flamegraph.svg">
-</iframe>
+b. **Reducing function call overhead:** Minimize the number of function calls, especially in performance-critical code paths.
 
-<iframe id="flamegraph" width="100%" height="600" frameborder="0" scrolling="no"
-        src="https://www.brendangregg.com/FlameGraphs/example-perf.svg">
-</iframe>
+c. **Parallelizing code:**
+If the performance bottleneck is caused by CPU-bound operations, consider parallelizing the code to take advantage of multiple processor cores.
 
-</TabItem>
-</Tabs>
+d. **Reducing memory usage:**
+Optimize memory allocation and de-allocation, and minimize memory fragmentation.
 
-### Sources
+#### Measure the impact
 
-- https://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html
-- https://queue.acm.org/detail.cfm?id=2927301
-- https://youtu.be/6uKZXIwd6M0
-- https://youtu.be/6uKZXIwd6M0
+After making optimizations, collect new profiling data and generate updated icicle or flame graphs.
+Compare the new graphs with the previous ones to measure the impact of your changes.
+If the optimizations have been successful, you should see a reduction in the width of the problematic functions and an overall improvement in the application's performance.
+
+#### Iterate and refine
+
+Performance optimization is an iterative process.
+Continue to analyze the updated graphs, identify new bottlenecks, and optimize your code accordingly.
+Keep refining your optimizations until you achieve the desired performance level.
+
+You can leverage icicle and flame graphs to optimize your software's performance effectively.
+
+By identifying bottlenecks, understanding the call stack hierarchy, optimizing code, measuring the impact, and iterating on the process,
+you can significantly enhance the performance and user experience of your software application.
