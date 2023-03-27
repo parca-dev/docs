@@ -131,7 +131,8 @@ Let's add more calls to `c` and see how the graph changes.
 package main
 
 func c() {
-    for {}
+-    for {}
++    for i := 0; i < 1_000_000; i++ {}
 }
 
 func b() {
@@ -149,8 +150,66 @@ func main() {
 }
 ```
 
+<Tabs groupId="graph-type" queryString>
+<TabItem value="icicle" label="Icicle" default>
 
-You can observe that the instances of the rectangle for the function `c` have increased.
+The key aspect of icicle graphs is that they are drawn from **the top to the bottom**.
+
+![anatomy01-ig.svg](../static/img/graphs/anatomy01-ig.svg)
+
+</TabItem>
+<TabItem value="flame" label="Flame">
+
+The key aspect of flame graphs is that they are drawn from **the bottom to the top**.
+
+![anatomy01-fg.svg](../static/img/graphs/anatomy01-fg.svg)
+
+</TabItem>
+</Tabs>
+
+It doesn't seem like  something has changed, right? Why is that?
+This is called `merging`. Even though, it takes more time to execute the function calls in total, relative to the other functions, the width of the rectangle for `c` remains the same.
+It doesn't matter how many times we call the same function at the same level.
+We will discuss this in detail later.
+
+---
+
+Let's go back to the original program and add a call to a new function `d` and `e` in the function `b`.
+
+```diff
+
+```diff
+package main
+
+func c() {
+    for i := 0; i < 1_000_000; i++ {}
+}
+
++func d() {
++    for i := 0; i < 1_000_000; i++ {}
++}
++
++func e() {
++    for i := 0; i < 1_000_000; i++ {}
++}
+
+
+func b() {
+    c()
++    d()
++    e()
+}
+
+func a() {
+    b()
+}
+
+func main() {
+    a()
+}
+```
+
+You can see that the rectangle for the function `b` is now have three rectangles as its children.
 And the rectangle for the function `b` covers them call.
 
 :::info This is because the width of the rectangle for the function `b` represents the time spent in the function `b` and its child functions.
@@ -171,24 +230,42 @@ And the rectangle for the function `b` covers them call.
 
 ---
 
-In the same way, let's add more calls to `b` and see how the graph changes.
+In a similar manner, let's re-arrange the code a bit. We will move the call to `c` from the function `b` to the function `a`.
+And we will add a call to the function `f` in the function `b`. And have a `c` exactly the same as `b`.
+The code will look like this:
 
 ```diff
 package main
 
 func c() {
-    for {}
+-    for i := 0; i < 1_000_000; i++ {}
++ d()
++ e()
++ f()
 }
 
+func d() {
+    for i := 0; i < 1_000_000; i++ {}
+}
+
+func e() {
+    for i := 0; i < 1_000_000; i++ {}
+}
++
++func f() {
++    for i := 0; i < 1_000_000; i++ {}
++}
++
 func b() {
-    c()
-    c()
-    c()
+-    c()
+    d()
+    e()
++    f()
 }
 
 func a() {
     b()
-+    b()
++    c()
 }
 
 func main() {
@@ -196,8 +273,15 @@ func main() {
 }
 ```
 
-You can observe that the instances of the rectangle for the function `b` have increased.
-And each of the rectangles for the function `b` covers the calls that made against `c`.
+You can see that the rectangle for the function `a` is now have two rectangles as its children.
+And the `b` and `c` rectangles are now children of the `a` rectangle. And the `d`, `e` and `f` rectangles are now children of the `b` and `c` rectangles.
+But the leaf rectangles are not merged.
+
+Hmm, why is that?
+
+> It's because even though the functions `d`, `e` and `f` are same and are in the same level, they are not called from the same function.
+
+They have different parents/ancestory. So, they are not merged.
 
 <Tabs groupId="graph-type" queryString>
 <TabItem value="icicle" label="Icicle" default>

@@ -3,70 +3,92 @@
 <svg version="1.1" id="katman_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 618.2 349.8" style="enable-background:new 0 0 618.2 349.8;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#80C0BE;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st1{fill:#7DB3DF;stroke:#FFFFFF;stroke-width:1;stroke-miterlimit:10;}
-	.st2{fill:#C8D0D0;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st3{fill:#CCDFE5;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st4{fill:#7DB3DF;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st5{fill:#89C6D7;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st6{fill:#45569E;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st7{fill:#5C8FC9;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st8{fill:#B4D6C7;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st9{fill:#F1EA7A;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st10{fill:none;stroke:#010202;stroke-miterlimit:10;}
-	.st11{fill:#010202;}
-	.st12{fill:#45ACAB;}
-	.st13{fill:#4057A2;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st14{fill:#4B90CD;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st15{fill:#76C8D9;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st16{font-family:'DINAlternate-Bold';}
-	.st17{font-size:15px;}
-	.st18{fill:#DD3014;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st19{fill:#EA6038;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st20{fill:#F9B30E;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st21{fill:#CCFFFE;}
-	.st22{font-size:26.0819px;}
-	.st23{fill:#C7FFFD;}
-	.st24{fill:#070A51;}
-	.st25{fill:#DB6944;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st26{fill:#8A261D;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st27{fill:#CC4128;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st28{fill:#EFB742;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st29{fill:#F3F0B5;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st30{fill:none;}
-	.st31{fill:none;stroke:#000000;stroke-miterlimit:10;}
-	.st32{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
-	.st33{fill:#F1E966;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st34{fill:#951914;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st35{fill:#E74526;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st36{fill:#F18C56;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st37{fill:#F3EFAD;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st38{fill:#C6D0CF;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st39{fill:#C6E0E5;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st40{fill:#AAD6C5;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st41{fill:#223A81;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st42{fill:#6CB3E3;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st43{fill:#3ABBD4;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st44{fill:#6BC1BD;stroke:#FFFFFF;stroke-miterlimit:10;}
-	.st45{fill:#EC6C70;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st0{fill:#AAD6C5;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st1{fill:#4057A2;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st2{fill:#4B90CD;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st3{fill:#C6E0E5;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st4{fill:#76C8D9;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st5{fill:none;}
+	.st6{fill:#6BC1BD;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st7{fill:#80C0BE;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st8{fill:#7DB3DF;stroke:#FFFFFF;stroke-width:1;stroke-miterlimit:10;}
+	.st9{fill:#C8D0D0;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st10{fill:#CCDFE5;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st11{fill:#7DB3DF;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st12{fill:#89C6D7;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st13{fill:#45569E;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st14{fill:#5C8FC9;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st15{fill:#B4D6C7;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st16{fill:#F1EA7A;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st17{fill:none;stroke:#010202;stroke-miterlimit:10;}
+	.st18{fill:#010202;}
+	.st19{fill:#CC4128;}
+	.st20{font-family:'DINAlternate-Bold';}
+	.st21{font-size:15px;}
+	.st22{fill:#DD3014;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st23{fill:#EA6038;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st24{fill:#F9B30E;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st25{fill:#CCFFFE;}
+	.st26{font-size:26.0819px;}
+	.st27{fill:#C7FFFD;}
+	.st28{fill:#070A51;}
+	.st29{fill:#223A81;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st30{fill:#F0E97B;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st31{fill:#F3EFB4;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st32{fill:#89261D;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st33{fill:#DB6944;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st34{fill:#8A261D;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st35{fill:#CC4128;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st36{fill:#EFB742;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st37{fill:#F3F0B5;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st38{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st39{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st40{fill:#45ACAB;}
+	.st41{fill:#F1E966;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st42{fill:#951914;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st43{fill:#E74526;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st44{fill:#F18C56;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st45{fill:#F3EFAD;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st46{fill:#C6D0CF;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st47{fill:#6CB3E3;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st48{fill:#3ABBD4;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st49{fill:#EC6C70;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st50{fill:#1AB2AA;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st51{fill:#EAF5F6;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st52{fill:#DA6944;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st53{fill:#E39161;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st54{fill:#EEB641;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st55{fill:#DC7373;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st56{fill:#DB6944;}
+	.st57{fill:#EFB742;}
+	.st58{fill:#DC7373;}
+	.st59{fill:none;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
+	.st60{fill:#8A261D;}
+	.st61{fill:#E39161;}
+	.st62{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st63{fill:#4B90CD;}
+	.st64{fill:#6BC1BD;}
+	.st65{fill:#4057A2;}
+	.st66{fill:#AAD6C5;}
+	.st67{fill:#1D1D1B;}
 </style>
-<rect x="75.1" y="133.6" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 624.3215 312.5245)" class="st13" width="474.2" height="45.3"/>
-<rect x="75.1" y="178.9" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 624.3215 403.2098)" class="st14" width="474.2" height="45.3"/>
-<rect x="75.1" y="224.3" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 308.1696 493.895)" class="st15" width="158" height="45.3"/>
-<rect x="233.1" y="224.3" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 624.1937 493.895)" class="st15" width="158" height="45.3"/>
-<rect x="391.2" y="224.3" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 940.4728 493.8951)" class="st15" width="158" height="45.3"/>
+<rect x="75.1" y="133.6" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 624.3215 312.5245)" class="st1" width="474.2" height="45.3"/>
+<rect x="75.1" y="178.9" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 624.3215 403.2098)" class="st2" width="474.2" height="45.3"/>
+<rect x="75.1" y="224.3" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 308.1696 493.895)" class="st4" width="158" height="45.3"/>
+<rect x="233.1" y="224.3" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 624.1937 493.895)" class="st6" width="158" height="45.3"/>
+<rect x="391.2" y="224.3" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 940.4728 493.8951)" class="st0" width="158" height="45.3"/>
 <g>
-	<polygon class="st11" points="570.1,70.9 563.6,77.4 563.6,70.9 	"/>
-	<polygon class="st11" points="570.1,70.9 563.6,64.3 563.6,70.9 	"/>
+	<polygon class="st18" points="570.1,70.9 563.6,77.4 563.6,70.9 	"/>
+	<polygon class="st18" points="570.1,70.9 563.6,64.3 563.6,70.9 	"/>
 </g>
-<text transform="matrix(1 0 0 1 66.7103 89.9754)" class="st16 st17">0 ms</text>
-<text transform="matrix(1 0 0 1 217.1049 89.7953)" class="st16 st17">50 ms</text>
-<text transform="matrix(1 0 0 1 378.3791 89.8856)" class="st16 st17">100 ms</text>
-<text transform="matrix(1 0 0 1 521.4639 89.8851)" class="st16 st17">150 ms</text>
-<rect x="60.7" y="69.9" class="st11" width="502.8" height="1.8"/>
-<text transform="matrix(1 0 0 1 103.5736 165.4123)" class="st21 st16 st22">a()</text>
-<text transform="matrix(1 0 0 1 104.2278 210.104)" class="st23 st16 st22">b()</text>
-<text transform="matrix(1 0 0 1 104.2278 258.3858)" class="st24 st16 st22">c()</text>
-<text transform="matrix(1 0 0 1 261.4946 258.3857)" class="st24 st16 st22">c()</text>
-<text transform="matrix(1 0 0 1 417.6209 256.6155)" class="st24 st16 st22">c()</text>
+<text transform="matrix(1 0 0 1 66.7103 89.9754)" class="st20 st21">0 ms</text>
+<text transform="matrix(1 0 0 1 217.1049 89.7953)" class="st20 st21">50 ms</text>
+<text transform="matrix(1 0 0 1 378.3791 89.8856)" class="st20 st21">100 ms</text>
+<text transform="matrix(1 0 0 1 521.4639 89.8851)" class="st20 st21">150 ms</text>
+<rect x="60.7" y="69.9" class="st18" width="502.8" height="1.8"/>
+<text transform="matrix(1 0 0 1 103.5736 165.4123)" class="st25 st20 st26">a()</text>
+<text transform="matrix(1 0 0 1 104.2278 210.104)" class="st27 st20 st26">b()</text>
+<text transform="matrix(1 0 0 1 104.2278 258.3858)" class="st28 st20 st26">c()</text>
+<text transform="matrix(1 0 0 1 261.4946 258.3857)" class="st28 st20 st26">d()</text>
+<text transform="matrix(1 0 0 1 417.6209 256.6155)" class="st28 st20 st26">e()</text>
 </svg>
