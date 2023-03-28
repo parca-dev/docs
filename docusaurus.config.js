@@ -21,7 +21,17 @@ module.exports = {
   ],
   plugins: [
     require.resolve("./docusaurus-github-releases-plugin/src/index.js"),
+    () => ({
+      configureWebpack() {
+        return {
+          module: {
+            rules: [{ test: /\.riv$/, use: "file-loader" }],
+          },
+        };
+      },
+    }),
   ],
+  staticDirectories: ["public", "static"],
   themeConfig: {
     announcementBar: {
       id: "github_star",
@@ -51,9 +61,9 @@ module.exports = {
         },
         {
           type: "doc",
-          docId: "overview",
+          docId: "demo",
           position: "left",
-          label: "Documentation",
+          label: "Demo",
         },
         {
           type: "doc",
