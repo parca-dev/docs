@@ -7,6 +7,8 @@ The collected data can be viewed locally via HTTP endpoints and optionally be co
 ## Requirements
 
 * Linux Kernel version 4.18+
+* For Kubernetes metadata, a CRI that supports CRI v1 (for example containerd v1.6.x+)
+
 ## Supported Profiles
 
 Profiles available for compiled languages (e.g. C, C++, Go, Rust):
