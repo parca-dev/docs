@@ -1,3 +1,6 @@
+import CodeBlock from '@theme/CodeBlock';
+import WithVersions from '@site/src/components/WithVersions';
+
 # FAQ
 
 Frequently asked questions. If anything is unclear or not covered in the documentation, don't hesitate to [open an issue](https://github.com/parca-dev/parca/issues/new).
@@ -60,3 +63,33 @@ You can still find Conprof under [https://github.com/parca-dev/conprof-archived]
 The migration from Conprof to Parca should be painless for an end-user. Especially considering they both share the exact same discovery mechanism.
 If you have a dependency on the API as a developer, unfortunately, they are not 100% compatible.
 Please let us know if you need any help in case of a migration.
+
+## How can I verify the container image signature with `cosign`?
+
+We use keyless signing, so the [verification is also keyless](https://docs.sigstore.dev/cosign/verify/#keyless-verification-using-openid-connect).
+
+**Server**
+
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        {`cosign verify \\
+  --certificate-identity=https://github.com/parca-dev/parca/.github/workflows/release.yml@refs/tags/${versions.server} \\
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \\
+  ghcr.io/parca-dev/parca:${versions.server}`}
+        </CodeBlock>
+    }
+</WithVersions>
+
+**Agent**
+
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        {`cosign verify \\
+  --certificate-identity=https://github.com/parca-dev/parca-agent/.github/workflows/release.yml@refs/tags/${versions.agent} \\
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \\
+  ghcr.io/parca-dev/parca-agent:${versions.agent}`}
+        </CodeBlock>
+    }
+</WithVersions>

@@ -142,6 +142,7 @@ JVM
 KASLR
 Katacoda
 Kemal
+keyless
 kube
 kubectl
 kubernetes
@@ -197,6 +198,7 @@ numlabels
 observability
 Observability
 oc
+oidc
 openshift
 OpenShift
 OpenTelemetry
@@ -353,3 +355,4 @@ testdata
 RBP
 decl
 exprloc
+yml
