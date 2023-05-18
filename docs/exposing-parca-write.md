@@ -62,7 +62,7 @@ spec:
 
 ## Parca Agent
 
-At the end, configure the Parca Agent to send data to the Reverse Proxy:
+At the end, configure the Parca Agent to send data to the Ingress Controller:
 
 ```sh
       containers:
