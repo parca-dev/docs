@@ -15,5 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
-    - uses: rojopolis/spellcheck-github-actions@87eb30926e1b8d3e68ffa300c7747f0617894640 # 0.33.0
+    - uses: rojopolis/spellcheck-github-actions@bef29f15ec2b3394908f453f612d39e813400868 # 0.33.1
       name: Spellcheck
