@@ -1,0 +1,133 @@
+# Quick Start
+
+The easiest way to start with Parca is to obtain the pre-built statically-linked binary or the container.
+You can download the latest release of the binary from the Parca GitHub release pages ([Server](https://github.com/parca-dev/parca/releases) and [Agent](https://github.com/parca-dev/parca-agent/releases)).
+Alternatively, you can use the Parca container image from [the GitHub Container Registry](https://github.com/orgs/parca-dev/packages).
+
+Once you have the binary or the container, you can start profiling your applications with Parca.
+
+:::info Please select your environment and use the following commands to quickly get started
+:::
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import WithVersions from '@site/src/components/WithVersions';
+import CodeBlock from '@theme/CodeBlock';
+
+
+<Tabs groupId="environment" queryString>
+<TabItem value="binary" label="Binary" default>
+
+**Server**
+
+1. Download the binary specific to your OS and architecture
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
+        </CodeBlock>
+    }
+</WithVersions>
+
+2. Run Parca and access the Web UI on port 7070
+    ```bash
+    # Get basic configuration
+    curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > parca.yaml
+    # Run Parca and access the Web UI on port 7070
+    ./parca --config-path=parca.yaml
+    ```
+
+**Agent**
+
+1. Download the binary specific to your architecture (only works on Linux)
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
+        </CodeBlock>
+    }
+</WithVersions>
+
+2. Run Parca Agent and access the Web UI on port 7071 (assumes Parca is running on localhost:7070)
+    ```bash
+    ./parca-agent --node=test --remote-store-address=localhost:7070 --remote-store-insecure
+    ```
+
+<br />
+
+:::danger [Parca from Binary - Tutorial 5min ⏱️](/docs/binary)
+:::
+</TabItem>
+<TabItem value="container" label="Container">
+
+**Server**
+
+Run Parca and access the Web UI on port 7070
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        docker run --rm -it ghcr.io/parca-dev/parca:{versions.server} /parca
+        </CodeBlock>
+    }
+</WithVersions>
+
+**Agent**
+
+Run Parca Agent (requires privileged more) and access the Web UI on port 7071 (assumes Parca is running on localhost:7070)
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        docker run --rm -it --privileged ghcr.io/parca-dev/parca-agent:{versions.agent} /bin/parca-agent --node=docker-test
+        </CodeBlock>
+    }
+</WithVersions>
+
+<br />
+
+:::danger [Parca from Binary - Tutorial 5min ⏱️](/docs/binary)
+:::
+
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
+
+:::tip
+
+To quickly try out the Parca and Parca Agent with Kubernetes, you create a [minikube](https://minikube.sigs.k8s.io/docs/) cluster with an actual virtual machine, e.g. Virtualbox:
+
+```shell
+minikube start --driver=virtualbox
+```
+:::
+
+1. Create the namespace (not strictly necessary but prevents a race with the next commands)
+    ```
+    kubectl create namespace parca
+    ```
+
+**Server**
+
+2. Use to deploy Parca Server (API and UI)
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        kubectl apply -f https://github.com/parca-dev/parca/releases/download/{versions.server}/kubernetes-manifest.yaml
+        </CodeBlock>
+    }
+</WithVersions>
+
+**Agent**
+
+3. Use to deploy Parca Agent for all nodes
+<WithVersions language="bash">
+    { versions =>
+        <CodeBlock className="language-bash">
+        kubectl apply -f https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/kubernetes-manifest.yaml
+        </CodeBlock>
+    }
+</WithVersions>
+<br />
+
+:::danger [Parca in Kubernetes - Tutorial 5min ⏱️](/docs/kubernetes)
+:::
+</TabItem>
+</Tabs>

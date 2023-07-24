@@ -22,35 +22,68 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Demo",
-      id: "demo",
+      label: "Quick Start",
+      id: "quickstart",
+    },
+    {
+      type: "doc",
+      label: "Concepts",
+      id: "concepts",
+    },
+    {
+      type: "doc",
+      label: "FAQ",
+      id: "faq",
     },
     {
       type: "category",
-      label: "Parca",
+      label: "Server",
       items: [
         "parca",
         "ingestion",
         "storage",
         "symbolization",
+        "debuginfos",
         "debuginfod",
         {
           type: "link",
           label: "gRPC APIs",
           href: "https://buf.build/parca-dev/parca",
         },
-        "observability",
-        "configuration",
+        {
+          type: "category",
+          label: "Operation",
+          items: [
+            "observability",
+            "configuration",
+            "resource-usage",
+          ],
+        },
+        {
+          type: "category",
+          label: "Visualization",
+          items: [
+            "icicle-graph-anatomy",
+            "icicle-graph-understanding",
+            "icicle-graph-interpretation",
+            "icicle-graph-binary-based-colour-stack",
+            "graph-tooltip-details",
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "Parca Agent",
+      label: "Agent",
       items: [
         "parca-agent",
         "parca-agent-design",
         "parca-agent-labelling",
-        "parca-agent-language-support",
+        {
+          type: "category",
+          label: "Language Support",
+          items: ["java-support", "parca-agent-language-support"],
+        },
         "parca-agent-security",
       ],
     },
@@ -60,19 +93,9 @@ module.exports = {
       id: "debuginfo-cli",
     },
     {
-      type: "doc",
-      label: "Concepts",
-      id: "concepts",
-    },
-    {
       type: "category",
       label: "Grafana Plugin",
       items: ["grafana-flamegraph-plugin", "grafana-datasource-plugin"],
-    },
-    {
-      type: "doc",
-      label: "FAQ",
-      id: "faq",
     },
     {
       type: "doc",
@@ -83,6 +106,11 @@ module.exports = {
       type: "doc",
       label: "Community",
       id: "community",
+    },
+    {
+      type: "doc",
+      label: "Resources",
+      id: "talks",
     },
     {
       type: "category",
@@ -107,6 +135,11 @@ module.exports = {
           items: ["profiling-101", "instrumenting-go"],
         },
       ],
+    },
+    {
+      type: "doc",
+      label: "Demo",
+      id: "demo",
     },
   ],
 };
