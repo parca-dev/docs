@@ -129,6 +129,7 @@ module.exports = {
         "querying-parca",
         "filter-by-function",
         "troubleshooting-parca-agent",
+        "exposing-parca-write",
         {
           type: "category",
           label: "Profiling 101",
