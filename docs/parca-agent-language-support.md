@@ -29,7 +29,8 @@ All JIT compiled languages with frame pointer, and [Perf map](https://github.com
 
 ## Interpreted
 
-_Coming soon_
+* Ruby
+* Python
 
 :::info
 
