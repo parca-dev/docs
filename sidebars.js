@@ -53,11 +53,7 @@ module.exports = {
         {
           type: "category",
           label: "Operation",
-          items: [
-            "observability",
-            "configuration",
-            "resource-usage",
-          ],
+          items: ["observability", "configuration", "resource-usage"],
         },
         {
           type: "category",
@@ -82,7 +78,8 @@ module.exports = {
         {
           type: "category",
           label: "Language Support",
-          items: ["java-support", "parca-agent-language-support"],
+          link: { type: "doc", id: "parca-agent-language-support" },
+          items: ["java-support"],
         },
         "parca-agent-security",
       ],

@@ -1,6 +1,6 @@
 # Public Exposing Parca Write Endpoints
 
-In case there is a need to run Parca Agent in a separate cluster or on some seperate system, there might be a need to publicly expose only the write endpoints from Parca without also opening up the UI to the world.
+In case there is a need to run Parca Agent in a separate cluster or on some separate system, there might be a need to publicly expose only the write endpoints from Parca without also opening up the UI to the world.
 
 ## Authentication
 
