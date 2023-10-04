@@ -36,6 +36,11 @@ module.exports = {
       id: "faq",
     },
     {
+      type: "doc",
+      label: "Commericial Solutions",
+      id: "commercial",
+    },
+    {
       type: "category",
       label: "Server",
       items: [
