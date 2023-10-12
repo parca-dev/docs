@@ -37,7 +37,7 @@ module.exports = {
     },
     {
       type: "doc",
-      label: "Commericial Solutions",
+      label: "Commercial Solutions",
       id: "commercial",
     },
     {
