@@ -127,6 +127,7 @@ module.exports = {
             "agent-binary",
             "parca-agent-snap",
             "systemd",
+            "agent-server-snap-services"
           ],
         },
         {
