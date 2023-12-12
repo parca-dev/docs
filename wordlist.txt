@@ -139,6 +139,7 @@ HUP
 iciclegraph
 infod
 IngressRoute
+init
 inlined
 integrations
 interactable
@@ -151,6 +152,7 @@ jit
 jitdump
 js
 justtrustme
+JSON
 JVM
 KASLR
 Katacoda
@@ -177,6 +179,7 @@ LLVM
 localhost
 LocalStoreDirectory
 LockPersonality
+logfmt
 LogLevel
 Loibl
 LSB
