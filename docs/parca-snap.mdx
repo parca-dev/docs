@@ -5,7 +5,7 @@ import BrowserWindow from "@site/src/components/BrowserWindow"
 You can install Parca using the [snap](https://snapcraft.io/about) package.
 
 ```shell
-sudo snap install parca --channel edge
+sudo snap install parca
 ```
 
 The snap has two primary modes of operation, one-shot or service.
@@ -13,16 +13,15 @@ The snap has two primary modes of operation, one-shot or service.
 ## Invoking `parca` manually
 
 ```shell
-parca --help
 Usage: parca
 
 Flags:
-  -h, --help                                             Show context-sensitive help.
-      --config-path="parca.yaml"                         Path to config file.
-      --mode="all"                                       Scraper only runs a scraper that sends to a remote gRPC endpoint. All runs all components.
-      --log-level="info"                                 log level.
-      --port=":7070"                                     Port string for server
-      --cors-allowed-origins=CORS-ALLOWED-ORIGINS,...    Allowed CORS origins.
+  -h, --help                        Show context-sensitive help.
+      --config-path="parca.yaml"    Path to config file.
+      --mode="all"                  Scraper only runs a scraper that sends to a remote gRPC endpoint. All runs all components.
+      --http-address=":7070"        Address to bind HTTP server to.
+      --http-read-timeout=5s        Timeout duration for HTTP server to read request body.
+      --http-write-timeout=1m       Timeout duration for HTTP server to write response body.
 # ...
 ```
 
@@ -45,17 +44,20 @@ There are a few config options available for the snap service:
 ```shell
 sudo snap get parca
 Key                    Value
-enable-persistence     false
-log-level              info
-port                   7070
-storage-active-memory  536870912
+enable-persistence         false
+http-address               :7070
+log-level                  info
+remote-store-address       grpc.polarsignals.com:443
+remote-store-bearer-token
+remote-store-insecure      false
+storage-active-memory      536870912
 ```
 
 Each can be customised individually. If a config value is changed, the service must be restarted for the changes to take effect. For example:
 
 ```shell
 # Change the bind port
-sudo snap set parca port=8080
+sudo snap set parca http-address=:8080
 
 # Restart the service
 sudo snap restart parca
