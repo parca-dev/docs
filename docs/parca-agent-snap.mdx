@@ -1,0 +1,119 @@
+# Parca Agent from Snapcraft
+
+import BrowserWindow from "@site/src/components/BrowserWindow"
+
+You can install Parca Agent using the [snap](https://snapcraft.io/about) package.
+
+```shell
+sudo snap install --classic parca-agent
+```
+
+The snap has two primary modes of operation, one-shot or service.
+
+## Invoking `parca-agent` manually
+
+```shell
+parca-agent --help
+Usage: parca-agent
+
+Flags:
+  -h, --help                           Show context-sensitive help.
+      --log-level="info"               Log level.
+      --log-format="logfmt"            Configure if structured logging as JSON or as logfmt
+      --http-address="127.0.0.1:7071"  Address to bind HTTP server to.
+      --version                        Show application version.
+#...
+```
+
+You can find more information about invoking `parca-agent` manually in the [binary installation](https://www.parca.dev/docs/agent-binary) docs.
+
+## Using the `parca-agent` service
+
+The snap package also ships with a minimally configurable service that is managed by `snapd`.
+
+To get started without any customisation, once the snap is installed, invoke:
+
+```shell
+sudo snap start parca-agent
+```
+
+This will start `parca-agent` on http://localhost:7071.
+
+There are a few config options available for the snap service:
+
+```shell
+sudo snap get parca-agent
+Key                        Value
+http-address               :7071
+log-level                  info
+node                       test
+remote-store-address       grpc.polarsignals.com:443
+remote-store-bearer-token
+remote-store-insecure      false
+```
+
+Each can be customised individually. If a config value is changed, the service must be restarted for the changes to take effect. For example:
+
+```shell
+# Change the bind port
+sudo snap set parca-agent http-address=:8081
+
+# Restart the service
+sudo snap restart parca-agent
+```
+
+You can view the `parca-agent` service logs using the `snap logs` command:
+
+```shell
+sudo snap logs parca-agent
+2023-12-12T08:51:38Z systemd[1]: Started Service for snap application parca-agent.parca-agent-svc.
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]: ooooooooo.                                                  .o.                                            .
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]: `888   `Y88.                                               .888.                                         .o8
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:  888   .d88'  .oooo.   oooo d8b  .ooooo.   .oooo.         .8"888.      .oooooooo  .ooooo.  ooo. .oo.   .o888oo
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:  888ooo88P'  `P  )88b  `888""8P d88' `"Y8 `P  )88b       .8' `888.    888' `88b  d88' `88b `888P"Y88b    888
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:  888          .oP"888   888     888        .oP"888      .88ooo8888.   888   888  888ooo888  888   888    888
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:  888         d8(  888   888     888   .o8 d8(  888     .8'     `888.  `88bod8P'  888    .o  888   888    888 .
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]: o888o        `Y888""8o d888b    `Y8bod8P' `Y888""8o   o88o     o8888o `8oooooo.  `Y8bod8P' o888o o888o   "888"
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:                                                                       d"     YD
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:                                                                       "Y88888P'
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1405]:
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1328]: level=info name=parca-agent ts=2023-12-12T08:51:38.368315839Z caller=main.go:502 msg="maxprocs: Leaving GOMAXPROCS=1: CPU quota undefined"
+2023-12-12T08:51:38Z parca-agent.parca-agent-svc[1328]: name=parca-agent ts=2023-12-12T08:51:38.447448683Z caller=main.go:724 msg=starting... node=test store=grpc.polarsignals.com:443
+```
+
+Now we can view the active profilers by visiting `http://localhost:7071`:
+<BrowserWindow>
+
+![image](../static/img/tutorial/active_profilers.png)
+
+</BrowserWindow>
+
+<br/>
+
+And all the discovered processes:
+<BrowserWindow>
+
+![image](../static/img/tutorial/processes.png)
+
+</BrowserWindow>
+
+<br/>
+
+Once Parca and Parca Agent are both running, you can navigate to the web interface on the browser.
+You should shortly see the `Select profile...` dropdown menu populate with the profiles that Parca is retrieving from itself and receiving from the Agent.
+
+<BrowserWindow>
+
+![image](../static/img/tutorial/cpu_sample_count.png)
+
+</BrowserWindow>
+
+<br/>
+
+Selecting `parca_agent_cpu_sample_count` as profile types and clicking the `Search` button will retrieve the profiles from Parca Agent for the time selection (default Last Hour).
+
+<BrowserWindow>
+
+![image](../static/img/tutorial/cpu_sample_count_select.png)
+
+</BrowserWindow>

@@ -125,6 +125,7 @@ module.exports = {
             "binary",
             "parca-snap",
             "agent-binary",
+            "parca-agent-snap",
             "systemd",
           ],
         },
