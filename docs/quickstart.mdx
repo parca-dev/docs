@@ -130,4 +130,25 @@ minikube start --driver=virtualbox
 :::danger [Parca in Kubernetes - Tutorial 5min ⏱️](/docs/kubernetes)
 :::
 </TabItem>
+<TabItem value="snaps" label="Snaps">
+
+**Server**
+
+1. Use to deploy Parca Server (API and UI), listening on `0.0.0.0:7070`.
+    
+    ```
+    sudo snap install parca
+    sudo snap start parca
+    ```
+
+**Agent**
+
+2. Use to install Parca Agent on a node with `snapd`.
+
+    ```
+    sudo snap install --classic parca-agent
+    sudo snap start parca
+    ```
+
+</TabItem>
 </Tabs>

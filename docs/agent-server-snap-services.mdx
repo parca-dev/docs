@@ -1,0 +1,53 @@
+# Parca and Parca Agent as snap services
+
+import BrowserWindow from "@site/src/components/BrowserWindow"
+
+:::tip
+
+You can configure both services quickly with a simple [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) file:
+
+```yaml
+#cloud-config
+snap:
+  commands:
+    - [install, parca]
+    - [install, parca-agent, --classic]
+    - [set, parca-agent, remote-store-insecure=true]
+    - [set, parca-agent, remote-store-address=localhost:7070]
+    - [start, parca]
+    - [start, parca-agent]
+```
+
+:::
+
+## Setting up Parca
+
+You can install Parca using the [snap](https://snapcraft.io/about) package.
+
+```shell
+sudo snap install parca
+sudo snap start parca
+```
+
+This will start the Parca server on port `7070` and configure it to retrieve profiles from itself every 1 second automatically.
+
+Once Parca is running, you can navigate to the web interface on the browser.
+
+<BrowserWindow>
+
+![image](https://user-images.githubusercontent.com/8681572/133893063-8cc9fc8a-4d55-431d-80fc-6a2fe8de7019.png)
+
+</BrowserWindow>
+
+## Setting up Parca Agent
+
+You can install Parca Agent using the [snap](https://snapcraft.io/about) package.
+
+```shell
+sudo snap install --classic parca-agent
+sudo snap set parca-agent remote-store-insecure=true
+sudo snap set parca-agent remote-store-address=localhost:7070
+sudo snap start parca-agent
+```
+
+The `systemd` service will be collecting profiles from `docker.service`, `parca.service` and `parca-agent.service` that have been running on your system.

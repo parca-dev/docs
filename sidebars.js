@@ -121,7 +121,14 @@ module.exports = {
         {
           type: "category",
           label: "Running Parca",
-          items: ["binary", "snap", "agent-binary", "systemd"],
+          items: [
+            "binary",
+            "parca-snap",
+            "agent-binary",
+            "parca-agent-snap",
+            "systemd",
+            "agent-server-snap-services"
+          ],
         },
         {
           type: "category",

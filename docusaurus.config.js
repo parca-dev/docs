@@ -122,7 +122,7 @@ module.exports = {
             },
             {
               label: "Parca from Snapcraft",
-              to: "/docs/snap",
+              to: "/docs/parca-snap",
             },
             {
               label: "Parca in Kubernetes",
