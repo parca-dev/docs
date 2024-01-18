@@ -66,7 +66,7 @@ Run Parca and access the Web UI on port 7070
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        docker run --rm -it ghcr.io/parca-dev/parca:{versions.server} /parca
+        docker run --rm -p 7070:7070 ghcr.io/parca-dev/parca:{versions.server} /parca
         </CodeBlock>
     }
 </WithVersions>
@@ -77,7 +77,7 @@ Run Parca Agent (requires privileged more) and access the Web UI on port 7071 (a
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        docker run --rm -it --privileged --pid host ghcr.io/parca-dev/parca-agent:{versions.agent} /bin/parca-agent --node=docker-test
+        docker run --rm --privileged --pid host ghcr.io/parca-dev/parca-agent:{versions.agent} /bin/parca-agent --node=docker-test --remote-store-address=localhost:7070 --remote-store-insecure
         </CodeBlock>
     }
 </WithVersions>
