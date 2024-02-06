@@ -65,7 +65,6 @@ In case a member leaves, the [off-boarding](#off-boarding) procedure is applied.
 The current team members are:
 
 * Frederic Branczyk ([Polar Signals](https://polarsignals.com))
-* Javier Honduvilla Coto ([Polar Signals](https://polarsignals.com))
 * Kemal Akkoyun ([Polar Signals](https://polarsignals.com))
 * Manoj Vivek ([Polar Signals](https://polarsignals.com))
 * Matthias Loibl ([Polar Signals](https://polarsignals.com))
@@ -224,13 +223,13 @@ The new member is
 
 The ex-member is
 
-* removed from the list of [team members](#team-members). Ideally by sending a PR of their own, at least approving said
+* removed from the list of [team members](#team-members). Ideally, by sending a PR of their own, at least approving said
   PR. In case of forced removal, no approval is needed.
 * removed from the [GitHub organization][gh] and related organizations and repositories. Optionally, they can retain
-  maintainership of one or more repositories if the [team](#team-members) agrees.
+  the maintainership of one or more repositories if the [team](#team-members) agrees.
 * removed from the [team mailing list][team] and demoted to a normal member of the other mailing lists,
-  i.e [developers][devs], [users][], and [announce][].
-* removed from the shared password storage. All passwords, API tokens, etc. are cycled in due course (i.e. immediately
+  i.e. [developers][devs], [users][], and [announce][].
+* removed from the shared password storage. All passwords, API tokens, etc., are cycled in due course (i.e. immediately
   in case of an involuntary departure but can be appropriately batched with other departures or routine cycling
   otherwise).
 * removed from group accounts where applicable. Services with some variety of a group account include but are not
