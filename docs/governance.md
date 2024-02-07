@@ -7,7 +7,7 @@ Common terminology used in this governance document are listed below:
 
 * **Team members**: Any members of the private [parca-team][team] Google group.
 
-* **Maintainers**: Maintainers lead an individual project or parts thereof ([`MAINTAINERS.md`][maintainers.md]).
+* **Maintainers**: Maintainers lead an individual project or parts thereof ([`MAINTAINERS.md`](https://github.com/search?q=org%3Aparca-dev+MAINTAINERS.md&type=code)).
 
 * **Projects**: A single repository in the Parca [GitHub organization][gh] is referred to as a project.
 
