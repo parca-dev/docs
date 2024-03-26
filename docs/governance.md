@@ -78,6 +78,8 @@ The current team members are:
 _Please note that Parca had received significant contributions from a number of unlisted individuals before this
 governance document, and thus formal team membership, was created._
 
+
+
 ### Maintainers
 
 Maintainers lead one or more project(s) or parts thereof and serve as a point of conflict resolution amongst the
@@ -97,6 +99,10 @@ encouraged to propose another team member to take over the project.
 
 A project may have multiple maintainers, as long as the responsibilities are clearly agreed upon between them.
 This includes coordinating who handles which issues and pull requests.
+
+#### Emeritus Maintainers
+* Javier Honduvilla Coto
+* Vaishali Thakkar
 
 ### Technical decisions
 
