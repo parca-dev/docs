@@ -65,7 +65,7 @@ In case a member leaves, the [off-boarding](#off-boarding) procedure is applied.
 The current team members are:
 
 * Frederic Branczyk ([Polar Signals](https://polarsignals.com))
-* Kemal Akkoyun ([Polar Signals](https://polarsignals.com))
+* Kemal Akkoyun ([Fal](https://fal.ai/))
 * Manoj Vivek ([Polar Signals](https://polarsignals.com))
 * Matthias Loibl ([Polar Signals](https://polarsignals.com))
 * Maxime Brunet
