@@ -43,14 +43,15 @@ import CodeBlock from '@theme/CodeBlock';
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz -
+        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`
+        chmod +x ./parca-agent*
         </CodeBlock>
     }
 </WithVersions>
 
 2. Run Parca Agent and access the Web UI on port 7071 (assumes Parca is running on localhost:7070)
     ```bash
-    ./parca-agent --node=test --remote-store-address=localhost:7070 --remote-store-insecure
+    sudo ./parca-agent* --node=test --remote-store-address=localhost:7070 --remote-store-insecure
     ```
 
 <br />
