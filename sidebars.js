@@ -95,9 +95,9 @@ module.exports = {
       id: "debuginfo-cli",
     },
     {
-      type: "category",
+      type: "doc",
       label: "Grafana Plugin",
-      items: ["grafana-flamegraph-plugin", "grafana-datasource-plugin"],
+      id: "grafana-plugin",
     },
     {
       type: "doc",
@@ -127,7 +127,7 @@ module.exports = {
             "agent-binary",
             "parca-agent-snap",
             "systemd",
-            "agent-server-snap-services"
+            "agent-server-snap-services",
           ],
         },
         {
