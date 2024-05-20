@@ -35,11 +35,8 @@ module.exports = {
       {
         redirects: [
           {
-            to: "/docs/grafana-plugin",
-            from: [
-              "/docs/grafana-flamegraph-plugin",
-              "/docs/grafana-datasource-plugin",
-            ],
+            to: "/grafana-plugin",
+            from: ["/grafana-flamegraph-plugin", "/grafana-datasource-plugin"],
           },
         ],
       },
