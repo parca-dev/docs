@@ -30,6 +30,20 @@ module.exports = {
         };
       },
     }),
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/docs/grafana-plugin",
+            from: [
+              "/docs/grafana-flamegraph-plugin",
+              "/docs/grafana-datasource-plugin",
+            ],
+          },
+        ],
+      },
+    ],
   ],
   staticDirectories: ["public", "static"],
   themeConfig: {
