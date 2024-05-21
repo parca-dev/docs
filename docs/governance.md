@@ -72,6 +72,7 @@ The current team members are:
 * Monica Wojciechowski ([Polar Signals](https://polarsignals.com))
 * Sumera Priyadarsini ([Polar Signals](https://polarsignals.com))
 * Thor Hansen ([Polar Signals](https://polarsignals.com))
+* Tommy Reilly ([Polar Signals](https://polarsignals.com))
 * Yomi Eluwande ([Polar Signals](https://polarsignals.com))
 
 _Please note that Parca had received significant contributions from a number of unlisted individuals before this
