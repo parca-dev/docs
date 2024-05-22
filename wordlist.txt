@@ -376,3 +376,4 @@ youtu
 Youtube
 Zig's
 zsh
+chmod
