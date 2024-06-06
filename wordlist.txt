@@ -176,6 +176,7 @@ libelf
 libperfmap
 libpthread
 libz
+libpython3.11.so.1.0
 LimitNOFILE
 Linux
 linux
