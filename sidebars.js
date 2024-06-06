@@ -137,6 +137,7 @@ module.exports = {
         },
         "querying-parca",
         "filter-by-function",
+        "binary-filtering",
         "troubleshooting-parca-agent",
         "exposing-parca-write",
         {
