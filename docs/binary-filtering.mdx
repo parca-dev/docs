@@ -52,6 +52,8 @@ data for the binary you right-clicked on.
 
 <br />
 
+This is especially useful for Python workloads that call out to native extensions, so just viewing interpreted frames is not quite right, but just hiding the Python runtime. This means other native extensions like libcuda or pytorch would still be visible.
+
 In addition to that, you can hide multiple binaries at a time! Using the same icicle graph as above, we also want to hide the <em>libc.so.6</em> frames.
 
 <BrowserWindow>
