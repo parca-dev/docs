@@ -172,6 +172,7 @@ Ld
 ld
 libbpf
 libc
+libcuda
 libelf
 libperfmap
 libpthread
@@ -266,6 +267,7 @@ provisioner
 pv
 pwjv
 Pyrra
+pytorch
 qemu
 qmonnet
 QueryLabels
