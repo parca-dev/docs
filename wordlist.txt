@@ -172,10 +172,12 @@ Ld
 ld
 libbpf
 libc
+libcuda
 libelf
 libperfmap
 libpthread
 libz
+libpython3.11.so.1.0
 LimitNOFILE
 Linux
 linux
@@ -265,6 +267,7 @@ provisioner
 pv
 pwjv
 Pyrra
+pytorch
 qemu
 qmonnet
 QueryLabels
