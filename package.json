@@ -21,7 +21,7 @@
     "@docusaurus/plugin-client-redirects": "3.3.2",
     "@docusaurus/preset-classic": "2.4.3",
     "@docusaurus/theme-search-algolia": "2.4.3",
-    "@mdx-js/react": "1.6.22",
+    "@mdx-js/react": "3.0.1",
     "@rive-app/react-canvas": "3.0.57",
     "@svgr/webpack": "6.5.1",
     "clsx": "1.2.1",
