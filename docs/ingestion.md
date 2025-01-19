@@ -4,7 +4,7 @@ There are two ways to ingest data into Parca.
 
 ## Push based
 
-The recommended way to use for generic profiling is Parca Agent. Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/) to capture raw profiling data with very low overhead. It observes user-space, and kernel-space stack traces 100 times per second and builds [pprof](https://github.com/google/pprof) formatted profiles from the extracted data. For in-depth detail and explanation refer to the the [Parca Agent Design](/docs/parca-agent-design) documentation.
+The recommended way to use for generic profiling is Parca Agent. Parca Agent is an always-on sampling profiler that uses [eBPF](https://ebpf.io/) to capture raw profiling data with very low overhead. It observes user-space, and kernel-space stack traces 19 times per second and builds [pprof](https://github.com/google/pprof) formatted profiles from the extracted data. For in-depth detail and explanation refer to the the [Parca Agent Design](/docs/parca-agent-design) documentation.
 
 The collected data can be [sent to a Parca server](https://buf.build/parca-dev/parca/docs/main/parca.profilestore.v1alpha1), where it can be queried and analyzed over time.
 
