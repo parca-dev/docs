@@ -47,3 +47,20 @@ scrape_configs:
 ```
 
 See [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config) for details about relabelling.
+
+## S3 configuration
+Parca supports using an S3-compatible bucket for storing profile data.
+The s3 configuration uses [the Thanos config format](https://thanos.io/tip/thanos/storage.md/#s3).
+
+For example:
+```yaml
+object_storage:
+  bucket:
+    type: "S3"
+    config:
+      bucket": "bucky",
+      endpoint": "some.s3.endpoint:8000",
+      secret_key": "foo",
+      access_key": "bar",
+      insecure: true
+```
