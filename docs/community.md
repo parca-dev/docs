@@ -1,17 +1,5 @@
 # Community
 
-## Office hours
-
-Parca Community Office Hours are public meetings that occur every two weeks focused on Parca and Parca Agent development and contributions, in addition to general community questions. Everyone is welcome to join!
-
-Office Hours are held on Mondays alternating between 17:00 UTC and 10:00 UTC to account for attendees across different time zones (see [here](https://everytimezone.com/s/c0ffbf98) to see these times are in your timezone)
-
-* [Meeting calendar](https://calendar.google.com/calendar/embed?src=c_gpsbv9i59r8ocrri0m6aktt618%40group.calendar.google.com) ([Import Calendar](https://calendar.google.com/calendar/u/0?cid=Y19ncHNidjlpNTlyOG9jcnJpMG02YWt0dDYxOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t))
-* [Meeting notes](https://docs.google.com/document/d/1h2Ni_Q14doE_kScJsLCQewKHRPZXsyWVQt7X0iRzAXo/edit)
-* [Recordings on YouTube](https://www.youtube.com/channel/UCRrqAGuajRqIX_E_arNnYCw/featured)
-
-Always feel free to reach out on [Discord](https://discord.com/invite/ZgUpYgpzXy) for questions about the Parca office hours.
-
 ## Code of Conduct
 
 Parca follows [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md). That includes everything conducted under the umbrella of the project, including but not limited to the Office hours, interactions on GitHub, mailing lists, and Slack.
