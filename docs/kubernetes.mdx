@@ -20,6 +20,19 @@ minikube start --driver=virtualbox
 
 :::
 
+:::tip
+
+To quickly try out the Parca and Parca Agent with Kubernetes on Apple Silicon machine (ARM architecture), you create a [Colima](https://github.com/abiosoft/colima) cluster with Kubernetes:
+
+```shell
+# Homebrew
+brew install colima
+
+colima start --kubernetes
+```
+
+:::
+
 :::note
 
 The Agent needs to access to Kernel and run as a privileged user to load necessary eBPF programs. Please check [our FAQ for further information](/docs/faq#since-parca-agent-has-to-run-as-root-for-ebpf-what-are-the-security-considerations).
