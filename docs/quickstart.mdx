@@ -78,7 +78,7 @@ Run Parca Agent (requires privileged mode) and access the Web UI on port 7071 (a
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        docker run --rm -it --privileged --pid host -p 7071:7071 -v /run:/run -v /boot:/boot -v /lib/modules:/lib/modules -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/fs/bpf:/sys/fs/bpf -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket ghcr.io/parca-dev/parca-agent:{versions.agent} /bin/parca-agent  --remote-store-address=parca-container-ip:7070 --remote-store-insecure
+        docker run --rm -it --privileged --pid host -p 7071:7071 -v /run:/run -v /boot:/boot -v /lib/modules:/lib/modules -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/fs/bpf:/sys/fs/bpf -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket ghcr.io/parca-dev/parca-agent:{versions.agent} --remote-store-address=parca-container-ip:7070 --remote-store-insecure
         </CodeBlock>
     }
 </WithVersions>
