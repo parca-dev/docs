@@ -49,6 +49,8 @@ CNCF
 CodeBlock
 CodeQL
 CodeReady
+colima
+Colima
 config
 ConfigPath
 configs
