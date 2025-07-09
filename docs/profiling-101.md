@@ -49,16 +49,16 @@ main;iterateShort;iterate 50
 
 ### Visualizing
 
-Using this data, a popular way to visualize profiling data is using flamegraphs, or as they are called when they are built from the top being the root, icicle graphs.
+Using this data, a popular way to visualize profiling data is using Flame Graphs, or as they are called when they are built from the top being the root, Icicle Graphs.
 
-![Profiling 101 Icicle Graph](/img/profiling-101-icicle-graph.png)
+![Profiling 101 Flame Graph](/img/profiling-101-icicle-graph.png)
 
 ## Recap
 
 In this guide you have learned the basic fundamentals of CPU profiling:
 
-1) How data is captured: by observing the executed stack traces 100x per second.
-2) What the raw data looks like: folded stack traces, and the optimized [pprof](https://github.com/google/pprof) format.
-3) Useful ways to visualize data: Flamegraphs/Icicle-Graphs.
+1. How data is captured: by observing the executed stack traces 100x per second.
+2. What the raw data looks like: folded stack traces, and the optimized [pprof](https://github.com/google/pprof) format.
+3. Useful ways to visualize data: Flamegraphs/Icicle-Graphs.
 
 Congrats! 🎉

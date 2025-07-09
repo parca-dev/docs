@@ -1,25 +1,29 @@
 # Parca from Binary
 
-import WithVersions from '@site/src/components/WithVersions';
-import CodeBlock from '@theme/CodeBlock';
-import BrowserWindow from '@site/src/components/BrowserWindow';
+import WithVersions from "@site/src/components/WithVersions";
+import CodeBlock from "@theme/CodeBlock";
+import BrowserWindow from "@site/src/components/BrowserWindow";
 
 You can download the latest binary release for your architecture from our [releases page](https://github.com/parca-dev/parca/releases).
+
 <WithVersions language="bash">
-  { versions =>
+  {(versions) => (
     <CodeBlock className="language-bash">
-      curl -sL https://github.com/parca-dev/parca/releases/download/{versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname -m`.tar.gz | tar xvfz - parca
+      curl -sL https://github.com/parca-dev/parca/releases/download/
+      {versions.server}/parca_{versions.server.substring(1)}_`uname -s`_`uname
+      -m`.tar.gz | tar xvfz - parca
     </CodeBlock>
-  }
+  )}
 </WithVersions>
 
 We also produce Docker images that can be pulled:
+
 <WithVersions language="bash">
-  { versions =>
+  {(versions) => (
     <CodeBlock className="language-bash">
       docker pull ghcr.io/parca-dev/parca:{versions.server}
     </CodeBlock>
-  }
+  )}
 </WithVersions>
 
 We provide an example configuration file that you can use to get Parca running, and the scrape configuration section should look familiar to anyone familiar with Prometheus.
@@ -39,12 +43,14 @@ scrape_configs:
 ```
 
 You can download from our repository:
+
 <WithVersions language="bash">
-  { versions =>
+  {(versions) => (
     <CodeBlock className="language-bash">
-      curl -sL https://raw.githubusercontent.com/parca-dev/parca/{versions.server}/parca.yaml > parca.yaml
+      curl -sL https://raw.githubusercontent.com/parca-dev/parca/
+      {versions.server}/parca.yaml > parca.yaml
     </CodeBlock>
-  }
+  )}
 </WithVersions>
 
 To start Parca, pass this config file with the `config-path` flag:
@@ -147,7 +153,7 @@ Selecting one of these profile types and clicking the `Search` button will retri
 
 </BrowserWindow>
 
-This should result in a time series based on the profile that is interactable. Clicking anywhere on the line graph should then bring up an icicle graph for the profile that you've selected.
+This should result in a time series based on the profile that is interactable. Clicking anywhere on the line graph should then bring up an Flame Graph for the profile that you've selected.
 
 <BrowserWindow>
 
@@ -155,4 +161,4 @@ This should result in a time series based on the profile that is interactable. C
 
 </BrowserWindow>
 
-You can then interact with the icicle graph to better understand how Parca is behaving.
+You can then interact with the Flame Graph to better understand how Parca is behaving.

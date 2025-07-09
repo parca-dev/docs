@@ -1,6 +1,6 @@
 # Concepts
 
-import BrowserWindow from '@site/src/components/BrowserWindow';
+import BrowserWindow from "@site/src/components/BrowserWindow";
 
 ## Data model
 
@@ -18,9 +18,9 @@ Parca ingests profiles using the open-source pprof profile.proto format. More ca
 
 The pprof utility offers a robust set of tools for exploring profiles. Parca specifically tries to solve the storage and retrieval of these profiles, and allows you to explore these profiles across time.
 
-## Icicle Graphs
+## Flame Graphs
 
-Often to better understand how your application is behaving you need to compare two profiles. Parca allows you to make selections of two points in time that you want to compare and will generate an icicle graph of the difference between the two selected profiles.
+Often to better understand how your application is behaving you need to compare two profiles. Parca allows you to make selections of two points in time that you want to compare and will generate an Flame Graph of the difference between the two selected profiles.
 
 If a span is larger in the second profile, you'll see that span colored in red, and will be darker shade the larger the difference is. This allows one to quickly visually identify where a program is growing in usage scope.
 
@@ -42,13 +42,13 @@ If a span remains blue, it means there was no significant change between the two
 
 ## Cumulative and Diff values
 
-When comparing two profiles, it's not unusual to see a `Cumulative` value and `Diff` value in the tooltip that displays when you hover over the icicle graph.
+When comparing two profiles, it's not unusual to see a `Cumulative` value and `Diff` value in the tooltip that displays when you hover over the Flame Graph.
 
 <BrowserWindow>
 
 ![image](https://user-images.githubusercontent.com/9016992/146777868-90f145fd-aaab-451d-8848-247877a7dde3.png)
 
-</BrowserWindow>  
+</BrowserWindow>
 
 As an example, a stack trace like `main() > foo() > bar()` where `main` calls `foo` that calls `bar`. In one profile, we observe this stack trace running at 500ns, so its cumulative value will be 500 and then later in another profile, we see this stack trace but it was running for only 300ns, thus it's cumulative value will be 300.
 

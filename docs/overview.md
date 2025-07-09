@@ -51,7 +51,7 @@ This diagram illustrates the architecture of Parca and Parca Agent.
 
 Profiles can be sourced either by an agent, such as Parca Agent, pushing profiles to Parca, or the Parca server pulling profiles from targets via HTTP. [Go has popularized having HTTP endpoints to request profiles](https://pkg.go.dev/net/http/pprof) from. When pushed or pulled, the profiles are written to Parca's purpose-built storage (read more in-depth details in the [storage documentation](storage.md)).
 
-Series of profiles in Parca are identified by their unique label combination. Parca has a rich set of [gRPC](https://grpc.io/) APIs, Parca's web UI uses [gRPC-web](https://grpc.io/docs/platforms/web/basics/) to communicate with the backend. Using the Parca UI a user can query profiles and visualize them using icicle-graphs (upside-down [flamegraphs](https://twitter.com/brendangregg/status/527214217007362049?lang=en)).
+Series of profiles in Parca are identified by their unique label combination. Parca has a rich set of [gRPC](https://grpc.io/) APIs, Parca's web UI uses [gRPC-web](https://grpc.io/docs/platforms/web/basics/) to communicate with the backend. Using the Parca UI a user can query profiles and visualize them using Icicle Graphs (upside-down [Flame Graphs](https://twitter.com/brendangregg/status/527214217007362049?lang=en)).
 
 ## What does the name "Parca" mean?
 

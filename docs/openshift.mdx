@@ -1,8 +1,8 @@
 # OpenShift
 
-import WithVersions from '@site/src/components/WithVersions';
-import CodeBlock from '@theme/CodeBlock';
-import BrowserWindow from '@site/src/components/BrowserWindow';
+import WithVersions from "@site/src/components/WithVersions";
+import CodeBlock from "@theme/CodeBlock";
+import BrowserWindow from "@site/src/components/BrowserWindow";
 
 :::tip
 
@@ -18,6 +18,7 @@ To quickly try out the Parca and Parca Agent with OpenShift cluster or a local c
 crc setup
 crc start
 ```
+
 :::
 
 :::note
@@ -38,14 +39,16 @@ oc new-project parca \
 To provision the Parca against any OpenShift cluster, and use the API and UI:
 
 <WithVersions language="bash">
-  { versions =>
+  {(versions) => (
     <CodeBlock className="language-bash">
-      oc apply -f https://github.com/parca-dev/parca/releases/download/{versions.server}/openshift-manifest.yaml
+      oc apply -f https://github.com/parca-dev/parca/releases/download/
+      {versions.server}/openshift-manifest.yaml
     </CodeBlock>
-  }
+  )}
 </WithVersions>
 
 You can verify by selecting pods if everything runs as expected:
+
 ```shell
 oc get pods -A
 ```
@@ -65,6 +68,7 @@ parca         parca-5f879c46ff-pv649          1/1     Running   0          53m
 ```
 
 To view the Parca UI and access the API, we can port-forward using the default port `7070`:
+
 ```
 oc -n parca port-forward service/parca 7070
 ```
@@ -85,12 +89,14 @@ oc new-project parca \
 ```
 
 To provision the Parca Agent as a `DaemonSet`:
+
 <WithVersions language="bash">
-  { versions =>
+  {(versions) => (
     <CodeBlock className="language-bash">
-      oc apply -f https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/openshift-manifest.yaml
+      oc apply -f https://github.com/parca-dev/parca-agent/releases/download/
+      {versions.agent}/openshift-manifest.yaml
     </CodeBlock>
-  }
+  )}
 </WithVersions>
 
 You can verify by selecting pods if everything runs as expected:
@@ -104,27 +110,30 @@ parca-agent-b66vt           1/1     Running   0          54m
 ```
 
 Let's set up a port-forward using the default port `7071`.
+
 ```
 oc -n parca port-forward `oc -n parca get pod -lapp.kubernetes.io/name=parca-agent -ojsonpath="{.items[0].metadata.name}"` 7071
 ```
 
 Now we can view the active profilers by visiting `http://localhost:7071`:
+
 <BrowserWindow>
 
 ![image](../static/img/tutorial/active_profilers.png)
 
 </BrowserWindow>
 
-<br/>
+<br />
 
 And all the discovered processes:
+
 <BrowserWindow>
 
 ![image](../static/img/tutorial/processes.png)
 
 </BrowserWindow>
 
-<br/>
+<br />
 
 To continuously send every profile collected to a Parca server the configure the `--store-address` and the potential credentials needed.
 For example, to send to a Parca server in the `parca` namespace set: `--store-address=parca.parca.svc:7070`.
@@ -134,7 +143,7 @@ This has already been set up for our current setup in the previously applied man
 
 You can use `--remote-store-insecure` and `--remote-store-insecure-skip-verify` for simpler setups.
 
-``` shell
+```shell
       --remote-store-insecure     Send gRPC requests via plaintext instead of
                                   TLS.
       --remote-store-insecure-skip-verify
@@ -153,18 +162,19 @@ You should shortly see the `Select profile...` dropdown menu populate with the p
 Parca supports any pprof formatted profile, but here we are demonstrating Parca Agent's automatic profiling with zero-instrumentation, which currently only supports CPU profiling.
 
 :::
+
 <BrowserWindow>
 
 ![image](../static/img/tutorial/profile_type_dropdown_selected.png)
 
 </BrowserWindow>
 
-<br/>
+<br />
 
 Selecting `CPU Samples` as profile type and clicking the `Search` button will retrieve the profiles from Parca Agent for the time selection (default Last Hour).
 
 This should result in a time series based on the profile that is interactable.
-Clicking anywhere on the line graph should then bring up an icicle graph for the profile that you've selected.
+Clicking anywhere on the line graph should then bring up a Flame Graph for the profile that you've selected.
 
 <BrowserWindow>
 
@@ -172,9 +182,9 @@ Clicking anywhere on the line graph should then bring up an icicle graph for the
 
 </BrowserWindow>
 
-<br/>
+<br />
 
-You can then interact with the icicle graph to better understand how Parca is behaving.
+You can then interact with the Flame Graph to better understand how Parca is behaving.
 
 :::info
 
@@ -190,7 +200,7 @@ If you go to query bar and enter `namespace="kube-system"` you can focus on them
 
 </BrowserWindow>
 
-<br/>
+<br />
 
 And you can click the samples on the graph to focus on the individual profiles.
 
@@ -212,6 +222,7 @@ To learn more about relabelling please see the [Prometheus `relabel_config` docu
 :::
 
 First you need to specify a configuration file if you haven't already. The relevant manifest changes on `parca-agent-daemonSet.yaml` would like the following:
+
 ```diff
 ...
 template:
@@ -241,11 +252,12 @@ For brevity, we skip the details of mounting a `ConfigMap` with relevant content
 :::
 
 For example, to only profile Pods with the `app.kubernetes.io/name=my-web-app` label, the relevant configuration file `/etc/parca-agent.yaml` would like the following:
+
 ```yaml
 relabel_configs:
-- source_labels: [app_kubernetes_io_name]
-  regex: my-web-app
-  action: keep
+  - source_labels: [app_kubernetes_io_name]
+    regex: my-web-app
+    action: keep
 ```
 
 :::tip
