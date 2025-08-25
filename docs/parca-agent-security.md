@@ -35,7 +35,7 @@ Read more on CO-RE and libbpf:
 ## Sigstore
 
 We provide signatures of release artifacts via [sigstore](https://sigstore.dev/). See [parca-dev/parca-agent#16](https://github.com/parca-dev/parca-agent/issues/16) for more details.
-And also see the default registry for the signatures: [ghrc.io/parca-dev/parca-agent](https://github.com/parca-dev/parca-agent/pkgs/container/parca-agent)
+And also see the default registry for the signatures: [ghcr.io/parca-dev/parca-agent](https://github.com/parca-dev/parca-agent/pkgs/container/parca-agent)
 
 ## Automated code scanning
 
