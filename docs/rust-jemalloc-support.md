@@ -1,6 +1,6 @@
 # Profiling Rust Memory Usage with Jemalloc
 
-Out jemalloc integration makes it possible to profile heap usage of
+Our jemalloc integration makes it possible to profile heap usage of
 Rust programs, as long as you are willing to use the jemalloc
 allocator.
 
