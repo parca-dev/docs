@@ -11,6 +11,7 @@ All AOT compiled languages with [debug info](./symbolization#what-can-be-symboli
 - [C++](https://github.com/parca-dev/parca-demo/tree/main/cpp)
 - [Go](https://github.com/parca-dev/parca-demo/tree/main/go) (with [extended support](./symbolization#go))
 - [Rust](https://github.com/parca-dev/parca-demo/tree/main/rust)
+- [Rust heap usage](/docs/rust-jemalloc-support)
 - And more
 
 ## Just-in-time (JIT) compilation
