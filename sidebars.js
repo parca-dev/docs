@@ -84,7 +84,7 @@ module.exports = {
           type: "category",
           label: "Language Support",
           link: { type: "doc", id: "parca-agent-language-support" },
-            items: ["java-support", "rust-jemalloc-support"],
+          items: ["java-support", "rust-jemalloc-support"],
         },
         "parca-agent-security",
       ],
@@ -133,7 +133,7 @@ module.exports = {
         {
           type: "category",
           label: "Deploying Parca",
-          items: ["kubernetes", "openshift"],
+          items: ["kubernetes", "openshift", "gke-autopilot"],
         },
         "querying-parca",
         "filter-by-function",

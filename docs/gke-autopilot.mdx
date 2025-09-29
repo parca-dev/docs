@@ -1,0 +1,232 @@
+# Google Kubernetes Engine Autopilot
+
+import WithVersions from '@site/src/components/WithVersions';
+import CodeBlock from '@theme/CodeBlock';
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+[GKE Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is a mode of operation in Google Kubernetes Engine (GKE) where Google manages the entire cluster infrastructure, including nodes and node pools. This makes it ideal for running Parca Agent as it simplifies operations while maintaining the security and performance benefits of continuous profiling.
+
+:::tip
+
+Parca Agent is available on [Google Cloud Marketplace](https://console.cloud.google.com/marketplace) for easy deployment on GKE Autopilot clusters. This provides a streamlined installation experience with pre-configured settings optimized for Autopilot's constraints.
+
+:::
+
+:::note
+
+While GKE Autopilot has stricter security policies than standard GKE, Parca Agent has been configured to work within these constraints while still providing comprehensive profiling capabilities through eBPF.
+
+:::
+
+## Prerequisites
+
+Before deploying Parca Agent on GKE Autopilot, ensure you have:
+
+1. A GKE Autopilot cluster running (minimum version 1.24)
+2. `gcloud` CLI configured with appropriate permissions
+3. `kubectl` configured to connect to your cluster
+4. Access to Google Cloud Marketplace
+
+## Deploying Parca Agent via Google Cloud Marketplace
+
+### Step 1: Access the Marketplace
+
+Navigate to the [Google Cloud Marketplace](https://console.cloud.google.com/marketplace) and search for "Parca Agent" or access it directly through this link (once published).
+
+### Step 2: Configure Deployment
+
+Click on "Configure" on the Parca Agent marketplace page. You'll be presented with configuration options:
+
+1. **Cluster Selection**: Choose your GKE Autopilot cluster
+2. **Namespace**: Select or create a namespace (recommended: `parca`)
+3. **App instance name**: Keep the default or customize (e.g., `parca-agent`)
+
+### Step 3: Review Configuration
+
+The marketplace deployment will automatically configure:
+
+- **Resource limits and requests** appropriate for Autopilot
+- **Security context** that complies with Autopilot policies
+- **DaemonSet** configuration optimized for Autopilot node pools
+- **Service account** with minimal required permissions
+
+### Step 4: Deploy
+
+Click "Deploy" to install Parca Agent. The marketplace will:
+
+1. Create the namespace if it doesn't exist
+2. Deploy the Parca Agent DaemonSet
+3. Configure necessary RBAC permissions
+4. Set up service accounts
+
+## Alternative: Manual Deployment
+
+If you prefer to deploy manually or need custom configurations:
+
+```bash
+# Create namespace
+kubectl create namespace parca
+```
+
+_TODO: Add kubectl command to deploy from the parca-agent deploy folder._
+
+## Setting up Parca Server
+
+Parca Agent needs a Parca Server to send profiles to. Deploy Parca Server in your Autopilot cluster:
+
+<WithVersions language="bash">
+  { versions =>
+    <CodeBlock className="language-bash">
+      kubectl apply -f https://github.com/parca-dev/parca/releases/download/{versions.server}/kubernetes-manifest.yaml
+    </CodeBlock>
+  }
+</WithVersions>
+
+### Verify Parca Server Deployment
+
+```bash
+# Check if Parca Server is running
+kubectl get pods -n parca -l app.kubernetes.io/name=parca
+
+# Expected output
+NAME                     READY   STATUS    RESTARTS   AGE
+parca-7d8c9f8b5c-xvw2m   1/1     Running   0          2m
+```
+
+### Configure Agent to Connect to Server
+
+If you deployed manually, update the Agent's `--store-address` flag to point to your Parca Server:
+
+```bash
+kubectl -n parca patch daemonset parca-agent --type='json' \
+  -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/args/4", "value": "--store-address=parca.parca.svc.cluster.local:7070"}]'
+```
+
+## Accessing Parca UI
+
+To access the Parca UI, set up port forwarding:
+
+```bash
+kubectl -n parca port-forward service/parca 7070:7070
+```
+
+Open your browser and navigate to `http://localhost:7070`
+
+## Verifying the Deployment
+
+### Check Agent Status
+
+```bash
+# Verify DaemonSet is running
+kubectl get daemonset -n parca
+
+# Check individual agent pods
+kubectl get pods -n parca -l app.kubernetes.io/name=parca-agent
+
+# View agent logs
+kubectl logs -n parca -l app.kubernetes.io/name=parca-agent --tail=20
+```
+
+### Verify Profiling is Working
+
+1. Port-forward to an agent pod:
+```bash
+kubectl -n parca port-forward \
+  $(kubectl -n parca get pod -l app.kubernetes.io/name=parca-agent -o jsonpath="{.items[0].metadata.name}") \
+  7071:7071
+```
+
+2. Check active profilers at `http://localhost:7071`
+
+## GKE Autopilot Specific Considerations
+
+### Resource Management
+
+GKE Autopilot automatically manages resources. The configuration above includes:
+- **Requests**: Minimum resources guaranteed (100m CPU, 256Mi memory)
+- **Limits**: Maximum resources allowed (500m CPU, 1Gi memory)
+- **Ephemeral storage**: Required for eBPF programs and temporary data
+
+### Security Policies
+
+Autopilot enforces strict security policies. Parca Agent is configured to:
+- Run as non-root user (UID 65534)
+- Use minimal required capabilities (SYS_ADMIN, SYS_PTRACE, PERFMON, BPF)
+- Mount only necessary host paths as read-only
+- Use ephemeral storage for temporary files
+
+### Node Access
+
+Autopilot manages nodes automatically. The DaemonSet ensures:
+- One agent pod per node
+- Automatic scheduling on new nodes
+- Tolerations for system nodes
+
+## Advanced Configuration
+
+### Filtering Profiles by Namespace
+
+To profile only specific namespaces, add a configuration:
+
+```yaml
+# Create a ConfigMap with filtering rules
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: parca-agent-config
+  namespace: parca
+data:
+  parca-agent.yaml: |
+    relabel_configs:
+    - source_labels: [namespace]
+      regex: "production|staging"
+      action: keep
+EOF
+```
+
+Then mount it in the DaemonSet:
+
+```bash
+kubectl -n parca patch daemonset parca-agent --type='json' \
+  -p='[
+    {"op": "add", "path": "/spec/template/spec/volumes/-", "value": {"name": "config", "configMap": {"name": "parca-agent-config"}}},
+    {"op": "add", "path": "/spec/template/spec/containers/0/volumeMounts/-", "value": {"name": "config", "mountPath": "/etc/parca-agent", "readOnly": true}},
+    {"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--config-path=/etc/parca-agent/parca-agent.yaml"}
+  ]'
+```
+
+### Adjusting Sampling Rate
+
+For high-traffic clusters, you might want to adjust the sampling rate:
+
+```bash
+kubectl -n parca patch daemonset parca-agent --type='json' \
+  -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--sampling-ratio=0.1"}]'
+```
+
+### Monitoring Agent Performance
+
+Monitor the agent's resource usage:
+
+```bash
+# Check resource consumption
+kubectl top pod -n parca -l app.kubernetes.io/name=parca-agent
+
+# View metrics in detail
+kubectl describe pod -n parca -l app.kubernetes.io/name=parca-agent
+```
+
+### Getting Help
+
+For additional support:
+- Check the [Parca Agent troubleshooting guide](/docs/troubleshooting-parca-agent)
+- Join the [Parca Discord](https://discord.gg/ZgUpYgpzXy)
+- File issues on [GitHub](https://github.com/parca-dev/parca-agent/issues)
+
+## Next Steps
+
+- [Learn about querying profiles](/docs/querying-parca)
+- [Understand icicle graphs](/docs/icicle-graph-understanding)
+- [Configure Grafana integration](/docs/grafana-plugin)
+- [Explore profiling concepts](/docs/concepts)
