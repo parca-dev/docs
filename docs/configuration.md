@@ -56,11 +56,11 @@ For example:
 ```yaml
 object_storage:
   bucket:
-    type: "S3"
+    type: S3
     config:
-      bucket": "bucky",
-      endpoint": "some.s3.endpoint:8000",
-      secret_key": "foo",
-      access_key": "bar",
+      bucket: "bucky",
+      endpoint: "some.s3.endpoint:8000",
+      access_key: "bar",
+      secret_key: "foo",
       insecure: true
 ```
