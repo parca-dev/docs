@@ -5,6 +5,8 @@ addr
 agentpath
 ainur
 Akkoyun
+ALLOC
+allocator
 amd
 Andrii
 annotationpresent
@@ -54,6 +56,7 @@ CodeQL
 CodeReady
 colima
 Colima
+conf
 config
 ConfigPath
 configs
@@ -69,6 +72,8 @@ cpu
 cpuflamegraphs
 CRI
 cri
+ctl
+CTL
 datacenter
 Datasource
 datasource
@@ -120,6 +125,7 @@ filesystem
 flamegraph
 FlameGraphs
 flamegraphs
+fn
 frontend
 FrostDB
 fs
@@ -129,6 +135,7 @@ ghrc
 github
 githubusercontent
 GitLab
+globals
 googlegroups
 goroutine
 Goroutines
@@ -157,6 +164,9 @@ ip
 iterateLong
 iterateShort
 Jaeger
+Jemalloc
+jemalloc
+jemallocator
 JIT
 jit
 jitdump
@@ -201,6 +211,7 @@ lxc
 mainc
 MAINPID
 maintainership
+malloc
 Manoj
 matcher
 matchers
@@ -213,6 +224,7 @@ Metastore
 metastore
 minikube
 msg
+mut
 Mutex
 mutex
 mynode
@@ -235,6 +247,7 @@ oidc
 OpenShift
 openshift
 OpenTelemetry
+ok
 otlp
 parallelizing
 params
@@ -320,6 +333,7 @@ stacktrace
 stacktraces
 StandardError
 StandardOutput
+StatusCode
 stmt
 strp
 submodule
@@ -342,6 +356,7 @@ TBD
 testdata
 Thakkar
 Thanos
+tikv
 TLS
 tls
 tmp

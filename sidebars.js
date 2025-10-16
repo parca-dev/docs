@@ -84,7 +84,7 @@ module.exports = {
           type: "category",
           label: "Language Support",
           link: { type: "doc", id: "parca-agent-language-support" },
-          items: ["java-support"],
+            items: ["java-support", "rust-jemalloc-support"],
         },
         "parca-agent-security",
       ],
