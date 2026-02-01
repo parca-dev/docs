@@ -43,7 +43,7 @@ import CodeBlock from '@theme/CodeBlock';
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
-        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m`
+        curl -sL https://github.com/parca-dev/parca-agent/releases/download/{versions.agent}/parca-agent_{versions.agent.substring(1)}_`uname -s`_`uname -m` && \{'\n'}
         chmod +x ./parca-agent*
         </CodeBlock>
     }
