@@ -9,6 +9,9 @@ The relabeling config can be passed to the agent via the `--config-path` flag.
 |-----------|-----------------|
 | **node**  | The name of the node that the process is running on as specified by the `--node` flag. |
 | **comm**  | The command name of the process being profiled. |
+| **cpu**   | The CPU the sample was taken on. Can be disabled with `--metadata-disable-cpu-label`. |
+| **thread_id** | The thread ID of the thread being profiled. Can be disabled with `--metadata-disable-thread-id-label`. |
+| **thread_name** | The command name of the thread being profiled. Can be disabled with `--metadata-disable-thread-comm-label`. |
 
 ---
 
@@ -33,14 +36,6 @@ The relabeling config can be passed to the agent via the `--config-path` flag.
 |--------------------------------|-----------------|
 | **__meta_system_kernel_release** | The kernel release of the system. |
 | **__meta_system_kernel_machine** | The kernel machine of the system (typically the architecture). |
-
----
-
-### **Thread-Related Labels (`__meta_thread_*`)**
-| **Label**             | **Description** |
-|-----------------------|-----------------|
-| **__meta_thread_comm** | The command name of the thread being profiled. |
-| **__meta_thread_id**   | The PID of the thread being profiled. |
 
 ---
 
@@ -91,12 +86,6 @@ The relabeling config can be passed to the agent via the `--config-path` flag.
 | **LXC (`__meta_lxc_*`)**         | **__meta_lxc_container_id**  | The ID of the container the process is running in. |
 
 ---
-
-### **CPU-Related Labels**
-| **Label**         | **Description** |
-|-------------------|-----------------|
-| **__meta_cpu**  | The CPU the sample was taken on. |
-
 
 ## Configuration
 
