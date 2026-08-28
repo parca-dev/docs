@@ -75,6 +75,8 @@ Run Parca and access the Web UI on port 7070
 **Agent**
 
 Run Parca Agent (requires privileged mode) and access the Web UI on port 7071 (assumes Parca is running as a container on the same host. Replace IP for "--remote-store-address")
+
+__NOTE:__ If using `podman` to manage containers as a non-root user, you may need to use `sudo` and run the container as the root user to properly access `/proc/kallsyms`.
 <WithVersions language="bash">
     { versions =>
         <CodeBlock className="language-bash">
