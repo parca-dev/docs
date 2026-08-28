@@ -93,12 +93,14 @@ Run Parca Agent (requires privileged mode) and access the Web UI on port 7071 (a
 
 :::tip
 
-To quickly try out the Parca and Parca Agent with Kubernetes, you create a [minikube](https://minikube.sigs.k8s.io/docs/) cluster with an actual virtual machine, e.g. Virtualbox:
+To quickly try out the Parca and Parca Agent with Kubernetes, you create a [Colima](https://github.com/abiosoft/colima) cluster with Kubernetes:
 
 ```shell
-minikube start --driver=virtualbox
+# Homebrew
+brew install colima
+
+colima start --kubernetes
 ```
-:::
 
 1. Create the namespace (not strictly necessary but prevents a race with the next commands)
     ```
