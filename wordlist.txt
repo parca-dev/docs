@@ -406,3 +406,6 @@ Youtube
 Zig's
 zsh
 chmod
+anim
+fg
+ig
